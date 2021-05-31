@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
-const Basic = () => {
-  return <h1>This is a web page</h1>;
+const Index = () => {
+  return (
+    <>
+      <App />
+    </>
+  );
 };
 
-ReactDOM.render(<Basic />, document.getElementById("root"));
+ReactDOM.render(<Index />, document.getElementById("root"));
