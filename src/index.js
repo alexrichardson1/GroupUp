@@ -4,9 +4,9 @@ import App from "./App";
 
 const Index = () => {
   return (
-    <>
+    <React.Fragment>
       <App />
-    </>
+    </React.Fragment>
   );
 };
 
