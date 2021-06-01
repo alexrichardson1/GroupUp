@@ -1,34 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import data from "./teams";
+import Groups from "./Components/Groups";
+import Navigation from "./Components/Navigation";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Test from "./Components/Test";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./App.css";
 
 const App = () => {
   return (
-    <main>
-      <>
-        <h1>Your teams</h1>
-        <div></div>
-        <ul className="list-group">
-          {data.map((team) => {
-            const { leader, teammates, requirements, adRequirements } = team;
-            return (
-              <li className="list-group-item">
-                <React.Fragment>
-                  <h1>{leader}'s Group</h1>
-                  <h2>Other Members: {teammates.map((name) => name + " ")}</h2>
-                  <h3>Requirements: {requirements}</h3>
-                  <h3>Additional Requiremetnts: {adRequirements}</h3>
-                </React.Fragment>
-              </li>
-            );
-          })}
-        </ul>
-      </>
-    </main>
+    <Router>
+      <div className="container">
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <div>
+              <h3> 2 Groups looking for members in Project X</h3>
+              <Groups groups={data} />
+            </div>
+          )}
+        ></Route>
+        <Route path="/test" component={Test}></Route>
+        <Link to="/test">A LINK</Link>
+      </div>
+    </Router>
   );
 };
+
+// Wrap everything in Router
+// Specify routes at the beginning, so whenever you link to the
+// path specified, it will take you to whatever is rendered.
+// If the thing you want to render is just a component, you can
+// link that directly without using render=... .
 
 export default App;
