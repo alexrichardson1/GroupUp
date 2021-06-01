@@ -29,5 +29,5 @@ test-job:
 
 deploy-to-heroku:
   stage: deploy
-  scipt: 
+  script: 
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
