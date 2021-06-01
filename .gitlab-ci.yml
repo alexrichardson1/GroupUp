@@ -4,7 +4,7 @@ default:
 
   # Validate that the repository contains a package.json and extract a few values from it.
   before_script:
-    - echo "This is a statement"
+    - cd front-end
     - |
       if [[ ! -f front-end/package.json ]]; then
         echo "No package.json found! A package.json file is required to publish a package to GitLab's NPM registry."
