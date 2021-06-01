@@ -11,3 +11,46 @@ body {
   background: #f1f5f8;
   color: #222;
 }
+
+.group {
+  background: #f4f4f4;
+  margin: 20px;
+  padding: 30px 20px;
+  cursor: pointer;
+}
+
+.group h1 {
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.group h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-block;
+  background: rgb(133, 130, 130);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
