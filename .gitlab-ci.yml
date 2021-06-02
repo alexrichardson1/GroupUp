@@ -20,12 +20,14 @@ build-job:
   script:
     - yarn install
     - yarn run build
+  needs: []
 
 test-job:
   stage: test
   script:
     - yarn install
     - CI=true yarn test
+  needs: []
 
 deploy-to-heroku:
   stage: deploy
@@ -33,3 +35,4 @@ deploy-to-heroku:
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
+  needs: [build-job, test-job]
