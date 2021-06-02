@@ -10,20 +10,30 @@ const Group = ({ group }) => {
     <div onClick={temp} className="group">
       <h1>{leader}'s Group</h1>
       <ul>
-        <li>
+        {/* <li>
           Other Members:
           <ul>
             {teammates.map((name) => (
               <li key={keyGen1++}>{name}</li>
             ))}
           </ul>
-        </li>
+        </li> */}
         <li>
           Requirements:
           <ul>
-            {requirements.map((req) => (
-              <li key={keyGen2++}>{req}</li>
+            {Object.keys(requirements).map((key) => (
+              <li key={keyGen2++}>{key + ": " + requirements[key]}</li>
             ))}
+            {/* {for (let key in requirements.keys()) {
+              if(requirements.hasOwnProperty()) {
+                <li key={keyGen2++}>key</li>
+              }
+            }
+            } */}
+
+            {/* {requirements.map((req) => (
+              <li key={keyGen2++}>{req}</li>
+            ))} */}
           </ul>
         </li>
         <li>Additional Requirements: {adRequirements}</li>
