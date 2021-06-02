@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 const SelectProject = (props) => {
   return (
@@ -7,7 +8,7 @@ const SelectProject = (props) => {
       <Link to="/listings">
         <button className="btn">Join a group</button>
       </Link>
-      <DropdownMenu />
+      {/* <DropdownMenu /> */}
     </div>
   );
 };
