@@ -2,6 +2,7 @@ import React from "react";
 import data from "./Teams";
 import Groups from "./Components/Groups";
 import Home from "./Components/Home";
+import SelectProject from "./Components/SelectProject";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -12,6 +13,7 @@ const App = () => {
     <Router>
       <div className="container">
         <Route path="/" exact component={Home}></Route>
+        <Route path="/selection" exact component={SelectProject}></Route>
         <Route
           path="/listings"
           exact
