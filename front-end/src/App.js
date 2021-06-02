@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import data from "./teams";
 import Groups from "./Components/Groups";
-import Navigation from "./Components/Navigation";
+// import Navigation from "./Components/Navigation";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Test from "./Components/Test";
