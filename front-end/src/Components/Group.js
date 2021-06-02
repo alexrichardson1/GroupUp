@@ -3,6 +3,9 @@ const Group = ({ group }) => {
 
   const temp = () => console.log("hello world!");
 
+  let keyGen1 = 0;
+  let keyGen2 = 0;
+
   return (
     <div onClick={temp} className="group">
       <h1>{leader}'s Group</h1>
@@ -11,7 +14,7 @@ const Group = ({ group }) => {
           Other Members:
           <ul>
             {teammates.map((name) => (
-              <li>{name}</li>
+              <li key={keyGen1++}>{name}</li>
             ))}
           </ul>
         </li>
@@ -19,13 +22,13 @@ const Group = ({ group }) => {
           Requirements:
           <ul>
             {requirements.map((req) => (
-              <li>{req}</li>
+              <li key={keyGen2++}>{req}</li>
             ))}
           </ul>
         </li>
         <li>Additional Requirements: {adRequirements}</li>
       </ul>
-      <button class="btn" onClick={null}>
+      <button className="btn" onClick={null}>
         Join Group
       </button>
     </div>
