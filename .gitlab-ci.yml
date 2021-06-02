@@ -18,14 +18,14 @@ cache:
 build-job:
   stage: build
   script:
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn run build
 
 test-job:
   stage: test
   script:
-    - npm install
-    - CI=true npm test
+    - yarn install
+    - CI=true yarn test
 
 deploy-to-heroku:
   stage: deploy
