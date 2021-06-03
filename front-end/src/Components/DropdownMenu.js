@@ -28,7 +28,7 @@ export default function DropdownMenu({ promt, options, value, onChange }) {
   return (
     <div className="dropdown">
       <div className="control" onClick={() => setOpen((prev) => !prev)}>
-        <div className="selected-value">{promt}</div>
+        <div className="selected-value">{value ? value : promt}</div>
         <div className={`arrow ${open ? "open" : null}`} />
       </div>
       <div className={`options ${open ? "open" : null}`}>
