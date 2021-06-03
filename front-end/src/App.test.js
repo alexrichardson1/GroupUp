@@ -3,7 +3,7 @@ import App from "./App";
 
 test("renders learn react link", () => {
   render(<App />);
-  const linkElement = screen.getByText(/A LINK/i);
+  const linkElement = screen.getByText(/Join a group/i);
   //   expect(linkElement).toBeInTheDocument();
-  expect(linkElement.textContent).toBe("A LINK");
+  expect(linkElement.textContent).toBe("Join a group");
 });
