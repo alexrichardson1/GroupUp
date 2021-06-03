@@ -33,7 +33,15 @@ export default function DropdownMenu({ promt, options, value, onChange }) {
       </div>
       <div className={`options ${open ? "open" : null}`}>
         {options.map((option) => (
-          <div className="option">{option}</div>
+          <div
+            className="option"
+            onClick={() => {
+              onChange(option);
+              setOpen(false); // automatically close dropdown
+            }}
+          >
+            {option}
+          </div>
         ))}
       </div>
     </div>
