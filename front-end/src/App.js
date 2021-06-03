@@ -3,6 +3,8 @@ import data from "./Teams";
 import Groups from "./Components/Groups";
 import Home from "./Components/Home";
 import SelectProject from "./Components/SelectProject";
+import DetailedGroup from "./Components/DetailedGroup";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -24,6 +26,7 @@ const App = () => {
             </div>
           )}
         ></Route>
+        <Route path="/group/:id" children={<DetailedGroup />}></Route>
       </div>
     </Router>
   );
