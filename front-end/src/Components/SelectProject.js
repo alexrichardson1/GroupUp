@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
-import years from "./years.json";
+import years from "../data/years.json";
 import projects from "./projects.json";
 
 const SelectProject = (props) => {
