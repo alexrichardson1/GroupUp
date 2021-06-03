@@ -22,11 +22,11 @@ import "./styles.css";
 
 // // export default DropdownMenu;
 
-export default function DropdownMenu({ years }) {
+export default function DropdownMenu({ promt, years }) {
   return (
     <div className="dropdown">
       <div className="control">
-        <div className="selected-value">Select year...</div>
+        <div className="selected-value">{promt}</div>
         <div className="arrow" />
       </div>
       <div className="options">
