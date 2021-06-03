@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
 

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Group = ({ group }) => {
   const { id, leader, requirements, adRequirements } = group;
 
