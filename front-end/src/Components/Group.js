@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const Group = ({ group }) => {
-  const { leader, requirements, adRequirements } = group;
+  const { id, leader, requirements, adRequirements } = group;
 
   const temp = () => console.log("hello world!");
 
@@ -20,9 +22,9 @@ const Group = ({ group }) => {
         </li>
         <li>Additional Requirements: {adRequirements}</li>
       </ul>
-      <button className="btn" onClick={null}>
-        Join Group
-      </button>
+      <a href={`/group/${id}`}>
+        <button className="btn">Find out more</button>
+      </a>
     </div>
   );
 };
