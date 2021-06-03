@@ -1,9 +1,9 @@
 const Group = ({ group }) => {
-  const { leader, teammates, requirements, adRequirements } = group;
+  const { leader, requirements, adRequirements } = group;
 
   const temp = () => console.log("hello world!");
 
-  let keyGen1 = 0;
+  // let keyGen1 = 0;
   let keyGen2 = 0;
 
   return (
