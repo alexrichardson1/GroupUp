@@ -29,11 +29,11 @@ export default function DropdownMenu({ promt, options, value, onChange }) {
     <div className="dropdown">
       <div className="control" onClick={() => setOpen((prev) => !prev)}>
         <div className="selected-value">{promt}</div>
-        <div className="arrow" />
+        <div className={`arrow ${open ? "open" : null}`} />
       </div>
-      <div className="options">
+      <div className={`options ${open ? "open" : null}`}>
         {options.map((option) => (
-          <div className="option">{year}</div>
+          <div className="option">{option}</div>
         ))}
       </div>
     </div>
