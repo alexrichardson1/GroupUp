@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Welcome or something like that.</h1>
+      <h1>Welcome to GroupUp. Please select an option.</h1>
       <Link to="/selection">
         <button className="btn">Join a group</button>
       </Link>
