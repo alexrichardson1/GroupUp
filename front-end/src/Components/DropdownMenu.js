@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./styles.css";
+
 // import data from "../Teams";
 
 // const DropdownMenu = () => {
@@ -23,7 +25,10 @@ import React, { useState } from "react";
 export default function DropdownMenu({ years }) {
   return (
     <div className="dropdown">
-      <div className="selected-value">Select Value...</div>
+      <div className="control">
+        <div className="selected-value">Select year...</div>
+        <div className="arrow" />
+      </div>
       <div className="options">
         {years.map((year) => (
           <div className="option">{year}</div>
