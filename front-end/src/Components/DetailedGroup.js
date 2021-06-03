@@ -11,10 +11,11 @@ const DetailedGroup = () => {
   const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
+  const timezone = requirements["Timezone"];
+  const timezoneMessage = timezone > 0 ? `+${timezone}` : `-${timezone}`;
 
   return (
     <React.Fragment>
-      <h1>{groupId}</h1>
       <h1>{leaderFirstName}'s Group</h1>
       <h2>{membersNeeded} members needed</h2>
       <div>
@@ -27,7 +28,7 @@ const DetailedGroup = () => {
       </div>
       <h2>Requirements:</h2>
       <h3>Language: {requirements["Code Language"]}</h3>
-      <h3>Timezone: GMT{requirements["Timezone"]}</h3>
+      <h3>Timezone: GMT{timezoneMessage}</h3>
       <h3>Preferred Language: {requirements["Spoken Language"]}</h3>
       {adRequirements && (
         <div>
@@ -41,7 +42,7 @@ const DetailedGroup = () => {
       <button
         type="button"
         class="btn btn-dark"
-        onMouseOver={() => alert("Feature not implemented")}
+        onClick={() => alert("Feature not implemented")}
       >
         Request to Join
       </button>
