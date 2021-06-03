@@ -55,7 +55,7 @@ const data = [
     id: 3,
     projectId: 1,
     leader: "Steve Stevenson",
-    maxMember: 4,
+    maxMembers: 4,
     teammates: [],
     requirements: {
       "Code Language": "PHP",
@@ -68,7 +68,7 @@ const data = [
     id: 7,
     projectId: 1,
     leader: "William Arnold",
-    maxMember: 4,
+    maxMembers: 4,
     teammates: ["James Ellis"],
     requirements: {
       "Code Language": "WACC",
@@ -81,8 +81,8 @@ const data = [
     id: 8,
     projectId: 1,
     leader: "Ali Jassam",
-    maxMember: 4,
-    teammates: ["Eli Jackson, Micheal Henderson"],
+    maxMembers: 4,
+    teammates: ["Eli Jackson", "Micheal Henderson"],
     requirements: {
       "Code Language": "Java",
       Timezone: 1,
@@ -94,7 +94,7 @@ const data = [
     id: 4,
     projectId: 2,
     leader: "Jeff Wetherspoon",
-    remaining: 2,
+    maxMembers: 4,
     teammates: ["Ellie Lin", "Mohammed Abdi"],
     requirements: {
       "Code Language": "JavaScript",
@@ -107,7 +107,7 @@ const data = [
     id: 9,
     projectId: 2,
     leader: "Glen Mount",
-    remaining: 2,
+    maxMembers: 4,
     teammates: ["Reece Christensen"],
     requirements: {
       "Code Language": "Python",
@@ -120,7 +120,7 @@ const data = [
     id: 10,
     projectId: 2,
     leader: "Jadon Font",
-    remaining: 2,
+    maxMembers: 6,
     teammates: ["Barry Ali"],
     requirements: {
       "Code Language": "C++",
