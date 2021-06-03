@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
-// import DropdownMenu from "./DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
+import years from "./years.json";
 
 const SelectProject = (props) => {
   return (
     <div>
-      {/* <DropdownMenu /> */}
+      <body>
+        Please give us more details about your project so we can help you find
+        the best team for you.
+      </body>
+      <h1>Imperial</h1>
+      Year <DropdownMenu years={years} />
+      Project <DropdownMenu years={years} />
       <Link to="/listings">
-        <button className="btn">Join a group</button>
+        <button className="btn">Find your group</button>
       </Link>
-      {/* <DropdownMenu /> */}
     </div>
   );
 };
