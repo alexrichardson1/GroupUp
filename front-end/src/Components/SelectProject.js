@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import years from "./years.json";
+import projects from "./projects.json";
 
 const SelectProject = (props) => {
   return (
@@ -10,8 +11,8 @@ const SelectProject = (props) => {
         the best team for you.
       </body>
       <h1>Imperial</h1>
-      Year <DropdownMenu promt="Select year" years={years} />
-      Project <DropdownMenu promt="Select project" years={years} />
+      Year <DropdownMenu promt="Select year" options={years} />
+      Project <DropdownMenu promt="Select project" options={projects} />
       <Link to="/listings">
         <button className="btn">Find your group</button>
       </Link>

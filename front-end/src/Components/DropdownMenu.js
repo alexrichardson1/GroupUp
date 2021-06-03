@@ -22,7 +22,7 @@ import "./styles.css";
 
 // // export default DropdownMenu;
 
-export default function DropdownMenu({ promt, years }) {
+export default function DropdownMenu({ promt, options }) {
   return (
     <div className="dropdown">
       <div className="control">
@@ -30,7 +30,7 @@ export default function DropdownMenu({ promt, years }) {
         <div className="arrow" />
       </div>
       <div className="options">
-        {years.map((year) => (
+        {options.map((option) => (
           <div className="option">{year}</div>
         ))}
       </div>
