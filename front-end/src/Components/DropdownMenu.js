@@ -22,7 +22,9 @@ import "./styles.css";
 
 // // export default DropdownMenu;
 
-export default function DropdownMenu({ promt, options }) {
+export default function DropdownMenu({ promt, options, value, onChange }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="dropdown">
       <div className="control">
