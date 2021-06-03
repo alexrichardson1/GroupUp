@@ -21,7 +21,13 @@ const SelectProject = (props) => {
         value={value}
         onChange={(val) => setValue(val)}
       />
-      {/* Project <DropdownMenu promt="Select project" options={projects} /> */}
+      Project{" "}
+      <DropdownMenu
+        promt="Select project"
+        options={projects.map((project) => project.name)}
+        value={value}
+        onChange={(val) => setValue(val)}
+      />
       <Link to="/listings">
         <button className="btn">Find your group</button>
       </Link>
