@@ -6,7 +6,7 @@ import projects from "./projects.json";
 
 const SelectProject = (props) => {
   const [value, setValue] = useState(null);
-  const [value1, setValue1] = useState(null);
+  const [proejctValue, setProjectValue] = useState(null);
 
   return (
     <div>
@@ -28,10 +28,10 @@ const SelectProject = (props) => {
       <DropdownMenu
         promt="Select project"
         options={projects}
-        value={value1}
+        value={proejctValue}
         id="name"
         label="name"
-        onChange={(val) => setValue1(val)}
+        onChange={(val) => setProjectValue(val)}
       />
       <Link to="/listings">
         <button className="btn">Find your group</button>
