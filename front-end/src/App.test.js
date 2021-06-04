@@ -3,22 +3,16 @@ import App from "./App";
 
 test("Renders 'Join a group' link", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Join a group/i);
-  expect(linkElement.textContent).toBe("Join a group");
-});
-
-test("Renders 'Create a group' link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Create a group/i);
-  expect(linkElement.textContent).toBe("Create a group");
+  const linkElement = screen.getByText(/Get Started/i);
+  expect(linkElement.textContent).toBe("Get Started");
 });
 
 test("Clicking join a group gives 'select group' page", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Join a group/i);
+  const linkElement = screen.getByText(/Get Started/i);
   fireEvent.click(linkElement);
-  const text = screen.getByText(/Please give us/);
+  const text = screen.getByText(/List of Competitions Available/);
   expect(text.textContent).toBe(
-    "Please give us more details about your project so we can help you find the best team for you."
+    "List of Competitions Available"
   );
 });
