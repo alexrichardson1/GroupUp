@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+test("Renders 'Join a group' link", () => {
   render(<App />);
   const linkElement = screen.getByText(/Join a group/i);
-  //   expect(linkElement).toBeInTheDocument();
   expect(linkElement.textContent).toBe("Join a group");
 });
