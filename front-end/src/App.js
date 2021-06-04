@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
+import CreateGroup from "./Components/CreateGroup";
 
 const App = () => {
   return (
@@ -20,13 +21,11 @@ const App = () => {
           path="/listings"
           exact
           render={() => (
-            <div>
-              <h3> 2 Groups looking for members in Project X</h3>
-              <Groups groups={data} />
-            </div>
+            <Groups groups={data} />
           )}
         ></Route>
         <Route path="/group/:id" children={<DetailedGroup />}></Route>
+        <Route path="/createGroup" exact component={CreateGroup}></Route>
       </div>
     </Router>
   );
