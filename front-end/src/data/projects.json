@@ -1,5 +1,11 @@
 [
-  {"name": "ARM"},
-  {"name": "PINTOS"},
-  {"name": "WACC"}
+  {
+    "name": "National Imaginary Hackathon 2021"
+  },
+  {
+    "name": "Fairytale Engineering Competition"
+  },
+  {
+    "name": "National Plane Design Competition"
+  }
 ]

@@ -10,20 +10,7 @@ const SelectProject = (props) => {
 
   return (
     <div>
-      <div>
-        Please give us more details about your project so we can help you find
-        the best team for you.
-      </div>
-      <h1>Imperial</h1>
-      Year{" "}
-      <DropdownMenu
-        promt="Select year"
-        options={years}
-        value={yearValue}
-        id="id"
-        label="id"
-        onChange={(val) => setYearValue(val)}
-      />
+      <h1>List of Competitions Available</h1>
       Project{" "}
       <DropdownMenu
         promt="Select project"
@@ -34,7 +21,7 @@ const SelectProject = (props) => {
         onChange={(val) => setProjectValue(val)}
       />
       <Link to="/listings">
-        <button className="btn">Find your group</button>
+        <button className="btn">Show Listings</button>
       </Link>
     </div>
   );
