@@ -10,10 +10,10 @@ const SelectProject = (props) => {
 
   return (
     <div>
-      <body>
+      <div>
         Please give us more details about your project so we can help you find
         the best team for you.
-      </body>
+      </div>
       <h1>Imperial</h1>
       Year{" "}
       <DropdownMenu
