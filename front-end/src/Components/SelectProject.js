@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import DropdownMenu from "./DropdownMenu";
+import { Button, Dropdown } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 // import years from "../data/years.json";
 import projects from "../data/projects.json";
 
@@ -11,19 +11,23 @@ const SelectProject = (props) => {
   return (
     <div>
       <h1>List of Competitions Available</h1>
-      Project{" "}
-      <DropdownMenu
-        promt="Select project"
-        options={projects}
-        value={projectValue}
-        id="name"
-        label="name"
-        onChange={(val) => setProjectValue(val)}
-      />
-      <Link to="/listings">
-        <button className="btn">Show Listings</button>
-      </Link>
-    </div>
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Select Project
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          {projects.map((proj) => (
+            <Dropdown.Item>{proj.name}</Dropdown.Item>
+          ))}
+          {//Add href="#/your-action" when action available
+          }
+        </Dropdown.Menu>
+      </Dropdown>
+      <LinkContainer to="/listings">
+        <Button>Show groups</Button>
+      </LinkContainer>
+    </div >
   );
 };
 
