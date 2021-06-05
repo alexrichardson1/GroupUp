@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
+import { Button, ListGroup } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const DetailedGroup = () => {
   const { id } = useParams();
@@ -17,35 +19,30 @@ const DetailedGroup = () => {
   return (
     <React.Fragment>
       <h1>{leaderFirstName}'s Group</h1>
-      <h2>{membersNeeded} members needed</h2>
-      <div>
-        <h2>Other Members</h2>
-        <ul class="list-group">
-          {teammates.map((person) => (
-            <li class="list-group-item">{person}</li>
-          ))}
-        </ul>
-      </div>
-      <h2>Requirements:</h2>
-      <h3>Language: {requirements["Code Language"]}</h3>
-      <h3>Timezone: GMT{timezoneMessage}</h3>
-      <h3>Preferred Language: {requirements["Spoken Language"]}</h3>
+      <p>{membersNeeded} members needed.</p>
+      <ListGroup variant="flush">
+        <ListGroup.Item variant="dark">Requirements:</ListGroup.Item>
+        {Object.entries(requirements).map(([key, val]) => (
+          <ListGroup.Item>{key}: {val}</ListGroup.Item>
+        ))}
+      </ListGroup>
+      <h1></h1>
+      <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
+      <ListGroup variant="flush">
+        {teammates.map((person) => (
+          <ListGroup.Item>{person}</ListGroup.Item>
+        ))}
+      </ListGroup>
       {adRequirements && (
         <div>
-          <h3>Additional Requirements:</h3>
+          <h5>Additional Requirements:</h5>
           <p>{adRequirements}</p>
         </div>
       )}
-      <a href="/listings">
-        <button className="btn">Go Back</button>
-      </a>
-      <button
-        type="button"
-        class="btn btn-dark"
-        onClick={() => alert("Feature not implemented")}
-      >
-        Request to Join
-      </button>
+      <LinkContainer to="/listings">
+        <Button>Go Back</Button>
+      </LinkContainer>
+      <Button>Show groups</Button>
     </React.Fragment>
   );
 };
