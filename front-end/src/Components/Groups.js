@@ -4,9 +4,11 @@ import { LinkContainer } from 'react-router-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Groups = ({ groups }) => {
+  const totalGroups = groups.length
+
   return (
     <div>
-      <h3>2 Groups looking for members in Project X</h3>
+      <h3>{totalGroups} Groups looking for members in Hackathon</h3>
       <LinkContainer to="/createGroup">
         <Button>Advertise my group!</Button>
       </LinkContainer>
