@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <Jumbotron>
-        <h1>Welcome to GroupUp</h1>
+        <h1 className="title">Welcome to GroupUp</h1>
         <p>
           An easy tool for helping you find a group for your next Hackathon!
         </p>
