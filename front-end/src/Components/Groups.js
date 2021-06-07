@@ -2,8 +2,11 @@ import Group from "./Group";
 import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useParams } from "react-router-dom";
 
 const Groups = ({ groups }) => {
+  const { id } = useParams();
+  const groupId = parseInt(id);
   const totalGroups = groups.length
 
   return (
@@ -12,7 +15,7 @@ const Groups = ({ groups }) => {
       <LinkContainer to="/createGroup">
         <Button>Advertise my group!</Button>
       </LinkContainer>
-      {groups.map((group) => (
+      {groups.filter((group) => (group.id === groupId)).map((group) => (
         <Group group={group} key={group.id} />
       ))}
     </div>

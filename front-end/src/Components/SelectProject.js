@@ -3,10 +3,14 @@ import { Button, Dropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 // import years from "../data/years.json";
 import projects from "../data/projects.json";
+import { useHistory } from 'react-router-dom';
 
 const SelectProject = (props) => {
-  // const [yearValue, setYearValue] = useState(null);
-  const [projectValue, setProjectValue] = useState(null);
+
+  const history = useHistory();
+  const handleProjectClick = (id) => {
+    history.push("/listing/" + id)
+  }
 
   return (
     <div>
@@ -18,15 +22,15 @@ const SelectProject = (props) => {
 
         <Dropdown.Menu>
           {projects.map((proj) => (
-            <Dropdown.Item>{proj.name}</Dropdown.Item>
+            <Dropdown.Item onClick={handleProjectClick(proj.id)}>{proj.name}</Dropdown.Item>
           ))}
           {//Add href="#/your-action" when action available
           }
         </Dropdown.Menu>
       </Dropdown>
-      <LinkContainer to="/listings">
+      {/* <LinkContainer to="/listings">
         <Button>Show groups</Button>
-      </LinkContainer>
+      </LinkContainer> */}
     </div >
   );
 };
