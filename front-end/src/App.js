@@ -20,12 +20,13 @@ const App = () => {
         <Route
           path="/listings"
           exact
-          render={() => (
-            <Groups groups={data} />
-          )}
+          render={() => <Groups groups={data} />}
         ></Route>
         <Route path="/group/:id" children={<DetailedGroup />}></Route>
-        <Route path="/listing/:id" children={<Groups groups={data} />}></Route>
+        <Route
+          path="/listing/:id"
+          children={<Groups allGroups={data} />}
+        ></Route>
         <Route path="/createGroup" exact component={CreateGroup}></Route>
       </div>
     </Router>
