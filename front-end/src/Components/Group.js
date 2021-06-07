@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const Group = ({ group }) => {
   const { id, leader, requirements } = group;
 
-  let groupDetailsLink = "group/" + id;
+  let groupDetailsLink = "/group/" + id;
 
   return (
     <div>

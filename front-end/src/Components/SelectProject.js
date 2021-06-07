@@ -7,7 +7,6 @@ const SelectProject = (props) => {
   const history = useHistory();
   const handleProjectClick = (id) => {
     history.push("/listing/" + id);
-    // console.log("ayob")
   };
 
   return (

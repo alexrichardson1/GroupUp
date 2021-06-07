@@ -22,6 +22,10 @@ const Groups = ({ allGroups }) => {
     setFilteredGroups(newFilteredGroups);
   };
 
+  const resetFilters = () => {
+    setFilteredGroups(hackathonGroups);
+  };
+
   const allLanguages = hackathonGroups.map(
     (groups) => groups.requirements["Code Language"]
   );
@@ -30,29 +34,25 @@ const Groups = ({ allGroups }) => {
   return (
     <div>
       <Container>
-        {/* TitleRow */}
         <Row>
-          <h3>{totalGroupsNum} Groups looking for members in Hackathon</h3>
+          <h3>
+            {filteredGroups.length} Groups looking for members in Hackathon
+          </h3>
         </Row>
-
         <Row>
           <LinkContainer to="/createGroup">
             <Button>Advertise my group!</Button>
           </LinkContainer>
         </Row>
-
-        {/* Content Row */}
         <Row>
-          {/* Filter Column */}
           <Col>
             <Filter
               requirementName="languages"
               requirementsList={languagesSet}
               filterFunction={filterOnLanguage}
+              resetFunction={resetFilters}
             />
           </Col>
-
-          {/* Listings Column */}
           <Col>
             {filteredGroups.map((group) => (
               <Group group={group} key={group.id} />
