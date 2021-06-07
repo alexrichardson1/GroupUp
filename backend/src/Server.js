@@ -1,4 +1,5 @@
-const { Pool } = require("pg");
+import Database from "./Database";
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -6,23 +7,28 @@ const app = express();
 require("dotenv").config();
 
 const port = process.env.PORT || 5000;
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-  ssl: true,
-});
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/db", (req, res) => {
-  pool
-    .connect()
-    .then(() => res.json({ result: "Database connected" }))
-    .catch((err) => console.log(err));
+app.post("/group/add", async (req, res) => {
+  try {
+    const addedGroup = await Database.addGroup(req.body);
+    console.log(addedGroup);
+    res.json(addedGroup);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
+app.get("/group", async (req, res) => {
+  try {
+    const groups = await Database.getAllGroups();
+    console.log(groups);
+    res.json(groups);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
 });
 
 app.listen(port, () => {
