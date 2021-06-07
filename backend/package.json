@@ -5,15 +5,16 @@
   "main": "src/Server.js",
   "scripts": {
     "test": "react-scripts test",
-    "start": "node src/Server.js"
+    "start": "node -r esm src/Server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "mocha": "^8.4.0",
-    "pg": "^8.6.0"
+    "pg-promise": "^10.10.2"
   }
 }
