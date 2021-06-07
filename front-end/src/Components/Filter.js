@@ -5,7 +5,12 @@ import {
   ToggleButtonGroup,
 } from "react-bootstrap";
 
-const Filter = ({ requirementName, requirementsList, filterFunction }) => {
+const Filter = ({
+  requirementName,
+  requirementsList,
+  filterFunction,
+  resetFunction,
+}) => {
   return (
     <div>
       <Accordion defaultActiveKey="0">
@@ -30,6 +35,7 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
                 {requirementsList.map((req) => {
                   return (
                     <ToggleButton
+                      className="filterBox"
                       id={req}
                       value={req}
                       key={req}
@@ -39,6 +45,15 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
                     </ToggleButton>
                   );
                 })}
+                <ToggleButton
+                  className="filterBox"
+                  id="Any"
+                  value="Any"
+                  key="Any"
+                  onClick={() => resetFunction()}
+                >
+                  Any
+                </ToggleButton>
               </ToggleButtonGroup>
             </Card.Body>
           </Accordion.Collapse>
