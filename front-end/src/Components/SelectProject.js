@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
-// import years from "../data/years.json";
 import projects from "../data/projects.json";
 
 const SelectProject = (props) => {
-  // const [yearValue, setYearValue] = useState(null);
   const [projectValue, setProjectValue] = useState(null);
 
   return (
