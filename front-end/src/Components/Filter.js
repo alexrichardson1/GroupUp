@@ -11,29 +11,31 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
       <Accordion defaultActiveKey="0">
         <Card>
           <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-            Language
-            {/* <img
-                    className="dropdownIcons"
-                    src={process.env.PUBLIC_URL + "/chevron-down.svg"}
-                  /> */}
+            {requirementName}
+            <img
+              className="dropdownIcons"
+              src={process.env.PUBLIC_URL + "/chevron-down.svg"}
+            />
           </Accordion.Toggle>
 
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <ToggleButtonGroup
                 vertical
-                name={new Date().getDate().toString()}
+                name={requirementName}
                 type="radio"
                 className="mb-2"
               >
                 {requirementsList.map((req) => {
-                  <ToggleButton
-                    id="tbg-check-1"
-                    value={req}
-                    onClick={() => filterFunction()}
-                  >
-                    {req}
-                  </ToggleButton>;
+                  return (
+                    <ToggleButton
+                      id={req}
+                      value={req}
+                      onClick={() => filterFunction()}
+                    >
+                      {req}
+                    </ToggleButton>
+                  );
                 })}
               </ToggleButtonGroup>
             </Card.Body>

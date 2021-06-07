@@ -25,7 +25,7 @@ const Groups = ({ allGroups }) => {
   const allLanguages = hackathonGroups.map(
     (groups) => groups.requirements["Code Language"]
   );
-  const setLanguages = [...new Set(allLanguages)];
+  const languagesSet = [...new Set(allLanguages)];
 
   return (
     <div>
@@ -46,8 +46,8 @@ const Groups = ({ allGroups }) => {
           {/* Filter Column */}
           <Col>
             <Filter
-              requirementsName="languages"
-              requirementsList={setLanguages}
+              requirementName="languages"
+              requirementsList={languagesSet}
               filterFunction={filterOnLanguage}
             />
           </Col>
