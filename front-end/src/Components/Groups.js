@@ -15,7 +15,7 @@ const Groups = ({ groups }) => {
       <LinkContainer to="/createGroup">
         <Button>Advertise my group!</Button>
       </LinkContainer>
-      {groups.filter((group) => (group.id === groupId)).map((group) => (
+      {groups.filter((group) => (group.projectId === groupId)).map((group) => (
         <Group group={group} key={group.id} />
       ))}
     </div>

@@ -10,6 +10,7 @@ const SelectProject = (props) => {
   const history = useHistory();
   const handleProjectClick = (id) => {
     history.push("/listing/" + id)
+    // console.log("ayob")
   }
 
   return (
@@ -22,7 +23,7 @@ const SelectProject = (props) => {
 
         <Dropdown.Menu>
           {projects.map((proj) => (
-            <Dropdown.Item onClick={handleProjectClick(proj.id)}>{proj.name}</Dropdown.Item>
+            <Dropdown.Item onSelect={() => handleProjectClick(proj.id)}>{proj.name}</Dropdown.Item>
           ))}
           {//Add href="#/your-action" when action available
           }
