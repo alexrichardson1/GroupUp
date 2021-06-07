@@ -57,7 +57,7 @@ body {
   font-family: inherit;
 }
 
-.btn:hover{
+.btn:hover {
   display: inline-block;
   background: #2c434b;
   color: #fff;
@@ -72,7 +72,7 @@ body {
   font-family: inherit;
 }
 
-input[type=text] {
+input[type="text"] {
   padding: 10px 15px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -87,6 +87,10 @@ input[type=text] {
   /* border: 1px solid steelblue; */
   padding: 30px;
   border-radius: 5px;
+}
+
+.filterBox {
+  text-align: left;
 }
 
 /* colours: 17252a 2b7a7b 3aafa9 def2f1*/
