@@ -8,11 +8,18 @@ import { LinkContainer } from "react-router-bootstrap";
 const DetailedGroup = () => {
   const { id } = useParams();
   const groupId = parseInt(id);
-  const { leader, maxMembers, teammates, requirements, adRequirements } =
-    data.filter((group) => group.id === groupId)[0];
+  const {
+    leader,
+    maxMembers,
+    teammates,
+    requirements,
+    adRequirements,
+    projectId,
+  } = data.filter((group) => group.id === groupId)[0];
   const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
+  const goBackLink = "/listing/" + projectId;
 
   return (
     <React.Fragment>
@@ -38,7 +45,7 @@ const DetailedGroup = () => {
           <p>{adRequirements}</p>
         </div>
       )}
-      <LinkContainer to="/listings">
+      <LinkContainer to={goBackLink}>
         <Button>Go Back</Button>
       </LinkContainer>
       <Button>Show groups</Button>
