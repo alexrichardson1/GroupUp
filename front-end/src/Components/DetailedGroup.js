@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
-import { Button, ListGroup } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Button, ListGroup } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const DetailedGroup = () => {
   const { id } = useParams();
@@ -13,8 +13,6 @@ const DetailedGroup = () => {
   const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
-  const timezone = requirements["Timezone"];
-  const timezoneMessage = timezone > 0 ? `+${timezone}` : `-${timezone}`;
 
   return (
     <React.Fragment>
@@ -23,10 +21,11 @@ const DetailedGroup = () => {
       <ListGroup variant="flush">
         <ListGroup.Item variant="dark">Requirements:</ListGroup.Item>
         {Object.entries(requirements).map(([key, val]) => (
-          <ListGroup.Item>{key}: {val}</ListGroup.Item>
+          <ListGroup.Item>
+            {key}: {val}
+          </ListGroup.Item>
         ))}
       </ListGroup>
-      <h1></h1>
       <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
       <ListGroup variant="flush">
         {teammates.map((person) => (

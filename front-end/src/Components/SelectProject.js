@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import { Button, Dropdown } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-// import years from "../data/years.json";
+import React from "react";
+import { Dropdown } from "react-bootstrap";
 import projects from "../data/projects.json";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const SelectProject = (props) => {
-
   const history = useHistory();
   const handleProjectClick = (id) => {
-    history.push("/listing/" + id)
+    history.push("/listing/" + id);
     // console.log("ayob")
-  }
+  };
 
   return (
     <div>
@@ -23,16 +20,22 @@ const SelectProject = (props) => {
 
         <Dropdown.Menu>
           {projects.map((proj) => (
-            <Dropdown.Item onSelect={() => handleProjectClick(proj.id)}>{proj.name}</Dropdown.Item>
+            <Dropdown.Item
+              key={proj.id}
+              onSelect={() => handleProjectClick(proj.id)}
+            >
+              {proj.name}
+            </Dropdown.Item>
           ))}
-          {//Add href="#/your-action" when action available
+          {
+            //Add href="#/your-action" when action available
           }
         </Dropdown.Menu>
       </Dropdown>
       {/* <LinkContainer to="/listings">
         <Button>Show groups</Button>
       </LinkContainer> */}
-    </div >
+    </div>
   );
 };
 

@@ -15,6 +15,7 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
             <img
               className="dropdownIcons"
               src={process.env.PUBLIC_URL + "/chevron-down.svg"}
+              alt="drop down arrow"
             />
           </Accordion.Toggle>
 
@@ -31,6 +32,7 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
                     <ToggleButton
                       id={req}
                       value={req}
+                      key={req}
                       onClick={() => filterFunction(req)}
                     >
                       {req}
