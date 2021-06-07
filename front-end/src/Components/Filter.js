@@ -31,7 +31,7 @@ const Filter = ({ requirementName, requirementsList, filterFunction }) => {
                     <ToggleButton
                       id={req}
                       value={req}
-                      onClick={() => filterFunction()}
+                      onClick={() => filterFunction(req)}
                     >
                       {req}
                     </ToggleButton>

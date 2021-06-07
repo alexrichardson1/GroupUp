@@ -12,12 +12,12 @@ const Groups = ({ allGroups }) => {
   const hackathonGroups = allGroups.filter(
     (group) => group.projectId === hackathonId
   );
-  const totalGroups = allGroups.length;
+  const totalGroupsNum = allGroups.length;
   const [filteredGroups, setFilteredGroups] = useState(hackathonGroups);
 
   const filterOnLanguage = (language) => {
     const newFilteredGroups = hackathonGroups.filter(
-      (group) => group.language === language
+      (group) => group.requirements["Code Language"] === language
     );
     setFilteredGroups(newFilteredGroups);
   };
@@ -32,7 +32,7 @@ const Groups = ({ allGroups }) => {
       <Container>
         {/* TitleRow */}
         <Row>
-          <h3>{totalGroups} Groups looking for members in Hackathon</h3>
+          <h3>{totalGroupsNum} Groups looking for members in Hackathon</h3>
         </Row>
 
         <Row>
