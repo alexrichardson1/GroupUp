@@ -1,10 +1,10 @@
 INSERT INTO "groups" (
-    "projectId",
+    "projectid",
     "leader",
-    "maxMembers",
+    "maxmembers",
     "teammates",
     "requirements",
-    "adRequirements"
+    "adrequirements"
 )
-VALUES (${projectId}, ${leader}, ${maxMembers}, ${teammates}, ${requirements}, ${adRequirements})
+VALUES (${projectid}, ${leader}, ${maxmembers}, ${teammates}, ${requirements}, ${adrequirements})
 RETURNING *
