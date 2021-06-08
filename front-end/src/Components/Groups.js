@@ -40,7 +40,7 @@ const Groups = () => {
 
   useEffect(() => {
     setGroups();
-  }, []);
+  });
 
   const filterOnLanguage = (language) => {
     const newFilteredGroups = allGroups.filter(
