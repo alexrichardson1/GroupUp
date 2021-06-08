@@ -1,7 +1,8 @@
-import { Form, Button, InputGroup, FormControl } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 const CreateGroup = () => {
+  let history = useHistory();
 
   return (
     <div>
@@ -11,8 +12,9 @@ const CreateGroup = () => {
           <Form.Label>Leader's Full Name</Form.Label>
           <Form.Control type="text" placeholder="Leader's Full Name" />
           <Form.Text className="text-muted">
-            This can really be any one of your names, it's just the name your group will be advertised under.
-                </Form.Text>
+            This can really be any one of your names, it's just the name your
+            group will be advertised under.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formOtherMembers">
@@ -33,7 +35,9 @@ const CreateGroup = () => {
 
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1">Programming Language</InputGroup.Text>
+            <InputGroup.Text id="basic-addon1">
+              Programming Language
+            </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
             placeholder="e.g. Java"
@@ -68,15 +72,16 @@ const CreateGroup = () => {
             <option>5</option>
           </Form.Control>
         </Form.Group>
-        <LinkContainer to="/listings">
+        {/* <LinkContainer to="/listing//">
           <Button>Go Back</Button>
-        </LinkContainer>
+        </LinkContainer> */}
+        <Button onClick={() => history.goBack()}>Go Back</Button>
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default CreateGroup
+export default CreateGroup;
