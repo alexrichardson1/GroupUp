@@ -12,7 +12,7 @@ const Groups = ({ allGroups }) => {
   const hackathonGroups = allGroups.filter(
     (group) => group.projectId === hackathonId
   );
-  const totalGroupsNum = allGroups.length;
+
   const [filteredGroups, setFilteredGroups] = useState(hackathonGroups);
 
   const filterOnLanguage = (language) => {
