@@ -63,9 +63,6 @@ const Groups = ({ allGroups }) => {
   //   setActiveFilters((prev) => new Map(prev.clear()));
   // };
 
-  {
-    /* This will filter groups on all "active filters", plus the new filter specified. */
-  }
   const filterGroupsOnReq = (reqName, reqVal) => {
     setFilteredGroups(hackathonGroups);
     console.log("--------------------");
