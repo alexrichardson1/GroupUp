@@ -1,11 +1,14 @@
 [
   {
+    "id": 0,
     "name": "National Imaginary Hackathon 2021"
   },
   {
+    "id": 1,
     "name": "Fairytale Engineering Competition"
   },
   {
+    "id": 2,
     "name": "National Plane Design Competition"
   }
 ]

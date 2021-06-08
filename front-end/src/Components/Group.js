@@ -1,28 +1,34 @@
+import { Button, Card, ListGroup } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+
 const Group = ({ group }) => {
-  const { id, leader, requirements, adRequirements } = group;
+  const { id, leader, requirements } = group;
 
-  const temp = () => console.log("hello world!");
-
-  // let keyGen1 = 0;
-  let keyGen2 = 0;
+  let groupDetailsLink = "/group/" + id;
+  const requirementNameList = ["Language"];
 
   return (
-    <div onClick={temp} className="group">
-      <h1>{leader}'s Group</h1>
-      <ul>
-        <li>
-          Requirements:
-          <ul>
-            {Object.keys(requirements).map((key) => (
-              <li key={keyGen2++}>{key + ": " + requirements[key]}</li>
-            ))}
-          </ul>
-        </li>
-        <li>Additional Requirements: {adRequirements}</li>
-      </ul>
-      <a href={`/group/${id}`}>
-        <button className="btn">Find out more</button>
-      </a>
+    <div>
+      <Card>
+        <Card.Body>
+          <Card.Title>{leader}'s Group</Card.Title>
+          <Card.Text>
+            <ListGroup.Item variant="dark">Requirements:</ListGroup.Item>
+            <ListGroup variant="flush">
+              {requirements.map((req, i) => {
+                return (
+                  <ListGroup.Item key={i}>
+                    {requirementNameList[i]}: {req}
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          </Card.Text>
+          <LinkContainer to={groupDetailsLink}>
+            <Button>Find out more</Button>
+          </LinkContainer>
+        </Card.Body>
+      </Card>
     </div>
   );
 };
