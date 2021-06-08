@@ -7,6 +7,9 @@ import Filter from "./Filter";
 import Group from "./Group";
 import axios from "axios";
 // import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Filter from "./Filter";
+import hackathons from "../data/projects.json";
 
 async function getGroups() {
   var result = [];
@@ -26,7 +29,6 @@ const Groups = () => {
   const { id } = useParams();
   const hackathonId = parseInt(id);
 
-  const [filteredGroups, setFilteredGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
 
   const setGroups = async () => {
@@ -38,31 +40,74 @@ const Groups = () => {
     setFilteredGroups(filteredGroups);
   };
 
+  const hackathonReqs = hackathons.filter((proj) => proj.id === hackathonId)[0]
+    .requirements;
+
+  const [filteredGroups, setFilteredGroups] = useState([]);
+  const [activeFilters, setActiveFilters] = useState(new Map());
+
   useEffect(() => {
     setGroups();
   });
 
-  const filterOnLanguage = (language) => {
-    const newFilteredGroups = allGroups.filter(
-      (group) => group.requirements[0] === language
+  useEffect(() => {
+    for (const [k, v] of activeFilters.entries()) {
+      setFilteredGroups((f) =>
+        f.filter((group) => group.requirements[k] === v)
+      );
+    }
+
+    console.log("Active Filters after: ");
+
+    for (const [k, v] of activeFilters.entries()) {
+      console.log(k, v);
+    }
+    console.log("--------------------");
+  }, [activeFilters]);
+
+  const updateFilter = (key, value) => {
+    setActiveFilters((prev) => new Map(prev).set(key, value));
+  };
+
+  const removeFilter = (key) => {
+    setActiveFilters((prev) => {
+      const newState = new Map(prev);
+      newState.delete(key);
+      return newState;
+    });
+  };
+
+  const filterGroupsOnReq = (reqName, reqVal) => {
+    setFilteredGroups(allGroups);
+    console.log("--------------------");
+    console.log(
+      "attempting filter of {" + reqName + "} and with value {" + reqVal + "}"
     );
+    console.log("Active Filters before: ");
+    updateFilter(reqName, reqVal);
+  };
+
+  const getAllReqVars = (req) => {
+    const vars = new Set();
+    hackathonGroups.forEach((group) => vars.add(group.requirements[req]));
+    return [...vars];
+  };
+
+  const deleteFilter = (reqName) => {
+    // activeFilters.delete(reqName);
+    removeFilter(reqName);
+    const newFilteredGroups = allGroups;
+    for (const [k, v] of activeFilters.entries()) {
+      newFilteredGroups.filter((group) => group.requirements[k] === v);
+    }
     setFilteredGroups(newFilteredGroups);
   };
-
-  const resetFilters = () => {
-    setFilteredGroups(allGroups);
-  };
-
-  const allLanguages = allGroups.map((groups) => groups.requirements[0]);
-  const languagesSet = [...new Set(allLanguages)];
 
   return (
     <div>
       <Container>
         <Row>
-          <h3>
-            {filteredGroups.length} Groups looking for members in Hackathon
-          </h3>
+          <h3>{filteredGroups.length} Groups looking for members:</h3>
         </Row>
         <Row>
           <LinkContainer to="/createGroup">
@@ -71,12 +116,15 @@ const Groups = () => {
         </Row>
         <Row>
           <Col>
-            <Filter
-              requirementName="languages"
-              requirementsList={languagesSet}
-              filterFunction={filterOnLanguage}
-              resetFunction={resetFilters}
-            />
+            <h1>{activeFilters.size}</h1>
+            {hackathonReqs.map((req) => (
+              <Filter
+                requirementName={req}
+                requirementsList={getAllReqVars(req)}
+                filterFunction={filterGroupsOnReq}
+                resetFunction={deleteFilter}
+              />
+            ))}
           </Col>
           <Col>
             {filteredGroups.map((group) => (
@@ -90,43 +138,3 @@ const Groups = () => {
 };
 
 export default Groups;
-
-// async function getGroups() {
-//   var result = [];
-//   await axios
-//     .get("http://localhost:5000/group")
-//     .then((res) => {
-//       const groups = res.data;
-//       console.log(groups);
-//       result = groups;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   return result;
-// }
-
-// export default class Groups extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { groups: [] };
-//   }
-
-//   async componentDidMount() {
-//     this.setState({ groups: await getGroups() });
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <h3>2 Groups looking for members in Project X</h3>
-//         <Link to="/createGroup">
-//           <button className="btn">Advertise my group!</button>
-//         </Link>
-//         {this.state.groups.map((group) => (
-//           <Group group={group} key={group.id} />
-//         ))}
-//       </div>
-//     );
-//   }
-// }

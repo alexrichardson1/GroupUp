@@ -30,16 +30,16 @@ const Filter = ({
                 vertical
                 name={requirementName}
                 type="radio"
-                className="mb-2"
+                className="filterBox"
               >
                 {requirementsList.map((req) => {
                   return (
                     <ToggleButton
-                      className="filterBox"
+                      // className="filterBox"
                       id={req}
                       value={req}
                       key={req}
-                      onClick={() => filterFunction(req)}
+                      onChange={() => filterFunction(requirementName, req)}
                     >
                       {req}
                     </ToggleButton>
@@ -50,7 +50,7 @@ const Filter = ({
                   id="Any"
                   value="Any"
                   key="Any"
-                  onClick={() => resetFunction()}
+                  onChange={() => resetFunction(requirementName)}
                 >
                   Any
                 </ToggleButton>

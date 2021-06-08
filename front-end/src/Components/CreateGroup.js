@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import axios from "axios";
 import "./styles.css";
@@ -28,6 +29,26 @@ export default class CreateGroup extends Component {
     await addGroup(info);
     window.location.reload();
   };
+=======
+import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+
+const CreateGroup = () => {
+  let history = useHistory();
+
+  return (
+    <div>
+      <h1>Create your group</h1>
+      <Form>
+        <Form.Group controlId="formLeaderName">
+          <Form.Label>Leader's Full Name</Form.Label>
+          <Form.Control type="text" placeholder="Leader's Full Name" />
+          <Form.Text className="text-muted">
+            This can really be any one of your names, it's just the name your
+            group will be advertised under.
+          </Form.Text>
+        </Form.Group>
+>>>>>>> 68c89e315e00af3e3342c1a8b45f61dc3feae2d4
 
   render() {
     return (
@@ -48,6 +69,7 @@ export default class CreateGroup extends Component {
             <Form.Control type="text" placeholder="All other members go here" />
           </Form.Group>
 
+<<<<<<< HEAD
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon1">Timezone</InputGroup.Text>
@@ -58,6 +80,20 @@ export default class CreateGroup extends Component {
               aria-describedby="basic-addon1"
             />
           </InputGroup>
+=======
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="basic-addon1">
+              Programming Language
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            placeholder="e.g. Java"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+>>>>>>> 68c89e315e00af3e3342c1a8b45f61dc3feae2d4
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -83,6 +119,7 @@ export default class CreateGroup extends Component {
             />
           </InputGroup>
 
+<<<<<<< HEAD
           <Form.Group controlId="formOtherMembers">
             <Form.Label>Other Requirements</Form.Label>
             <Form.Control type="text" placeholder="" />
@@ -129,3 +166,28 @@ export default class CreateGroup extends Component {
     );
   }
 }
+=======
+        <Form.Group controlId="formMembersNeeded">
+          <Form.Label>Members needed</Form.Label>
+          <Form.Control as="select" custom>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
+        {/* <LinkContainer to="/listing//">
+          <Button>Go Back</Button>
+        </LinkContainer> */}
+        <Button onClick={() => history.goBack()}>Go Back</Button>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
+  );
+};
+
+export default CreateGroup;
+>>>>>>> 68c89e315e00af3e3342c1a8b45f61dc3feae2d4
