@@ -99,7 +99,7 @@ const data = [
     requirements: {
       "Code Language": "JavaScript",
       Timezone: 1,
-      "Spoken Language": "English",
+      "Preferred VC": "Github",
     },
     adRequirements: "",
   },
@@ -112,7 +112,7 @@ const data = [
     requirements: {
       "Code Language": "Python",
       Timezone: 1,
-      "Spoken Language": "English",
+      "Preferred VC": "Gitlab",
     },
     adRequirements: "",
   },
@@ -125,9 +125,35 @@ const data = [
     requirements: {
       "Code Language": "C++",
       Timezone: 1,
-      "Spoken Language": "English",
+      "Preferred VC": "Bitbucket",
     },
     adRequirements: "Available for at least 6 hours a day",
+  },
+  {
+    id: 11,
+    projectId: 2,
+    leader: "James Smith",
+    maxMembers: 6,
+    teammates: ["Maria Garcia"],
+    requirements: {
+      "Code Language": "C++",
+      Timezone: 1,
+      "Preferred VC": "Github",
+    },
+    adRequirements: "",
+  },
+  {
+    id: 12,
+    projectId: 2,
+    leader: "Mary Smith",
+    maxMembers: 6,
+    teammates: ["Lisa Paige Johnston"],
+    requirements: {
+      "Code Language": "C++",
+      Timezone: 8,
+      "Preferred VC": "Bitbucket",
+    },
+    adRequirements: "",
   },
 ];
 

@@ -1,14 +1,17 @@
 [
   {
     "id": 0,
-    "name": "National Imaginary Hackathon 2021"
+    "name": "National Imaginary Hackathon 2021",
+    "requirements": ["Timezone", "Code Language", "Spoken Language"]
   },
   {
     "id": 1,
-    "name": "Fairytale Engineering Competition"
+    "name": "Fairytale Engineering Competition",
+    "requirements": ["Timezone", "Code Language", "Spoken Language"]
   },
   {
     "id": 2,
-    "name": "National Plane Design Competition"
+    "name": "National Plane Design Competition",
+    "requirements": ["Timezone", "Code Language", "Preferred VC"]
   }
 ]
