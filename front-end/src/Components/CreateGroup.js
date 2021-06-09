@@ -3,6 +3,7 @@ import axios from "axios";
 import "./styles.css";
 import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import NavBar from "./NavBar";
 // import { useHistory } from "react-router-dom";
 
 async function addGroup(data) {
@@ -34,6 +35,7 @@ class CreateGroup extends Component {
     //let history = useHistory();
     return (
       <div>
+        <NavBar renderBool={[true, true, true, true]} create={true} />
         <h1>Create your group</h1>
         <Form>
           <Form.Group controlId="formLeaderName">

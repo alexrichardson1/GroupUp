@@ -4,6 +4,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
 import { Button, ListGroup } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import NavBar from "./NavBar";
 
 const DetailedGroup = () => {
   const { id } = useParams();
@@ -23,6 +24,11 @@ const DetailedGroup = () => {
 
   return (
     <React.Fragment>
+      <NavBar
+        renderBool={[true, true, true, true]}
+        id={projectId}
+        create={false}
+      />
       <h1>{leaderFirstName}'s Group</h1>
       <p>{membersNeeded} members needed.</p>
       <ListGroup variant="flush">

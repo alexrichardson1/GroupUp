@@ -93,4 +93,73 @@ input[type="text"] {
   text-align: left;
 }
 
+.processImage {
+  align-self: center;
+  padding-left: 15px;
+  padding-bottom: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  /* padding-right: 10px; */
+  /* height: 10px; */
+}
+
+.splitterImage {
+  align-self: center;
+  padding-left: 15px;
+  padding-bottom: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  height: 30px;
+  /* padding-right: 10px; */
+  /* height: 10px; */
+}
+
+.logoImage {
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0);
+  height: 35px;
+  /* padding-right: 10px; */
+  /* height: 10px; */
+}
+
+.navBar {
+  align-items: center;
+  background-color: #2c434b;
+  color: white;
+}
+
+.navbar-collapse {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.navbar-nav {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.navbar-brand {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.nav-link {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.navBar-link-special {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav-link a {
+  color: white;
+}
+
 /* colours: 17252a 2b7a7b 3aafa9 def2f1*/

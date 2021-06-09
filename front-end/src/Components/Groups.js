@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Group from "./Group";
 import axios from "axios";
+import NavBar from "./NavBar";
+import Teams from "../Teams";
 
 async function getGroups() {
   var result = [];
@@ -138,6 +140,7 @@ const Groups = () => {
 
   return (
     <div>
+      <NavBar renderBool={[true, true, true, false]} create={false} />
       <Container>
         <Row>
           <h3>{filteredGroups.length} Groups looking for members:</h3>

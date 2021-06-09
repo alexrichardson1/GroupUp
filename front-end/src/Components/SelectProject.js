@@ -2,6 +2,7 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import projects from "../data/projects.json";
 import { useHistory } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const SelectProject = (props) => {
   const history = useHistory();
@@ -11,6 +12,7 @@ const SelectProject = (props) => {
 
   return (
     <div>
+      <NavBar renderBool={[true, true, false, false]} create={false} />
       <h1>List of Competitions Available</h1>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
