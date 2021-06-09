@@ -31,6 +31,26 @@ app.get("/group", async (req, res) => {
   }
 });
 
+app.post("/project/add", async (req, res) => {
+  try {
+    const addedProject = await Database.addProject(req.body);
+    console.log(addedProject);
+    res.json(addedProject);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
+app.get("/project", async (req, res) => {
+  try {
+    const projects = await Database.getAllProjects();
+    console.log(projects);
+    res.json(projects);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
