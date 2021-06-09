@@ -1,4 +1,4 @@
-import { groupSQL } from "./Sql";
+import { groupSQL, projectSQL } from "./Sql";
 
 const pgp = require("pg-promise")({});
 require("dotenv").config();
@@ -36,6 +36,38 @@ class Database {
 
     await db
       .any(groupSQL.getAllGroups)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
+
+  static async addProject(attr) {
+    var result = {};
+
+    await db
+      .one(projectSQL.addProject, attr)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
+
+  static async getAllProjects() {
+    var result = {};
+
+    await db
+      .any(projectSQL.getAllProjects)
       .then((data) => {
         console.log(data);
         result = data;
