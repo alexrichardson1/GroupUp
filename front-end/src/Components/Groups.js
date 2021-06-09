@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Filter from "./Filter";
 import Group from "./Group";
 import axios from "axios";
-import hackathons from "../data/projects.json";
 
 async function getGroups() {
   var result = [];
@@ -22,30 +21,55 @@ async function getGroups() {
   return result;
 }
 
+async function getProjects() {
+  var result = [];
+  await axios
+    .get("http://localhost:5000/project")
+    .then((res) => {
+      const hacks = res.data;
+      result = hacks;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return result;
+}
+
 const Groups = () => {
   const { id } = useParams();
   const hackathonId = parseInt(id);
 
   const [allGroups, setAllGroups] = useState([]);
+  const [filteredGroups, setFilteredGroups] = useState([]);
+  const [activeFilters, setActiveFilters] = useState(new Map());
+  const [hackathons, setHackathons] = useState([]);
 
   const setGroups = async () => {
     const nonFilteredGroups = await getGroups();
     const filteredGroups = nonFilteredGroups.filter(
       (group) => group.projectid === hackathonId
     );
+    const hackathonList = await getProjects();
+    setHackathons(hackathonList);
     setAllGroups(filteredGroups);
     setFilteredGroups(filteredGroups);
   };
 
-  const hackathonReqs = hackathons.filter((proj) => proj.id === hackathonId)[0]
-    .requirements;
-
-  const [filteredGroups, setFilteredGroups] = useState([]);
-  const [activeFilters, setActiveFilters] = useState(new Map());
+  const hackathonReqs = async () => {
+    // const allHacks = await getProjects();
+    const allHacks = await hackathons;
+    console.log("The hackathons:");
+    allHacks.forEach((h) => console.log(h));
+    console.log(
+      allHacks.filter((proj) => proj.id === hackathonId).requirements
+    );
+    return allHacks.filter((proj) => proj.id === hackathonId).requirements;
+    // return [];
+  };
 
   useEffect(() => {
     setGroups();
-  });
+  }, []);
 
   useEffect(() => {
     for (const [k, v] of activeFilters.entries()) {
@@ -113,14 +137,15 @@ const Groups = () => {
         <Row>
           <Col>
             <h1>{activeFilters.size}</h1>
-            {hackathonReqs.map((req) => (
+            {/* {console.log(hackat honReqs)} */}
+            {/* {hackathonReqs.map((req) => (
               <Filter
                 requirementName={req}
                 requirementsList={getAllReqVars(req)}
                 filterFunction={filterGroupsOnReq}
                 resetFunction={deleteFilter}
               />
-            ))}
+            ))} */}
           </Col>
           <Col>
             {filteredGroups.map((group) => (
