@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import Filter from "./Filter";
 import Group from "./Group";
 import axios from "axios";
-// import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Filter from "./Filter";
 import hackathons from "../data/projects.json";
 
 async function getGroups() {
@@ -89,12 +86,11 @@ const Groups = () => {
 
   const getAllReqVars = (req) => {
     const vars = new Set();
-    hackathonGroups.forEach((group) => vars.add(group.requirements[req]));
+    allGroups.forEach((group) => vars.add(group.requirements[req]));
     return [...vars];
   };
 
   const deleteFilter = (reqName) => {
-    // activeFilters.delete(reqName);
     removeFilter(reqName);
     const newFilteredGroups = allGroups;
     for (const [k, v] of activeFilters.entries()) {
