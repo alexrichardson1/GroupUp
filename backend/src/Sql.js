@@ -10,3 +10,8 @@ export const groupSQL = {
   addGroup: sql("../sql/addGroup.sql"),
   getAllGroups: sql("../sql/getAllGroups.sql"),
 };
+
+export const projectSQL = {
+  addProject: sql("../sql/addProject.sql"),
+  getAllProjects: sql("../sql/getAllProjects.sql"),
+};
