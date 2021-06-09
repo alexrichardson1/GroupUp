@@ -3,7 +3,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Filter from "./Filter";
 import Group from "./Group";
 import axios from "axios";
 
@@ -39,37 +38,51 @@ const Groups = () => {
   const { id } = useParams();
   const hackathonId = parseInt(id);
 
-  const [allGroups, setAllGroups] = useState([]);
+  // const [allGroups, setAllGroups] = useState([]);
+  const [, setAllGroups] = useState([]);
   const [filteredGroups, setFilteredGroups] = useState([]);
-  const [activeFilters, setActiveFilters] = useState(new Map());
-  const [hackathons, setHackathons] = useState([]);
+  // const [activeFilters, setActiveFilters] = useState(new Map());
+  const [activeFilters] = useState(new Map());
+  // const [hackathons, setHackathons] = useState([]);
+  const [, setHackathons] = useState([]);
 
-  const setGroups = async () => {
-    const nonFilteredGroups = await getGroups();
-    const filteredGroups = nonFilteredGroups.filter(
-      (group) => group.projectid === hackathonId
-    );
-    const hackathonList = await getProjects();
-    setHackathons(hackathonList);
-    setAllGroups(filteredGroups);
-    setFilteredGroups(filteredGroups);
-  };
+  // const setGroups = async () => {
+  //   const nonFilteredGroups = await getGroups();
+  //   const filteredGroups = nonFilteredGroups.filter(
+  //     (group) => group.projectid === hackathonId
+  //   );
+  //   const hackathonList = await getProjects();
+  //   setHackathons(hackathonList);
+  //   setAllGroups(filteredGroups);
+  //   setFilteredGroups(filteredGroups);
+  // };
 
-  const hackathonReqs = async () => {
-    // const allHacks = await getProjects();
-    const allHacks = await hackathons;
-    console.log("The hackathons:");
-    allHacks.forEach((h) => console.log(h));
-    console.log(
-      allHacks.filter((proj) => proj.id === hackathonId).requirements
-    );
-    return allHacks.filter((proj) => proj.id === hackathonId).requirements;
-    // return [];
-  };
+  // const hackathonReqs = async () => {
+  //   // const allHacks = await getProjects();
+  //   const allHacks = await hackathons;
+  //   console.log("The hackathons:");
+  //   allHacks.forEach((h) => console.log(h));
+  //   console.log(
+  //     allHacks.filter((proj) => proj.id === hackathonId).requirements
+  //   );
+  //   return allHacks.filter((proj) => proj.id === hackathonId).requirements;
+  //   // return [];
+  // };
 
   useEffect(() => {
-    setGroups();
-  }, []);
+    const setGroupData = async () => {
+      const nonFilteredGroups = await getGroups();
+      const filteredGroups = nonFilteredGroups.filter(
+        (group) => group.projectid === hackathonId
+      );
+      const hackathonList = await getProjects();
+      setHackathons(hackathonList);
+      setAllGroups(filteredGroups);
+      setFilteredGroups(filteredGroups);
+    };
+
+    setGroupData();
+  }, [hackathonId, setAllGroups, setHackathons]);
 
   useEffect(() => {
     for (const [k, v] of activeFilters.entries()) {
@@ -86,42 +99,42 @@ const Groups = () => {
     console.log("--------------------");
   }, [activeFilters]);
 
-  const updateFilter = (key, value) => {
-    setActiveFilters((prev) => new Map(prev).set(key, value));
-  };
+  // const updateFilter = (key, value) => {
+  //   setActiveFilters((prev) => new Map(prev).set(key, value));
+  // };
 
-  const removeFilter = (key) => {
-    setActiveFilters((prev) => {
-      const newState = new Map(prev);
-      newState.delete(key);
-      return newState;
-    });
-  };
+  // const removeFilter = (key) => {
+  //   setActiveFilters((prev) => {
+  //     const newState = new Map(prev);
+  //     newState.delete(key);
+  //     return newState;
+  //   });
+  // };
 
-  const filterGroupsOnReq = (reqName, reqVal) => {
-    setFilteredGroups(allGroups);
-    console.log("--------------------");
-    console.log(
-      "attempting filter of {" + reqName + "} and with value {" + reqVal + "}"
-    );
-    console.log("Active Filters before: ");
-    updateFilter(reqName, reqVal);
-  };
+  // const filterGroupsOnReq = (reqName, reqVal) => {
+  //   setFilteredGroups(allGroups);
+  //   console.log("--------------------");
+  //   console.log(
+  //     "attempting filter of {" + reqName + "} and with value {" + reqVal + "}"
+  //   );
+  //   console.log("Active Filters before: ");
+  //   updateFilter(reqName, reqVal);
+  // };
 
-  const getAllReqVars = (req) => {
-    const vars = new Set();
-    allGroups.forEach((group) => vars.add(group.requirements[req]));
-    return [...vars];
-  };
+  // const getAllReqVars = (req) => {
+  //   const vars = new Set();
+  //   allGroups.forEach((group) => vars.add(group.requirements[req]));
+  //   return [...vars];
+  // };
 
-  const deleteFilter = (reqName) => {
-    removeFilter(reqName);
-    const newFilteredGroups = allGroups;
-    for (const [k, v] of activeFilters.entries()) {
-      newFilteredGroups.filter((group) => group.requirements[k] === v);
-    }
-    setFilteredGroups(newFilteredGroups);
-  };
+  // const deleteFilter = (reqName) => {
+  //   removeFilter(reqName);
+  //   const newFilteredGroups = allGroups;
+  //   for (const [k, v] of activeFilters.entries()) {
+  //     newFilteredGroups.filter((group) => group.requirements[k] === v);
+  //   }
+  //   setFilteredGroups(newFilteredGroups);
+  // };
 
   return (
     <div>
