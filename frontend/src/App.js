@@ -10,6 +10,7 @@ import CreateGroup from "./Components/CreateGroup";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import ForgotPassword from "./Components/ForgotPassword";
+import data from "./Teams";
 
 const App = () => {
   return (
@@ -22,7 +23,10 @@ const App = () => {
         <Route path="/selection" exact component={SelectProject}></Route>
         <Route path="/listings" exact render={() => <Groups />}></Route>
         <Route path="/group/:id" children={<DetailedGroup />}></Route>
-        <Route path="/listing/:id" children={<Groups />}></Route>
+        <Route
+          path="/listing/:id"
+          children={<Groups allGroups={data} />}
+        ></Route>
         <Route path="/createGroup" exact component={CreateGroup}></Route>
       </div>
     </Router>
