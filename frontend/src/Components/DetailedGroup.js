@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
 import { Button, ListGroup } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
