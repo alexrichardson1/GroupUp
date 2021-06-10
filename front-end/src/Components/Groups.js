@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Group from "./Group";
 import axios from "axios";
 import NavBar from "./NavBar";
-import Teams from "../Teams";
+// import Teams from "../Teams";
 
 async function getGroups() {
   var result = [];
