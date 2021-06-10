@@ -20,7 +20,7 @@ class SignUp extends Component {
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <LinkContainer to="/">
-            <Button>Login</Button>
+            <Button>Already Have an Account?</Button>
           </LinkContainer>
           <LinkContainer to="/signup">
             <Button type="button">Create an Account</Button>
