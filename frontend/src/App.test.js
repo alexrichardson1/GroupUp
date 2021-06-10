@@ -2,10 +2,10 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import App from "./App";
 // import Home from "./Components/Home";
 
-test("Renders 'Log In!'", () => {
+test("Renders 'Login!'", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Log In!/i);
-  expect(linkElement.textContent).toBe("Log In!");
+  const linkElement = screen.getByText(/Login!/i);
+  expect(linkElement.textContent).toBe("Login!");
 });
 
 // test("Clicking join a group gives 'select group' page", () => {
