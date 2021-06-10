@@ -86,6 +86,7 @@ input[type="text"] {
   min-height: 300px;
   /* border: 1px solid steelblue; */
   padding: 30px;
+  padding-top: 60px;
   border-radius: 5px;
 }
 
