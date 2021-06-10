@@ -25,9 +25,6 @@ class SignUp extends Component {
           <LinkContainer to="/signup">
             <Button type="button">Create an Account</Button>
           </LinkContainer>
-          <LinkContainer to="/forgotpassword">
-            <Button>Forgot Password?</Button>
-          </LinkContainer>
         </Form>
       </div>
     );
