@@ -30,15 +30,6 @@ class SignUp extends Component {
           </LinkContainer>
         </Form>
       </div>
-      //     </ul>
-      //   </fieldset>
-      //   <LinkContainer to="/home">
-      //     <button>Submit</button>
-      //   </LinkContainer>
-      //   <LinkContainer to="/">
-      //     <button type="button">Have an Account?</button>
-      //   </LinkContainer>
-      // </form>
     );
   }
 }
