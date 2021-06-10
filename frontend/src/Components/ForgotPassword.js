@@ -17,9 +17,6 @@ class ForgotPassword extends Component {
               A reset link will be sent to your email.
             </Form.Text>
           </Form.Group>
-          <LinkContainer to="/" activeClassName="">
-            <Button>Remember Your Password?</Button>
-          </LinkContainer>
           <Button
             onClick={() => {
               alert("Email sent");
@@ -27,6 +24,9 @@ class ForgotPassword extends Component {
           >
             Send email
           </Button>
+          <LinkContainer to="/" activeClassName="">
+            <Button>Remember Your Password?</Button>
+          </LinkContainer>
         </Form>
       </div>
     );
