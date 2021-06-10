@@ -32,7 +32,7 @@ class SignUp extends Component {
               Submit
             </Button>
           </LinkContainer>
-          <LinkContainer to="/">
+          <LinkContainer to="/" activeClassName="">
             <Button>Already Have an Account?</Button>
           </LinkContainer>
         </Form>
