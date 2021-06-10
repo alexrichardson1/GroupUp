@@ -1,7 +1,7 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import App from "./App";
 
-test("Renders 'Join a group' link", () => {
+test("Renders 'Log In!'", () => {
   render(<App />);
   const linkElement = screen.getByText(/Log In!/i);
   expect(linkElement.textContent).toBe("Log In!");
