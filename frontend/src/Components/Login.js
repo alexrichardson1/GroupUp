@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button } from "react-bootstrap";
+import NavBar from "./NavBar";
 
 class Login extends Component {
   render() {
     return (
       <div>
+        <NavBar renderBool={[false, false, false, false]} />
         <h2>Log In!</h2>
         <Form>
           <Form.Group>
