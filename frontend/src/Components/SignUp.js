@@ -7,7 +7,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <NavBar renderBool={[false, false, false, false]} />
+        <NavBar renderBool={[false, false, false, false]} loginPage={1} />
         <h2>Create an Account!</h2>
         <Form>
           <Form.Group>

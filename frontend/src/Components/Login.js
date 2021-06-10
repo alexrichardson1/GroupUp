@@ -7,7 +7,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <NavBar renderBool={[false, false, false, false]} />
+        <NavBar renderBool={[false, false, false, false]} loginPage={0} />
         <h2>Log In!</h2>
         <Form>
           <Form.Group>

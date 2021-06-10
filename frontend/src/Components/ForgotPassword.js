@@ -7,7 +7,7 @@ class ForgotPassword extends Component {
   render() {
     return (
       <div>
-        <NavBar renderBool={[false, false, false, false]} />
+        <NavBar renderBool={[false, false, false, false]} loginPage={2} />
         <h2>Reset Password</h2>
         <Form>
           <Form.Group>
