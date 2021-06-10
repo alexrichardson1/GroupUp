@@ -28,7 +28,7 @@ function getLinkElems(renderBool, linkList, linkNameList) {
   return navLinks;
 }
 
-const NavBar = ({ renderBool, create, id }) => {
+const NavBar = ({ renderBool, create, id, loginPage }) => {
   const linkNameList = [
     "Home",
     "Select Group",
@@ -36,6 +36,19 @@ const NavBar = ({ renderBool, create, id }) => {
     create ? "Create a group" : "Join a group",
   ];
   const linkList = ["/home", "/selection", "/listing/" + id, ""];
+  const logginIn = renderBool.reduce((val, next) => {
+    return val && next;
+  });
+  const loginMessage = () => {
+    switch (loginPage) {
+      case 0:
+        return "Login";
+      case 1:
+        return "Sign Up";
+      case 2:
+        return "Forgot Password?";
+    }
+  };
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
   return (
@@ -60,6 +73,11 @@ const NavBar = ({ renderBool, create, id }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+          {!logginIn && (
+            <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
+              {loginMessage()}
+            </Navbar.Brand>
+          )}
           {links.map((link) => {
             return link;
           })}
