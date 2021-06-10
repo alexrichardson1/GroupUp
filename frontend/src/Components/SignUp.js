@@ -23,7 +23,7 @@ class SignUp extends Component {
             <Button>Already Have an Account?</Button>
           </LinkContainer>
           <LinkContainer to="/signup">
-            <Button type="button">Create an Account</Button>
+            <Button type="button">Submit</Button>
           </LinkContainer>
         </Form>
       </div>
