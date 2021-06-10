@@ -9,7 +9,7 @@ import NavBar from "./NavBar";
 async function addGroup(data) {
   var result = {};
   await axios
-    .post(`"http://localhost:5000/group/add`, data)
+    .post(`http://localhost:5000/group/add`, data)
     .then((res) => {
       const group = res.data;
       result = group;
