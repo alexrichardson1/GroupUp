@@ -12,7 +12,7 @@ class Login extends Component {
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
+              This email will be used to advertise your group.
             </Form.Text>
           </Form.Group>
           <Form.Group>
@@ -23,7 +23,7 @@ class Login extends Component {
             <Button>Login</Button>
           </LinkContainer>
           <LinkContainer to="/signup">
-            <Button type="button">Create an Account</Button>
+            <Button>Create an Account</Button>
           </LinkContainer>
           <LinkContainer to="/forgotpassword">
             <Button>Forgot Password?</Button>
