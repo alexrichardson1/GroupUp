@@ -54,7 +54,7 @@ const DetailedGroup = () => {
       <LinkContainer to={goBackLink}>
         <Button>Go Back</Button>
       </LinkContainer>
-      <Button>Show groups</Button>
+      <Button>Join Group</Button>
     </React.Fragment>
   );
 };
