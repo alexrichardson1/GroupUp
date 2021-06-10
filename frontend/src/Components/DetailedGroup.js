@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
 import { Button, ListGroup } from "react-bootstrap";
@@ -9,6 +9,7 @@ import NavBar from "./NavBar";
 const DetailedGroup = () => {
   const { id } = useParams();
   const groupId = parseInt(id);
+  const history = useHistory();
   const {
     leader,
     maxMembers,
@@ -20,7 +21,6 @@ const DetailedGroup = () => {
   const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
-  const goBackLink = "/listing/" + projectId;
 
   return (
     <React.Fragment>
@@ -51,9 +51,7 @@ const DetailedGroup = () => {
           <p>{adRequirements}</p>
         </div>
       )}
-      <LinkContainer to={goBackLink}>
-        <Button>Go Back</Button>
-      </LinkContainer>
+      <Button onClick={() => history.goBack()}>Go Back</Button>
       <Button>Join Group</Button>
     </React.Fragment>
   );
