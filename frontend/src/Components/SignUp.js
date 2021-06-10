@@ -23,9 +23,6 @@ class SignUp extends Component {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <LinkContainer to="/">
-            <Button>Already Have an Account?</Button>
-          </LinkContainer>
           <LinkContainer to="/home">
             <Button
               onClick={() => {
@@ -34,6 +31,9 @@ class SignUp extends Component {
             >
               Submit
             </Button>
+          </LinkContainer>
+          <LinkContainer to="/">
+            <Button>Already Have an Account?</Button>
           </LinkContainer>
         </Form>
       </div>
