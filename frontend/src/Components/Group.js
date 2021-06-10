@@ -5,7 +5,6 @@ const Group = ({ group }) => {
   const { id, leader, requirements } = group;
 
   let groupDetailsLink = "/group/" + id;
-  const requirementNameList = ["Language"];
 
   return (
     <div>
@@ -15,13 +14,11 @@ const Group = ({ group }) => {
           <Card.Text>
             <ListGroup.Item variant="dark">Requirements:</ListGroup.Item>
             <ListGroup variant="flush">
-              {requirements.map((req, i) => {
-                return (
-                  <ListGroup.Item key={i}>
-                    {requirementNameList[i]}: {req}
-                  </ListGroup.Item>
-                );
-              })}
+              {Object.entries(requirements).map(([key, val]) => (
+                <ListGroup.Item key={key}>
+                  {key}: {val}
+                </ListGroup.Item>
+              ))}
             </ListGroup>
           </Card.Text>
           <LinkContainer to={groupDetailsLink}>
