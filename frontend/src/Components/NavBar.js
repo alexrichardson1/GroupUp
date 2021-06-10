@@ -1,5 +1,5 @@
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 function getLinkElems(renderBool, linkList, linkNameList) {
   const boldPosition = renderBool.filter((item) => item).length;
@@ -83,6 +83,23 @@ const NavBar = ({ renderBool, create, id, loginPage }) => {
           {links.map((link) => {
             return link;
           })}
+        </Nav>
+        <Nav
+          style={{ "background-color": "rgb(0,0,0,0)" }}
+          className="navAccount"
+        >
+          <NavDropdown expand title="Account" id="collasible-nav-dropdown">
+            <LinkContainer to="/home" activeClassName="">
+              <NavDropdown.Item href="#action/3.1">My Groups</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer to="" activeClassName="">
+              <NavDropdown.Item href="#action/3.2">My Account</NavDropdown.Item>
+            </LinkContainer>
+            <NavDropdown.Divider />
+            <LinkContainer to="/" activeClassName="">
+              <NavDropdown.Item href="#action/3.4">Sign Out</NavDropdown.Item>
+            </LinkContainer>
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
