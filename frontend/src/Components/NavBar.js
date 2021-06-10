@@ -81,17 +81,6 @@ const NavBar = ({ renderBool, create, id, loginPage }) => {
           {links.map((link) => {
             return link;
           })}
-          {/* <Nav.Link className="navLink" href="/">
-            Home
-          </Nav.Link>
-          <Nav.Link className="navLink" href="/selection">
-            <img
-              className="processImage"
-              src={process.env.PUBLIC_URL + "/right-caret.svg"}
-              alt="drop down arrow"
-            />
-            Select Hackathon
-          </Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
