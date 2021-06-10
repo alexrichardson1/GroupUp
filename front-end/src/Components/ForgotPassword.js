@@ -15,7 +15,7 @@ class ForgotPassword extends Component {
               A reset link will be sent to your email.
             </Form.Text>
           </Form.Group>
-          <LinkContainer to="/login">
+          <LinkContainer to="/">
             <Button>Login</Button>
           </LinkContainer>
           <LinkContainer to="/signup">
