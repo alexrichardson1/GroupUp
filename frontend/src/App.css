@@ -169,5 +169,15 @@ input[type="text"] {
   font-weight: bold; 
 }
 
+.navAccount {
+  /* align-self: right; */
+  /* align-self: flex-end; */
+  position:fixed;
+  right:30px;
+  top:10px;
+  background-color: rgba(0, 0, 0, 0);
+
+}
+
 
 /* colours: 17252a 2b7a7b 3aafa9 def2f1*/
