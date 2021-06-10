@@ -1,33 +1,35 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class Login extends Component {
   render() {
     return (
-      <form>
+      <div>
         <h2>Log In!</h2>
-        <fieldset>
-          <ul>
-            <li>
-              <label for="username">Username:</label>
-              <input type="text" id="username" required />
-            </li>
-            <li>
-              <label for="password">Password:</label>
-              <input type="password" id="password" required />
-            </li>
-          </ul>
-        </fieldset>
-        <LinkContainer to="/home">
-          <button>Login</button>
-        </LinkContainer>
-        <LinkContainer to="/signup">
-          <button type="button">Create an Account</button>
-        </LinkContainer>
-        <LinkContainer to="/forgotpassword">
-          <button>Forgot Password?</button>
-        </LinkContainer>
-      </form>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <LinkContainer to="/home">
+            <Button>Login</Button>
+          </LinkContainer>
+          <LinkContainer to="/signup">
+            <Button type="button">Create an Account</Button>
+          </LinkContainer>
+          <LinkContainer to="/forgotpassword">
+            <Button>Forgot Password?</Button>
+          </LinkContainer>
+        </Form>
+      </div>
     );
   }
 }
