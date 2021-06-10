@@ -53,7 +53,7 @@ const NavBar = ({ renderBool, create, id }) => {
         <img
           className="splitterImage"
           src={process.env.PUBLIC_URL + "/three-dots.svg"}
-          alt="splitter image"
+          alt="splitter"
         />
       </Navbar.Brand>
 
