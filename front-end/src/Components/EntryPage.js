@@ -20,9 +20,8 @@ class EntryPage extends Component {
       case "signUp":
         return (
           <form>
-            <h2>Sign Up!</h2>
+            <h2>Create an Account!</h2>
             <fieldset>
-              <legend>Create Account</legend>
               <ul>
                 <li>
                   <label for="username">Username:</label>
@@ -49,9 +48,8 @@ class EntryPage extends Component {
       case "logIn":
         return (
           <form>
-            <h2>Welcome Back!</h2>
+            <h2>Log In!</h2>
             <fieldset>
-              <legend>Log In</legend>
               <ul>
                 <li>
                   <label for="username">Username:</label>
@@ -63,7 +61,7 @@ class EntryPage extends Component {
                 </li>
                 <li>
                   <i />
-                  <a onClick={() => this.changeView("PWReset")} href="#">
+                  <a onClick={() => this.changeView("pwdReset")} href="#">
                     Forgot Password?
                   </a>
                 </li>
@@ -77,7 +75,7 @@ class EntryPage extends Component {
             </button>
           </form>
         );
-      case "PWReset":
+      case "pwdReset":
         return (
           <form>
             <h2>Reset Password</h2>
