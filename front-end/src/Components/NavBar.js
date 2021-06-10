@@ -35,7 +35,7 @@ const NavBar = ({ renderBool, create, id }) => {
     "Group Listings",
     create ? "Create a group" : "Join a group",
   ];
-  const linkList = ["/", "/selection", "/listing/" + id, ""];
+  const linkList = ["/home", "/selection", "/listing/" + id, ""];
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
   return (
