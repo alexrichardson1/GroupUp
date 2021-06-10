@@ -59,12 +59,6 @@ class EntryPage extends Component {
                   <label for="password">Password:</label>
                   <input type="password" id="password" required />
                 </li>
-                <li>
-                  <i />
-                  <a onClick={() => this.changeView("pwdReset")} href="#">
-                    Forgot Password?
-                  </a>
-                </li>
               </ul>
             </fieldset>
             <LinkContainer to="/home">
@@ -72,6 +66,9 @@ class EntryPage extends Component {
             </LinkContainer>
             <button type="button" onClick={() => this.changeView("signUp")}>
               Create an Account
+            </button>
+            <button onClick={() => this.changeView("pwdReset")}>
+              Forgot Password?
             </button>
           </form>
         );
