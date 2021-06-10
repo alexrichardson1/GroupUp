@@ -7,13 +7,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import CreateGroup from "./Components/CreateGroup";
-import EntryPage from "./Components/EntryPage";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
+import ForgotPassword from "./Components/ForgotPassword";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
-        <Route path="/" exact component={EntryPage}></Route>
+        <Route path="/" exact component={Login}></Route>
+        <Route path="/signup" exact component={SignUp}></Route>
+        <Route path="/forgotpassword" exact component={ForgotPassword}></Route>
         <Route path="/home" exact component={Home}></Route>
         <Route path="/selection" exact component={SelectProject}></Route>
         <Route path="/listings" exact render={() => <Groups />}></Route>
