@@ -1,5 +1,5 @@
 import { LinkContainer } from "react-router-bootstrap";
-import { Button, Jumbotron } from "react-bootstrap";
+import { Button, Jumbotron, Card, ListGroup } from "react-bootstrap";
 import NavBar from "./NavBar";
 
 const Home = () => {
@@ -14,6 +14,34 @@ const Home = () => {
         <LinkContainer to="/selection">
           <Button>Get Started</Button>
         </LinkContainer>
+        <h3 className="groupsHome">Groups you're already in.</h3>
+        <Card border="secondary">
+          <Card.Body>
+            <Card.Title>Jason Bourne's Group</Card.Title>
+            <Card.Text>
+              <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
+              <ListGroup.Item variant="flush">You</ListGroup.Item>
+              <ListGroup.Item variant="flush">Alex Duku</ListGroup.Item>
+              <ListGroup.Item variant="flush">Jaimi Ajmeera</ListGroup.Item>
+            </Card.Text>
+            <LinkContainer to={"/listing/0"}>
+              <Button>More Info</Button>
+            </LinkContainer>
+          </Card.Body>
+        </Card>
+        <Card border="secondary">
+          <Card.Body>
+            <Card.Title>Glen Mount's Group</Card.Title>
+            <Card.Text>
+              <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
+              <ListGroup.Item variant="flush">You</ListGroup.Item>
+              <ListGroup.Item variant="flush">Reece Christensen</ListGroup.Item>
+            </Card.Text>
+            <LinkContainer to={"/listing/0"}>
+              <Button>More Info</Button>
+            </LinkContainer>
+          </Card.Body>
+        </Card>
       </Jumbotron>
     </div>
   );
