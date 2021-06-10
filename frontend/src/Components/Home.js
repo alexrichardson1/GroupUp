@@ -24,20 +24,21 @@ const Home = () => {
               <ListGroup.Item variant="flush">Alex Duku</ListGroup.Item>
               <ListGroup.Item variant="flush">Jaimi Ajmeera</ListGroup.Item>
             </Card.Text>
-            <LinkContainer to={"/listing/0"}>
+            <LinkContainer to={"/group/0"}>
               <Button>More Info</Button>
             </LinkContainer>
           </Card.Body>
         </Card>
         <Card border="secondary">
           <Card.Body>
-            <Card.Title>Glen Mount's Group</Card.Title>
+            <Card.Title>Alice Ecila's Group</Card.Title>
             <Card.Text>
               <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
               <ListGroup.Item variant="flush">You</ListGroup.Item>
-              <ListGroup.Item variant="flush">Reece Christensen</ListGroup.Item>
+              <ListGroup.Item variant="flush">Jeff Jeffery</ListGroup.Item>
+              <ListGroup.Item variant="flush">Harry Arnold</ListGroup.Item>
             </Card.Text>
-            <LinkContainer to={"/listing/0"}>
+            <LinkContainer to={"/group/1"}>
               <Button>More Info</Button>
             </LinkContainer>
           </Card.Body>
