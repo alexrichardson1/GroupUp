@@ -16,7 +16,7 @@ class ForgotPassword extends Component {
             </Form.Text>
           </Form.Group>
           <LinkContainer to="/">
-            <Button>Login</Button>
+            <Button>Remember Your Password?</Button>
           </LinkContainer>
           <LinkContainer to="/signup">
             <Button type="button">Create an Account</Button>
