@@ -9,6 +9,8 @@ class SignUp extends Component {
         <h2>Create an Account!</h2>
         <Form>
           <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter name" />
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
