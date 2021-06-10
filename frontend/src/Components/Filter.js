@@ -13,7 +13,7 @@ const Filter = ({
 }) => {
   return (
     <div>
-      <Accordion defaultActiveKey="0">
+      <Accordion>
         <Card>
           <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
             {requirementName}
@@ -23,7 +23,6 @@ const Filter = ({
               alt="drop down arrow"
             />
           </Accordion.Toggle>
-
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <ToggleButtonGroup
@@ -35,7 +34,6 @@ const Filter = ({
                 {requirementsList.map((req) => {
                   return (
                     <ToggleButton
-                      // className="filterBox"
                       id={req}
                       value={req}
                       key={req}
