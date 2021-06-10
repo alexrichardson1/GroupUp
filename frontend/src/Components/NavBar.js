@@ -47,6 +47,8 @@ const NavBar = ({ renderBool, create, id, loginPage }) => {
         return "Sign Up";
       case 2:
         return "Forgot Password?";
+      default:
+        return " ";
     }
   };
 
