@@ -18,9 +18,7 @@ class ForgotPassword extends Component {
           <LinkContainer to="/">
             <Button>Remember Your Password?</Button>
           </LinkContainer>
-          <LinkContainer to="/forgotpassword">
-            <Button>Forgot Password?</Button>
-          </LinkContainer>
+          <Button>Send email</Button>
         </Form>
       </div>
     );
