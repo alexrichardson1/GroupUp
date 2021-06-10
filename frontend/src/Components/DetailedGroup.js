@@ -3,7 +3,6 @@ import { useParams, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import data from "../Teams";
 import { Button, ListGroup } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import NavBar from "./NavBar";
 
 const DetailedGroup = () => {
