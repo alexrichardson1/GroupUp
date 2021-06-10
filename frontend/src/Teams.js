@@ -17,7 +17,7 @@ const data = [
     projectId: 0,
     leader: "Alice Ecila",
     maxMembers: 5,
-    teammates: ["Jeff Jeffery", "Harry Arnold"],
+    teammates: ["Ayoob Patel", "Jeff Jeffery", "Harry Arnold"],
     requirements: {
       "Code Language": "Haskell",
       Timezone: 1,
