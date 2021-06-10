@@ -23,7 +23,13 @@ class SignUp extends Component {
             <Button>Already Have an Account?</Button>
           </LinkContainer>
           <LinkContainer to="/home">
-            <Button type="button">Submit</Button>
+            <Button
+              onClick={() => {
+                alert("Successfully created an account.");
+              }}
+            >
+              Submit
+            </Button>
           </LinkContainer>
         </Form>
       </div>
