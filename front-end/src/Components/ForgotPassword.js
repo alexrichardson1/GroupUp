@@ -1,28 +1,31 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class ForgotPassword extends Component {
   render() {
     return (
-      <form>
+      <div>
         <h2>Reset Password</h2>
-        <fieldset>
-          <legend>Password Reset</legend>
-          <ul>
-            <li>
-              <em>A reset link will be sent to your inbox!</em>
-            </li>
-            <li>
-              <label for="email">Email:</label>
-              <input type="email" id="email" required />
-            </li>
-          </ul>
-        </fieldset>
-        <button>Send Reset Link</button>
-        <button type="button" onClick={() => this.changeView("logIn")}>
-          Go Back
-        </button>
-      </form>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              A reset link will be sent to your email.
+            </Form.Text>
+          </Form.Group>
+          <LinkContainer to="/login">
+            <Button>Login</Button>
+          </LinkContainer>
+          <LinkContainer to="/signup">
+            <Button type="button">Create an Account</Button>
+          </LinkContainer>
+          <LinkContainer to="/forgotpassword">
+            <Button>Forgot Password?</Button>
+          </LinkContainer>
+        </Form>
+      </div>
     );
   }
 }
