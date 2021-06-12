@@ -1,4 +1,4 @@
-import Database from "./Database";
+import Database from "Database";
 
 const express = require("express");
 const cors = require("cors");

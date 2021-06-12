@@ -1,4 +1,4 @@
-import { groupSQL, projectSQL } from "./Sql";
+import { groupSQL, projectSQL } from "Sql";
 
 const pgp = require("pg-promise")({});
 require("dotenv").config();
