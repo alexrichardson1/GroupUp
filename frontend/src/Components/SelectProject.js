@@ -1,8 +1,8 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import projects from "../data/projects.json";
+import projects from "data/projects.json";
 import { useHistory } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "Components/NavBar";
 
 const SelectProject = (props) => {
   const history = useHistory();

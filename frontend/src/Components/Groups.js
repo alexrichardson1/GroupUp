@@ -1,12 +1,12 @@
-import Group from "./Group";
+import Group from "Components/Group";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Filter from "./Filter";
-import hackathons from "../data/projects.json";
-import Navbar from "./NavBar";
+import Filter from "Components/Filter";
+import hackathons from "data/projects.json";
+import Navbar from "Components/NavBar";
 
 const Groups = ({ allGroups }) => {
   const { id } = useParams();

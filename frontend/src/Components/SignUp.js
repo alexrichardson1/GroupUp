@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button } from "react-bootstrap";
-import NavBar from "./NavBar";
+import NavBar from "Components/NavBar";
 
 class SignUp extends Component {
   render() {

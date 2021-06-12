@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./styles.css";
+import "Components/styles.css";
 import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "Components/NavBar";
 // import { useHistory } from "react-router-dom";
 
 async function addGroup(data) {

@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import data from "../Teams";
+import data from "Teams";
 import { Button, ListGroup } from "react-bootstrap";
-import NavBar from "./NavBar";
+import NavBar from "Components/NavBar";
 
 const DetailedGroup = () => {
   const { id } = useParams();
