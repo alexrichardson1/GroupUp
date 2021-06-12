@@ -1,6 +1,6 @@
 import { LinkContainer } from "react-router-bootstrap";
 import { Button, Jumbotron, Card, ListGroup } from "react-bootstrap";
-import NavBar from "Components/NavBar";
+import NavBar from "components/NavBar";
 
 const Home = () => {
   return (
