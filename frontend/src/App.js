@@ -1,16 +1,16 @@
 import React from "react";
-import Groups from "./Components/Groups";
-import Home from "./Components/Home";
-import SelectProject from "./Components/SelectProject";
-import DetailedGroup from "./Components/DetailedGroup";
+import Groups from "Components/Groups";
+import Home from "Components/Home";
+import SelectProject from "Components/SelectProject";
+import DetailedGroup from "Components/DetailedGroup";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
-import CreateGroup from "./Components/CreateGroup";
-import Login from "./Components/Login";
-import SignUp from "./Components/SignUp";
-import ForgotPassword from "./Components/ForgotPassword";
-import data from "./Teams";
+import "App.css";
+import CreateGroup from "Components/CreateGroup";
+import Login from "Components/Login";
+import SignUp from "Components/SignUp";
+import ForgotPassword from "Components/ForgotPassword";
+import data from "Teams";
 
 const App = () => {
   return (
