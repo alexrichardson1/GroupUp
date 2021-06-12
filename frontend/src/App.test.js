@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import App from "./App";
+import App from "App";
 // import Home from "./Components/Home";
 
 test("Renders 'Login!'", () => {
