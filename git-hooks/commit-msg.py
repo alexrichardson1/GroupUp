@@ -45,6 +45,7 @@ def co_authors(last_line):
             line[i] = authors[line[i]]
         except KeyError:
             line[i] = ""
+    line = [x for x in line if x != ""]
     # return updated authors without "W/"
     return "\n".join(line[1:])
 
