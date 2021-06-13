@@ -82,6 +82,20 @@ class UpdateCommitMsg(TestCase):
 
         W/ MH"""
         self.fs.create_file(self.file_path, contents=commit_msg)
+        # print(hook.update_commit_msg(self.file_path))
+        self.assertTrue(
+            hook.update_commit_msg(
+                self.file_path) == [
+                'feat(foo): Add feature\n',
+                '',
+                'Co-authored-by: Hussein, Mazen <mazen.hussein319@imperial.ac.uk>'])
+
+    def test_update_commit_msg_replaces_co_authors_with_unknown_authors(self):
+        commit_msg = """feat(foo): Add feature
+
+        W/ MH AB"""
+        self.fs.create_file(self.file_path, contents=commit_msg)
+        print(hook.update_commit_msg(self.file_path))
         self.assertTrue(
             hook.update_commit_msg(
                 self.file_path) == [
