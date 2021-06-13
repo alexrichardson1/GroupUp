@@ -17,9 +17,9 @@ class FollowsConventionFailure(unittest.TestCase):
     def test_follows_convention_empty_message(self):
         hook.follows_convention("")
 
-    @unittest.skip("FIXME")
     def test_follows_convention_empty_scope(self):
         hook.follows_convention("feat(): Add func")
+        hook.follows_convention("feat(  ): Add func")
 
     def test_follows_convention_no_scope(self):
         hook.follows_convention("feat: Add func")
