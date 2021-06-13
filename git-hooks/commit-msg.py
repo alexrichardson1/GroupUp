@@ -19,6 +19,8 @@ def follows_convention(first_line):
              "perf", "test", "docs", "chore", "build", "ci"]
     if (all([not first_line.startswith(type) for type in types])):
         exit_failure("invalid type.")
+    if (re.match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\)", first_line) is None):
+        exit_failure("invalid scope.")
     if all([re.match(type + r"\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None for type in types]):
         exit_failure("commit message does not follow convention.")
     if len(first_line) > 50:
