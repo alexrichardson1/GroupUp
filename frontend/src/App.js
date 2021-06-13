@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "App.css";
 import CreateGroup from "components/CreateGroup";
-import Login from "components/Login";
-import SignUp from "components/SignUp";
-import ForgotPassword from "components/ForgotPassword";
+import Login from "components/auth/Login";
+import SignUp from "components/auth/SignUp";
+import ForgotPassword from "components/auth/ForgotPassword";
 import data from "Teams";
 
 const App = () => {
