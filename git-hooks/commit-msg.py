@@ -13,8 +13,6 @@ def exit_failure(error_message):
 
 def follows_convention(first_line):
     first_line = first_line.rstrip()
-    if not first_line:
-        exit_failure("empty commit message.")
     # located in the README
     types = ["feat", "fix", "style", "refactor",
              "perf", "test", "docs", "chore", "build", "ci"]
@@ -44,6 +42,8 @@ def update_commit_msg(file):
     new_commit_message = []
     with open(file, "r") as fp:
         lines = fp.readlines()
+        if not lines:
+            exit_failure("empty commit message.")
         follows_convention(lines[0].lstrip())
         for line in lines:
             # remove leading whitespace
