@@ -21,6 +21,11 @@ class FollowsConventionFailure(unittest.TestCase):
     def test_follows_convention_empty_scope(self):
         hook.follows_convention("feat(): Add func")
 
+    def test_follows_convention_no_scope(self):
+        hook.follows_convention("feat: Add func")
+        hook.follows_convention("refactor: Add func")
+        hook.follows_convention("test: Add func")
+
     def test_follows_convention_case_sensitive(self):
         hook.follows_convention("Feat(foo): Add func")
         hook.follows_convention("feaT(foo): Add func")
