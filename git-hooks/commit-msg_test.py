@@ -82,7 +82,6 @@ class UpdateCommitMsg(TestCase):
 
         W/ MH"""
         self.fs.create_file(self.file_path, contents=commit_msg)
-        # print(hook.update_commit_msg(self.file_path))
         self.assertTrue(
             hook.update_commit_msg(
                 self.file_path) == [
@@ -95,7 +94,6 @@ class UpdateCommitMsg(TestCase):
 
         W/ MH AB"""
         self.fs.create_file(self.file_path, contents=commit_msg)
-        print(hook.update_commit_msg(self.file_path))
         self.assertTrue(
             hook.update_commit_msg(
                 self.file_path) == [
