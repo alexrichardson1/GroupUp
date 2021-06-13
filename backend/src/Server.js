@@ -1,4 +1,4 @@
-import Database from "Database";
+import Database from "./Database";
 
 const express = require("express");
 const cors = require("cors");
@@ -26,6 +26,26 @@ app.get("/group", async (req, res) => {
     const groups = await Database.getAllGroups();
     console.log(groups);
     res.json(groups);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
+app.post("/group/hackathon", async (req, res) => {
+  try {
+    const groups = await Database.getHackathonGroups(req.body);
+    console.log(groups);
+    res.json(groups);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
+app.post("/group/one", async (req, res) => {
+  try {
+    const group = await Database.getGroup(req.body);
+    console.log(group);
+    res.json(group);
   } catch (error) {
     res.body = "Error: " + error;
   }
