@@ -13,6 +13,8 @@ def exit_failure(error_message):
 
 def follows_convention(first_line):
     first_line = first_line.rstrip()
+    if not first_line:
+        exit_failure("empty commit message.")
     # located in the README
     types = ["feat", "fix", "style", "refactor",
              "perf", "test", "docs", "chore", "build", "ci"]
