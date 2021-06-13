@@ -1,14 +1,33 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import projects from "data/projects.json";
 import { useHistory } from "react-router-dom";
 import NavBar from "components/NavBar";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-const SelectProject = (props) => {
+const SelectProject = () => {
   const history = useHistory();
   const handleProjectClick = (id) => {
     history.push("/listing/" + id);
   };
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const getProjects = async () => {
+      await axios
+        .get("http://localhost:5000/project")
+        .then((res) => {
+          const projects = res.data;
+          console.log(projects);
+          setProjects(projects);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    getProjects();
+  }, []);
 
   return (
     <div>
