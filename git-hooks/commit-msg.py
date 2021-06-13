@@ -17,12 +17,15 @@ def follows_convention(first_line):
     # located in the README
     types = ["feat", "fix", "style", "refactor",
              "perf", "test", "docs", "chore", "build", "ci"]
+    match = re.match
     if (all([not first_line.startswith(type) for type in types])):
         exit_failure("invalid type.")
-    if (re.match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\)", first_line) is None):
+    if (match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\)", first_line) is None):
         exit_failure("invalid scope.")
-    if all([re.match(type + r"\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None for type in types]):
-        exit_failure("commit message does not follow convention.")
+    if (match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None):
+        exit_failure("invalid subject.")
+    # if all([match(type + r"\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None for type in types]):
+    #     exit_failure("commit message does not follow convention.")
     if len(first_line) > 50:
         exit_failure("header is longer than 50 characters.")
     if (any([first_line.endswith(punc) for punc in [".", "!", "?", "," "...", ":", ";", "(", ")", "'", "-"]])):
