@@ -1,25 +1,48 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import data from "Teams";
 import { Button, ListGroup } from "react-bootstrap";
 import NavBar from "components/NavBar";
+import axios from "axios";
 
 const DetailedGroup = () => {
   const { id } = useParams();
   const groupId = parseInt(id);
   const history = useHistory();
-  const {
-    leader,
-    maxMembers,
-    teammates,
-    requirements,
-    adRequirements,
-    projectId,
-  } = data.filter((group) => group.id === groupId)[0];
+  const [leader, setLeader] = useState("");
+  const [maxMembers, setMaxMembers] = useState(0);
+  const [teammates, setTeammates] = useState([]);
+  const [requirements, setRequirements] = useState({});
+  const [adRequirements, setAdRequirements] = useState("");
+  const [projectId, setProjectId] = useState(0);
+
   const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
+
+  useEffect(() => {
+    const getGroup = async () => {
+      await axios
+        .post("http://localhost:5000/group/one", {
+          groupid: groupId,
+        })
+        .then((res) => {
+          const group = res.data;
+          console.log(group);
+          setLeader(group.leader);
+          setMaxMembers(group.maxmembers);
+          setTeammates(group.teammates);
+          setRequirements(group.requirements);
+          setAdRequirements(group.adrequirements);
+          setProjectId(group.projectid);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    getGroup();
+  }, [groupId]);
 
   return (
     <React.Fragment>
