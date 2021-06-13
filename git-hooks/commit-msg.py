@@ -12,6 +12,7 @@ def exit_failure(error_message):
 
 
 def follows_convention(first_line):
+    # strip trailing space
     first_line = first_line.rstrip()
     # located in the README
     types = ["feat", "fix", "style", "refactor",
