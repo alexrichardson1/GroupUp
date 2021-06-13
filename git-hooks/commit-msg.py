@@ -41,7 +41,10 @@ def co_authors(last_line):
     print(Fore.GREEN + Style.BRIGHT +
           "Replacing name(s) with co-author(s)" + Style.RESET_ALL)
     for i in range(1, len(line)):
-        line[i] = authors[line[i]]
+        try:
+            line[i] = authors[line[i]]
+        except KeyError:
+            line[i] = ""
     # return updated authors without "W/"
     return "\n".join(line[1:])
 
