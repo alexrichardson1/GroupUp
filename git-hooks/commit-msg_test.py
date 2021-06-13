@@ -21,6 +21,13 @@ class FollowsConventionFailure(unittest.TestCase):
     def test_follows_convention_empty_scope(self):
         hook.follows_convention("feat(): Add func")
 
+    def test_follows_convention_case_sensitive(self):
+        hook.follows_convention("Feat(foo): Add func")
+        hook.follows_convention("feaT(foo): Add func")
+        hook.follows_convention("Refactor(foo): Add func")
+        hook.follows_convention("rEFactor(foo): Add func")
+        hook.follows_convention("feat(foo): add func")
+
     def test_follows_convention_verbose_message(self):
         hook.follows_convention(
             "feat(foo): This is a really long commit message and should fail")
