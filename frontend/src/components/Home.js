@@ -8,9 +8,9 @@ const Home = () => {
       <NavBar renderBool={[true, false, false, false]} create={false} />
       <Jumbotron>
         <h1 className="title">Welcome to GroupUp</h1>
-        <p>
+        <div>
           An easy tool for helping you find a group for your next Hackathon!
-        </p>
+        </div>
         <LinkContainer to="/selection">
           <Button>Get Started</Button>
         </LinkContainer>
