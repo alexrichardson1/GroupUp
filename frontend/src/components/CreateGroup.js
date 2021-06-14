@@ -30,6 +30,22 @@ async function addGroup(data) {
   return result;
 }
 
+async function getProject() {
+  var result = {};
+  await axios
+    .post("http://localhost:5000/group/one", {
+      projectid: this.props.id,
+    })
+    .then((res) => {
+      const project = res.data;
+      result = project;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return result;
+}
+
 class CreateGroup extends Component {
   constructor(props) {
     super(props);
@@ -140,7 +156,33 @@ class CreateGroup extends Component {
               value={this.state.timezone}
               onChange={this.handleInputChange}
             >
+              <option>-12</option>
+              <option>-11</option>
+              <option>-10</option>
+              <option>-9</option>
+              <option>-8</option>
+              <option>-7</option>
+              <option>-6</option>
+              <option>-5</option>
+              <option>-4</option>
+              <option>-3</option>
+              <option>-2</option>
+              <option>-1</option>
+              <option>0</option>
               <option>+1</option>
+              <option>+2</option>
+              <option>+3</option>
+              <option>+4</option>
+              <option>+5</option>
+              <option>+6</option>
+              <option>+7</option>
+              <option>+8</option>
+              <option>+9</option>
+              <option>+10</option>
+              <option>+11</option>
+              <option>+12</option>
+              <option>+13</option>
+              <option>+14</option>
             </FormControl>
           </InputGroup>
 
