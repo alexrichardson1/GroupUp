@@ -15,9 +15,7 @@ const Group = ({ group }) => {
             <ListGroup.Item variant="dark">Requirements:</ListGroup.Item>
             <ListGroup variant="flush">
               {Object.entries(requirements).map(([key, val]) => (
-                <ListGroup.Item key={key}>
-                  {key}: {val}
-                </ListGroup.Item>
+                <ListGroup.Item key={key}>{val}</ListGroup.Item>
               ))}
             </ListGroup>
           </Card.Text>
