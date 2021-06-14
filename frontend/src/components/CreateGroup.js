@@ -155,7 +155,7 @@ class CreateGroup extends Component {
                 as="select"
                 custom
                 name="languages"
-                value={this.state.nationality}
+                value={this.state.language}
                 onChange={this.handleInputChange}
               >
                 {Object.entries(programmingLanguages).map(([key, val]) => (
