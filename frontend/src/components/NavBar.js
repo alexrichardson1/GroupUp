@@ -7,7 +7,11 @@ function getLinkElems(renderBool, linkList, linkNameList) {
   for (let i = 0; i < boldPosition; i++) {
     if (i !== boldPosition - 1) {
       navLinks.push(
-        <Nav.Link style={{ color: "rgb(238, 237, 237)" }} href={linkList[i]}>
+        <Nav.Link
+          key={i}
+          style={{ color: "rgb(238, 237, 237)" }}
+          href={linkList[i]}
+        >
           {linkNameList[i]}
           <img
             className="processImage"
@@ -18,7 +22,7 @@ function getLinkElems(renderBool, linkList, linkNameList) {
       );
     } else {
       navLinks.push(
-        <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
+        <Navbar.Brand key={i} style={{ color: "rgb(238, 237, 237)" }}>
           {linkNameList[i]}
         </Navbar.Brand>
       );
