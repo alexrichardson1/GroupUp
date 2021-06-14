@@ -6,7 +6,12 @@ from colorama import Fore, Back, Style
 
 
 def exit_failure(error_message):
-    print(Fore.RED + Style.BRIGHT + "fatal: " + error_message + Style.RESET_ALL)
+    print(
+        Fore.RED +
+        Style.BRIGHT +
+        "fatal: " +
+        error_message +
+        Style.RESET_ALL)
     print("-------------------------------")
     sys.exit(1)
 
@@ -28,7 +33,8 @@ def follows_convention(first_line):
     #     exit_failure("commit message does not follow convention.")
     if len(first_line) > 50:
         exit_failure("header is longer than 50 characters.")
-    if (any([first_line.endswith(punc) for punc in [".", "!", "?", "," "...", ":", ";", "(", ")", "'", "-"]])):
+    if (any([first_line.endswith(punc) for punc in [
+            ".", "!", "?", "," "...", ":", ";", "(", ")", "'", "-"]])):
         exit_failure("trailing punctuation.")
 
 
