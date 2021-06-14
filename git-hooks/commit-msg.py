@@ -57,6 +57,7 @@ def update_commit_msg(file):
         if not lines:
             exit_failure("empty commit message.")
         follows_convention(lines[0].lstrip())
+        new_commit_message_append = new_commit_message.append
         for line in lines:
             # remove leading whitespace
             line = line.lstrip()
@@ -68,7 +69,7 @@ def update_commit_msg(file):
             # co-author alias
             if line_startswith("W/"):
                 updated_line = co_authors(line)
-            new_commit_message.append(updated_line)
+            new_commit_message_append(updated_line)
     return new_commit_message
 
 
