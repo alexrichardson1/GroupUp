@@ -59,11 +59,6 @@ class CreateGroup extends Component {
     });
   }
 
-  // fakeChange = (n) => {
-  //   // console.log(n);
-  //   this.state.membersNeeded = n;
-  // };
-
   handleSubmit = async (e) => {
     e.preventDefault();
     const info = {
@@ -91,7 +86,7 @@ class CreateGroup extends Component {
           create={true}
           id={this.props.id}
         />
-        <h1>Create your group</h1>
+        <h1>Advertise your group</h1>
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col>
@@ -232,10 +227,6 @@ class CreateGroup extends Component {
           <Form.Group className="formBox" controlId="formOtherMembers">
             <Form.Label>Other Members names</Form.Label>
           </Form.Group>
-          {/* <LinkContainer to="/listing//">
-          <Button>Go Back</Button>
-        </LinkContainer> */}
-          {/* <Button onClick={() => history.goBack()}>Go Back</Button> */}
           <Button variant="primary" type="submit">
             Submit
           </Button>
