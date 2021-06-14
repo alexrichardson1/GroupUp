@@ -30,22 +30,6 @@ async function addGroup(data) {
   return result;
 }
 
-async function getProject() {
-  var result = {};
-  await axios
-    .post("http://localhost:5000/group/one", {
-      projectid: this.props.id,
-    })
-    .then((res) => {
-      const project = res.data;
-      result = project;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return result;
-}
-
 class CreateGroup extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +48,22 @@ class CreateGroup extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  getProject = async () => {
+    var result = [];
+    await axios
+      .post("http://localhost:5000/project/one", {
+        projectid: this.props.id,
+      })
+      .then((res) => {
+        const project = res.data;
+        result = project;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return result;
+  };
 
   /* Functions to handle form submission */
   handleInputChange(event) {
