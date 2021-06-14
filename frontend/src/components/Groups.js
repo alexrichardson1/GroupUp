@@ -38,7 +38,8 @@ export default class GroupsNew extends Component {
       .get("http://localhost:5000/project")
       .then((res) => {
         const projects = res.data;
-        result = projects.filter((proj) => proj.id == this.props.id)[0].name;
+        result = projects.filter((proj) => proj.id === Number(this.props.id))[0]
+          .name;
       })
       .catch((error) => {
         console.error(error);
