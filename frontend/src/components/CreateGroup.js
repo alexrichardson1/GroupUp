@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
-import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  InputGroup,
+  FormControl,
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
+import nationalities from "data/nationalities";
 // import { useHistory } from "react-router-dom";
 
 async function addGroup(data) {
@@ -31,6 +40,7 @@ class CreateGroup extends Component {
       language: "",
       nationality: "",
       adrequirements: "",
+      membersNeeded: 0,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,6 +56,11 @@ class CreateGroup extends Component {
       [target.name]: value,
     });
   }
+
+  // fakeChange = (n) => {
+  //   // console.log(n);
+  //   this.state.membersNeeded = n;
+  // };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,11 +81,9 @@ class CreateGroup extends Component {
     window.location.reload();
   };
 
-  // history = useHistory();
-
   render() {
     return (
-      <div>
+      <Container>
         <NavBar
           renderBool={[true, true, true, true]}
           create={true}
@@ -78,33 +91,46 @@ class CreateGroup extends Component {
         />
         <h1>Create your group</h1>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="formLeaderName">
-            <Form.Label>Leader's Full Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Leader's Full Name"
-              name="leader"
-              value={this.state.leader}
-              onChange={this.handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              This can really be any one of your names, it's just the name your
-              group will be advertised under.
-            </Form.Text>
-          </Form.Group>
+          <Row>
+            <Col>
+              <Form.Group
+                className="formBox"
+                as={Col}
+                controlId="formLeaderName"
+              >
+                <Form.Label>Leader's First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="First Name"
+                  name="leader"
+                  value={this.state.leader}
+                  onChange={this.handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  Leader is just the point of contact.
+                </Form.Text>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group
+                className="formBox"
+                as={Col}
+                controlId="formLeaderName"
+              >
+                <Form.Label>Leader's Last Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Last Name"
+                  name="leader"
+                  value={this.state.leader}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-          <Form.Group controlId="formOtherMembers">
-            <Form.Label>Other Members</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="All other members go here"
-              name="teammates"
-              value={this.state.teammates}
-              onChange={this.handleInputChange}
-            />
-          </Form.Group>
-
-          <InputGroup className="mb-3">
+          <InputGroup className="formBox">
+            <Row></Row>
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon1">Timezone</InputGroup.Text>
             </InputGroup.Prepend>
@@ -118,62 +144,88 @@ class CreateGroup extends Component {
             />
           </InputGroup>
 
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon1">
-                Programming Language
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              placeholder="e.g. Java"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              name="language"
-              value={this.state.language}
-              onChange={this.handleInputChange}
-            />
-          </InputGroup>
+          <Form.Row>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Text id="basic-addon1">
+                  Programming Language
+                </InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                placeholder="e.g. Java"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                name="language"
+                value={this.state.language}
+                onChange={this.handleInputChange}
+              />
+            </InputGroup>
+          </Form.Row>
 
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon1">Nationality</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              placeholder="e.g. United Kingdom"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              name="nationality"
-              value={this.state.nationality}
-              onChange={this.handleInputChange}
-            />
-          </InputGroup>
+          <Form.Row>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Text id="basic-addon1">Nationality</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Group>
+                <FormControl
+                  as="select"
+                  custom
+                  name="nationality"
+                  value={this.state.nationality}
+                  onChange={this.handleInputChange}
+                >
+                  {/* {Object.entries(nationalities).map(([key, val]) => (
+                    <option>{val}</option>
+                    // <ListGroup.Item key={key}>{val}</ListGroup.Item>
+                  ))} */}
+                  <option>United Kingdom</option>
+                  <option>...</option>
+                  <option>...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </FormControl>
+              </Form.Group>
+            </InputGroup>
+          </Form.Row>
 
-          <Form.Group controlId="formOtherMembers">
-            <Form.Label>Other Requirements</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              name="adrequirements"
-              value={this.state.adrequirements}
-              onChange={this.handleInputChange}
+          <Form.Row>
+            <Form.Group controlId="formOtherMembers">
+              <Form.Label>Other Requirements</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder=""
+                name="adrequirements"
+                value={this.state.adrequirements}
+                onChange={this.handleInputChange}
+              />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Group>
+            <Form.Label>Members needed: </Form.Label>
+            <Form.Check
+              inline
+              label="1"
+              name="group1"
+              type="radio"
+              value={1}
+              id={`inline-radio-1`}
+              onChange={(e) => this.setState({ val: e.target.value })}
+            />
+            <Form.Check
+              inline
+              label="2"
+              name="group1"
+              type="radio"
+              value={2}
+              id={`inline-radio-2`}
+              onChange={(e) => this.setState({ val: e.target.value })}
             />
           </Form.Group>
 
-          <Form.Group controlId="formMembersNeeded">
-            <Form.Label>Members needed</Form.Label>
-            <Form.Control
-              as="select"
-              custom
-              name="maxmembers"
-              value={this.state.maxmembers}
-              onChange={this.handleInputChange}
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Form.Control>
+          <Form.Group className="formBox" controlId="formOtherMembers">
+            <Form.Label>Other Members names</Form.Label>
           </Form.Group>
           {/* <LinkContainer to="/listing//">
           <Button>Go Back</Button>
@@ -183,7 +235,7 @@ class CreateGroup extends Component {
             Submit
           </Button>
         </Form>
-      </div>
+      </Container>
     );
   }
 }
