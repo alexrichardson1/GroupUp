@@ -24,7 +24,7 @@ function getLinkElems(renderBool, linkList, linkNameList) {
       );
     }
   }
-  console.log("HELLO  ", navLinks);
+  // console.log("HELLO  ", navLinks);
   return navLinks;
 }
 
