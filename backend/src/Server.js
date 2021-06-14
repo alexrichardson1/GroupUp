@@ -71,6 +71,16 @@ app.get("/project", async (req, res) => {
   }
 });
 
+app.post("/project/one", async (req, res) => {
+  try {
+    const project = await Database.getProject(req.body);
+    console.log(project);
+    res.json(project);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
