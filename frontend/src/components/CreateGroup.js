@@ -139,13 +139,14 @@ class CreateGroup extends Component {
               <InputGroup.Text id="basic-addon1">Timezone</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              placeholder="e.g. +5 = GMT+5"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              name="timezone"
+              as="select"
+              custom
+              name="languages"
               value={this.state.timezone}
               onChange={this.handleInputChange}
-            />
+            >
+              <option>+1</option>
+            </FormControl>
           </InputGroup>
 
           <Form.Row>
