@@ -13,6 +13,7 @@ import {
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 import nationalities from "data/nationalities";
+import programmingLanguages from "data/programming";
 // import { useHistory } from "react-router-dom";
 
 async function addGroup(data) {
@@ -33,7 +34,8 @@ class CreateGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      leader: "",
+      leaderFirstName: "",
+      leaderLastName: "",
       maxmembers: 0,
       teammates: "",
       timezone: "",
@@ -102,8 +104,8 @@ class CreateGroup extends Component {
                 <Form.Control
                   type="text"
                   placeholder="First Name"
-                  name="leader"
-                  value={this.state.leader}
+                  name="leaderFirstName"
+                  value={this.state.leaderFirstName}
                   onChange={this.handleInputChange}
                 />
                 <Form.Text className="text-muted">
@@ -121,8 +123,8 @@ class CreateGroup extends Component {
                 <Form.Control
                   type="text"
                   placeholder="Last Name"
-                  name="leader"
-                  value={this.state.leader}
+                  name="leaderLastName"
+                  value={this.state.leaderLastName}
                   onChange={this.handleInputChange}
                 />
               </Form.Group>
@@ -154,13 +156,16 @@ class CreateGroup extends Component {
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder="e.g. Java"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                name="language"
-                value={this.state.language}
+                as="select"
+                custom
+                name="languages"
+                value={this.state.nationality}
                 onChange={this.handleInputChange}
-              />
+              >
+                {Object.entries(programmingLanguages).map(([key, val]) => (
+                  <option>{val}</option>
+                ))}
+              </FormControl>
             </InputGroup>
           </Form.Row>
 
@@ -179,7 +184,6 @@ class CreateGroup extends Component {
                 >
                   {Object.entries(nationalities).map(([key, val]) => (
                     <option>{val}</option>
-                    // <ListGroup.Item key={key}>{val}</ListGroup.Item>
                   ))}
                 </FormControl>
               </Form.Group>
@@ -196,10 +200,13 @@ class CreateGroup extends Component {
                 value={this.state.adrequirements}
                 onChange={this.handleInputChange}
               />
+              <Form.Text className="text-muted">
+                Any of your own requirements.
+              </Form.Text>
             </Form.Group>
           </Form.Row>
 
-          <Form.Group>
+          <Form.Group className="formBox">
             <Form.Label>Members needed: </Form.Label>
             <Form.Check
               inline
