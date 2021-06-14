@@ -79,6 +79,22 @@ class Database {
     return result;
   }
 
+  static async getProject(attr) {
+    var result = {};
+
+    await db
+      .oneOrNone(projectSQL.getProject, attr)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
+
   static async addProject(attr) {
     var result = {};
 
