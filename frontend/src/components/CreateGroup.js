@@ -175,15 +175,10 @@ class CreateGroup extends Component {
                   value={this.state.nationality}
                   onChange={this.handleInputChange}
                 >
-                  {/* {Object.entries(nationalities).map(([key, val]) => (
+                  {Object.entries(nationalities).map(([key, val]) => (
                     <option>{val}</option>
                     // <ListGroup.Item key={key}>{val}</ListGroup.Item>
-                  ))} */}
-                  <option>United Kingdom</option>
-                  <option>...</option>
-                  <option>...</option>
-                  <option>...</option>
-                  <option>...</option>
+                  ))}
                 </FormControl>
               </Form.Group>
             </InputGroup>
