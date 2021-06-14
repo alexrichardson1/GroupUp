@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/NavBar";
 import axios from "axios";
 
-export default class GroupsNew extends Component {
+export default class Groups extends Component {
   constructor(props) {
     super(props);
     this.state = {
