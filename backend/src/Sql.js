@@ -15,5 +15,6 @@ export const groupSQL = {
 
 export const projectSQL = {
   addProject: sql("../sql/addProject.sql"),
+  getProject: sql("../sql/getProject.sql"),
   getAllProjects: sql("../sql/getAllProjects.sql"),
 };
