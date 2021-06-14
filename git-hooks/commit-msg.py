@@ -25,9 +25,10 @@ def follows_convention(first_line):
     match = re.match
     if (all([not first_line.startswith(type) for type in types])):
         exit_failure("invalid type.")
-    if (match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\)", first_line) is None):
+    scope = r"[a-z]+\(\.?[\w\-/]+(\.[a-zA-Z]+)?\)"
+    if (match(scope, first_line) is None):
         exit_failure("invalid scope.")
-    if (match(r"[a-z]+\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None):
+    if (match(scope + r": [A-Z]", first_line) is None):
         exit_failure("invalid subject.")
     # if all([match(type + r"\(\.?[\w-]+(\.[a-zA-Z]+)?\): [A-Z]", first_line) is None for type in types]):
     #     exit_failure("commit message does not follow convention.")
