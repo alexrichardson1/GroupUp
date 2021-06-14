@@ -129,8 +129,10 @@ class CreateGroup extends Component {
             </Col>
           </Row>
 
-          <InputGroup className="formBox">
-            <Row></Row>
+          <label htmlFor="basic-url" className="formBox">
+            A few things you need to specify:
+          </label>
+          <InputGroup>
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon1">Timezone</InputGroup.Text>
             </InputGroup.Prepend>
