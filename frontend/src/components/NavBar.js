@@ -32,7 +32,7 @@ function getLinkElems(renderBool, linkList, linkNameList) {
   return navLinks;
 }
 
-const NavBar = ({ renderBool, create, id, loginPage }) => {
+const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
   const linkNameList = [
     "Home",
     "Select Group",
@@ -55,6 +55,7 @@ const NavBar = ({ renderBool, create, id, loginPage }) => {
         return " ";
     }
   };
+  const help = "Help";
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
   return (
@@ -82,6 +83,11 @@ const NavBar = ({ renderBool, create, id, loginPage }) => {
           {!logginIn && (
             <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
               {loginMessage()}
+            </Navbar.Brand>
+          )}
+          {helpPage && (
+            <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
+              {help}
             </Navbar.Brand>
           )}
           {links.map((link) => {
