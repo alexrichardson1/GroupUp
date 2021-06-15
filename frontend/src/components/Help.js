@@ -8,14 +8,22 @@ export default class Help extends Component {
   constructor() {
     super();
     this.state = {
-      isFlipped: false,
+      flipped: new Set(),
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    e.preventDefault();
-    this.setState((prevState) => ({ isFlipped: !prevState.isFlipped }));
+  handleClick(id) {
+    return (e) => {
+      e.preventDefault();
+      let flipped = new Set(this.state.flipped);
+      if (flipped.has(id)) {
+        flipped.delete(id);
+      } else {
+        flipped.add(id);
+      }
+      this.setState({ flipped });
+    };
   }
 
   render() {
@@ -24,7 +32,7 @@ export default class Help extends Component {
         <Navbar renderBool={[false, false, false, false]} helpPage={true} />
 
         <ReactCardFlip
-          isFlipped={this.state.isFlipped}
+          isFlipped={this.state.flipped.has(1)}
           flipDirection="horizontal"
         >
           <Card>
@@ -40,7 +48,7 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(1)}>Click to flip</Button>
           </Card>
 
           <Card>
@@ -56,12 +64,12 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(1)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
 
         <ReactCardFlip
-          isFlipped={this.state.isFlipped}
+          isFlipped={this.state.flipped.has(2)}
           flipDirection="horizontal"
         >
           <Card>
@@ -76,7 +84,7 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(2)}>Click to flip</Button>
           </Card>
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
@@ -90,12 +98,12 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(2)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
 
         <ReactCardFlip
-          isFlipped={this.state.isFlipped}
+          isFlipped={this.state.flipped.has(3)}
           flipDirection="horizontal"
         >
           <Card>
@@ -111,7 +119,7 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(3)}>Click to flip</Button>
           </Card>
 
           <Card>
@@ -127,7 +135,7 @@ export default class Help extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            <Button onClick={this.handleClick}>Click to flip</Button>
+            <Button onClick={this.handleClick(3)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
       </div>
