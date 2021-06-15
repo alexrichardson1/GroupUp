@@ -70,25 +70,31 @@ export default class Groups extends Component {
   };
 
   filterGroupsOnReq = (reqName, reqVar) => {
-    console.log("---Adding/changing filter---");
-    console.log("Old list of filters:");
-    console.log(this.state.activeFilters);
-    console.log(reqName + " " + reqVar);
     this.addFilter(reqName, reqVar);
-    this.state.filteredGroups = this.state.groups;
-    this.setState({ ...this.state });
-    for (const [k, v] of this.state.activeFilters.entries()) {
-      const newFilteredGroups = [];
-      for (let i = 0; i < this.state.filteredGroups.length; i++) {
-        if (this.state.filteredGroups[i].requirements.includes(v)) {
-          newFilteredGroups.push(this.state.filteredGroups[i]);
+    // this.state.filteredGroups = this.state.groups;
+    this.setState(
+      (state) => ({ filteredGroups: state.groups }),
+      () => this.refilter()
+    );
+  };
+
+  refilter = () => {
+    for (const [, v] of this.state.activeFilters.entries()) {
+      let newFilteredGroups = [];
+      if (v == "Any") {
+        console.log("HHHH");
+        newFilteredGroups = [...this.state.filteredGroups];
+        console.log(newFilteredGroups);
+      } else {
+        for (let i = 0; i < this.state.filteredGroups.length; i++) {
+          if (this.state.filteredGroups[i].requirements.includes(v)) {
+            newFilteredGroups.push(this.state.filteredGroups[i]);
+          }
         }
       }
       this.state.filteredGroups = newFilteredGroups;
       this.setState({ ...this.state });
     }
-    console.log(this.state.filteredGroups);
-    console.log("-------");
   };
 
   addFilter = (key, value) => {
@@ -96,7 +102,7 @@ export default class Groups extends Component {
   };
 
   removeFilter = (key) => {
-    this.setState({ activeFilters: this.state.activeFilters.set(key, "Any") });
+    this.filterGroupsOnReq(key, "Any");
   };
 
   createFilterComponents = () => {
