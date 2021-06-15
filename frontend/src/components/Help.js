@@ -32,17 +32,23 @@ export default class Help extends Component {
           flipDirection="horizontal"
         >
           <Card>
-            {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>What Is A Hackathon?</Card.Title>
+              <Card.Img
+                variant="top"
+                src={process.env.PUBLIC_URL + "/hackathons.webp"}
+              />
               <Button onClick={this.handleClick(1)}>Click to flip</Button>
             </Card.Body>
           </Card>
 
           <Card>
-            {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>Information</Card.Title>
+              <Card.Img
+                variant="top"
+                src={process.env.PUBLIC_URL + "/hackathons.webp"}
+              />
               <Card.Text>
                 Hackathons are a time llmited event where teams work together to
                 build software for an array of reasons. They are a great way of
@@ -61,16 +67,23 @@ export default class Help extends Component {
           flipDirection="horizontal"
         >
           <Card>
-            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body>
               <Card.Title>How To Join A Group</Card.Title>
+              <Card.Img
+                variant="top"
+                src={process.env.PUBLIC_URL + "/groups.webp"}
+              />
               <Button onClick={this.handleClick(2)}>Click to flip</Button>
             </Card.Body>
           </Card>
+
           <Card>
-            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body>
               <Card.Title>Information</Card.Title>
+              <Card.Img
+                variant="top"
+                src={process.env.PUBLIC_URL + "/groups.webp"}
+              />
               <Card.Text>
                 Choose a Hackathon. Groups should be displayed for your chosen
                 Hackathon. Make use of the filters if you have specific
@@ -86,7 +99,6 @@ export default class Help extends Component {
           flipDirection="horizontal"
         >
           <Card>
-            {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>How To Advertise Your Group</Card.Title>
               <Button onClick={this.handleClick(3)}>Click to flip</Button>
