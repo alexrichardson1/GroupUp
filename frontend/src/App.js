@@ -11,6 +11,7 @@ import Login from "components/auth/Login";
 import SignUp from "components/auth/SignUp";
 import ForgotPassword from "components/auth/ForgotPassword";
 // import data from "Teams";
+import Help from "components/Help";
 
 function GroupsFunc() {
   const { id } = useParams();
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/group/:id" children={<DetailedGroup />}></Route>
         <Route path="/listing/:id" children={<GroupsFunc />}></Route>
         <Route path="/createGroup/:id" children={<CreateGroupFunc />}></Route>
+        <Route path="/help" exact component={Help}></Route>
       </div>
     </Router>
   );
