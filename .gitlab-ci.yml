@@ -6,6 +6,7 @@ before_script:
 stages:
   - build
   - test
+  - server
   - deploy
 
 cache:
@@ -25,6 +26,15 @@ test-job:
     - yarn install
     - CI=true yarn test
   needs: []
+
+stage-server:
+  stage: server
+  before_script: []
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_SERVER_NAME --api-key=$HEROKU_API_KEY
 
 deploy-to-heroku:
   stage: deploy
