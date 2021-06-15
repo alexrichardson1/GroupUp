@@ -36,6 +36,7 @@ export default class Help extends Component {
               <Card.Title>What Is A Hackathon?</Card.Title>
               <Card.Img
                 variant="top"
+                className="cardPicture"
                 src={process.env.PUBLIC_URL + "/hackathons.webp"}
               />
               <Button onClick={this.handleClick(1)}>Click to flip</Button>
@@ -47,6 +48,7 @@ export default class Help extends Component {
               <Card.Title>Information</Card.Title>
               <Card.Img
                 variant="top"
+                className="cardPicture"
                 src={process.env.PUBLIC_URL + "/hackathons.webp"}
               />
               <Card.Text>
@@ -71,6 +73,7 @@ export default class Help extends Component {
               <Card.Title>How To Join A Group</Card.Title>
               <Card.Img
                 variant="top"
+                className="cardPicture"
                 src={process.env.PUBLIC_URL + "/groups.webp"}
               />
               <Button onClick={this.handleClick(2)}>Click to flip</Button>
@@ -82,6 +85,7 @@ export default class Help extends Component {
               <Card.Title>Information</Card.Title>
               <Card.Img
                 variant="top"
+                className="cardPicture"
                 src={process.env.PUBLIC_URL + "/groups.webp"}
               />
               <Card.Text>
@@ -106,7 +110,6 @@ export default class Help extends Component {
           </Card>
 
           <Card>
-            {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>Information</Card.Title>
               <Card.Text>
