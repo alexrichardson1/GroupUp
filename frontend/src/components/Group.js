@@ -23,8 +23,18 @@ const Group = ({ group, requirementNames }) => {
               <tbody>
                 {Object.entries(requirements).map(([key, val]) => (
                   <tr>
-                    <td>{requirementNames[key]}</td>
-                    <td>{val}</td>
+                    <td>
+                      {requirementNames[key] === "Timezone"
+                        ? "Timezone (UTC +/-)"
+                        : requirementNames[key]}
+                    </td>
+                    <td>
+                      {requirementNames[key] === "Timezone"
+                        ? val > -1
+                          ? "+" + val
+                          : val
+                        : val}
+                    </td>
                   </tr>
                 ))}
               </tbody>
