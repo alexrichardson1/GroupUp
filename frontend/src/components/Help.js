@@ -17,11 +17,7 @@ export default class Help extends Component {
     return (e) => {
       e.preventDefault();
       let flipped = new Set(this.state.flipped);
-      if (flipped.has(id)) {
-        flipped.delete(id);
-      } else {
-        flipped.add(id);
-      }
+      flipped.has(id) ? flipped.delete(id) : flipped.add(id);
       this.setState({ flipped });
     };
   }
