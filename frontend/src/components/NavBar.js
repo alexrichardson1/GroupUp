@@ -69,14 +69,9 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
           <img
             className="logoImage"
             src="https://i.imgur.com/w92t1xH.png"
-            alt="logoooo"
+            alt="group up logo"
           />
         </LinkContainer>
-        <img
-          className="splitterImage"
-          src={process.env.PUBLIC_URL + "/three-dots.svg"}
-          alt="splitter"
-        />
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -104,20 +99,20 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
               title="Help"
               id="collasible-nav-dropdown"
               className="ml-auto navHelp"
-              style={{ color: "rgb(238, 237, 237)" }}
             >
               <img
                 className="splitterImage"
                 src={process.env.PUBLIC_URL + "/info-circle.svg"}
-                alt="splitter"
+                alt="help"
               />
             </Navbar.Brand>
           </LinkContainer>
           <NavDropdown
-            className="navDropdown"
+            className="navAccount"
             expand
             title="Account"
             id="collasible-nav-dropdown"
+            style={{ color: "rgb(238, 237, 237)" }}
           >
             <LinkContainer to="/home" activeClassName="">
               <NavDropdown.Item href="#action/3.1">My Groups</NavDropdown.Item>
