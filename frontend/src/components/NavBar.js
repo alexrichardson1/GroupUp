@@ -80,8 +80,9 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto" className="container-fluid">
+
+      <Navbar.Collapse>
+        <Nav className="mr=auto">
           {!logginIn && (
             <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
               {loginMessage()}
@@ -96,12 +97,28 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             return link;
           })}
         </Nav>
-        <Nav
-          style={{ "background-color": "rgb(0,0,0,0)" }}
-          // className="navAccount"
-          className="container-fluid"
-        >
-          <NavDropdown expand title="Account" id="collasible-nav-dropdown">
+
+        <Nav className="ms-auto" pullRight>
+          <LinkContainer to="/help">
+            <Navbar.Brand
+              title="Help"
+              id="collasible-nav-dropdown"
+              className="ml-auto navHelp"
+              style={{ color: "rgb(238, 237, 237)" }}
+            >
+              <img
+                className="splitterImage"
+                src={process.env.PUBLIC_URL + "/info-circle.svg"}
+                alt="splitter"
+              />
+            </Navbar.Brand>
+          </LinkContainer>
+          <NavDropdown
+            className="navDropdown"
+            expand
+            title="Account"
+            id="collasible-nav-dropdown"
+          >
             <LinkContainer to="/home" activeClassName="">
               <NavDropdown.Item href="#action/3.1">My Groups</NavDropdown.Item>
             </LinkContainer>
@@ -114,17 +131,6 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             </LinkContainer>
           </NavDropdown>
         </Nav>
-        <LinkContainer to="/help">
-          <Navbar.Brand
-            className="navHelp"
-            expand
-            title="Account"
-            id="collasible-nav-dropdown"
-            style={{ color: "white" }}
-          >
-            Help
-          </Navbar.Brand>
-        </LinkContainer>
       </Navbar.Collapse>
     </Navbar>
   );
