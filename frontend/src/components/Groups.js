@@ -129,16 +129,22 @@ export default class Groups extends Component {
         <Navbar renderBool={[true, true, true, false]} create={false} />
         <Container>
           <Row>
-            <h3>
-              {this.state.filteredGroups.length} Groups looking for members in: 
-              {this.state.project.name}
-            </h3>
+            <Col>
+              <h3>
+                {this.state.filteredGroups.length} Groups looking for members
+                in: 
+                {this.state.project.name}
+              </h3>
+            </Col>
+            <Col className="advertCol align-items-center">
+              <LinkContainer to={`/createGroup/${this.props.id}`}>
+                <Button className="advertBtn">Advertise my group</Button>
+              </LinkContainer>
+            </Col>
           </Row>
-          <Row>
-            <LinkContainer to={`/createGroup/${this.props.id}`}>
-              <Button>Advertise my group!</Button>
-            </LinkContainer>
-          </Row>
+          {/* <Row> */}
+
+          {/* </Row> */}
           <Row>
             <Col className="filterCol">
               <h5>Filters:</h5>
