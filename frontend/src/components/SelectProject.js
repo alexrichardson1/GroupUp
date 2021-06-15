@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { config } from "../Constants";
 
 const SelectProject = () => {
   const history = useHistory();
@@ -16,7 +17,7 @@ const SelectProject = () => {
   useEffect(() => {
     const getProjects = async () => {
       await axios
-        .get("http://localhost:5000/project")
+        .get(`${config}/project`)
         .then((res) => {
           const projects = res.data;
           console.log(projects);

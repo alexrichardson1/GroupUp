@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Button, ListGroup } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
+import { config } from "../Constants";
 
 const DetailedGroup = () => {
   const { id } = useParams();
