@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
+import { config } from "../Constants";
 import {
   Form,
   Button,
@@ -17,7 +18,7 @@ import NavBar from "components/NavBar";
 async function addGroup(data) {
   var result = {};
   await axios
-    .post(`http://localhost:5000/group/add`, data)
+    .post(`${config.API_URL}/group/add`, data)
     .then((res) => {
       const group = res.data;
       result = group;
@@ -46,7 +47,7 @@ class CreateGroup extends Component {
   getProject = async () => {
     var result = [];
     await axios
-      .post("http://localhost:5000/project/one", {
+      .post(`${config.API_URL}/project/one`, {
         projectid: this.props.id,
       })
       .then((res) => {

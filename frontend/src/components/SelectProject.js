@@ -17,7 +17,7 @@ const SelectProject = () => {
   useEffect(() => {
     const getProjects = async () => {
       await axios
-        .get(`${config}/project`)
+        .get(`${config.API_URL}/project`)
         .then((res) => {
           const projects = res.data;
           console.log(projects);

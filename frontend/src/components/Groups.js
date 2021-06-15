@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/NavBar";
 import axios from "axios";
 import Filter from "components/Filter";
+import { config } from "../Constants";
 
 export default class Groups extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class Groups extends Component {
   async getGroups() {
     var result = [];
     await axios
-      .post("http://localhost:5000/group/hackathon", {
+      .post(`${config.API_URL}/group/hackathon`, {
         hackathonid: this.props.id,
       })
 
@@ -39,7 +40,7 @@ export default class Groups extends Component {
   async getProject() {
     var result = "";
     await axios
-      .get("http://localhost:5000/project")
+      .get(`${config.API_URL}/project`)
       .then((res) => {
         const projects = res.data;
         result = projects.filter(

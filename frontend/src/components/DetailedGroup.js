@@ -25,7 +25,7 @@ const DetailedGroup = () => {
   useEffect(() => {
     const getGroup = async () => {
       await axios
-        .post("http://localhost:5000/group/one", {
+        .post(`${config.API_URL}/group/one`, {
           groupid: groupId,
         })
         .then((res) => {
