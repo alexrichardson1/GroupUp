@@ -38,7 +38,7 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
-              <Card.Title>How To Join A Group</Card.Title>
+              <Card.Title>What Is A Hackathon?</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
@@ -54,11 +54,14 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
-              <Card.Title>The Back</Card.Title>
+              <Card.Title>Information</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                Hackathons are a time llmited event where teams work together to
+                build software for an array of reasons. They are a great way of
+                sharpening your design technique, refining your programming
+                ability and making friends. Use GroupUp to find your dream
+                hackathon team! Use our filters to narrow down groups based on
+                the programming language used, their time zone and more!
               </Card.Text>
             </Card.Body>
             <Card.Footer>
@@ -109,7 +112,7 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
-              <Card.Title>What are Hackathons?</Card.Title>
+              <Card.Title>How To Join A Group</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
