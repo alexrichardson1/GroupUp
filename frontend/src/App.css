@@ -99,6 +99,17 @@ input[type="text"] {
   padding-top: 20px;
 }
 
+.advertBtn {
+  max-width: 100px;
+  background-color: grey;
+  font-size: small;
+  font-style: italic;
+}
+
+.advertCol {
+  max-width: 130px;
+}
+
 .listingsCol {
   border-left: 2px ridge rgb(172, 172, 172);
 }
