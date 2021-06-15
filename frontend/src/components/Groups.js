@@ -71,7 +71,6 @@ export default class Groups extends Component {
 
   filterGroupsOnReq = (reqName, reqVar) => {
     this.addFilter(reqName, reqVar);
-    // this.state.filteredGroups = this.state.groups;
     this.setState(
       (state) => ({ filteredGroups: state.groups }),
       () => this.refilter()
@@ -81,7 +80,7 @@ export default class Groups extends Component {
   refilter = () => {
     for (const [, v] of this.state.activeFilters.entries()) {
       let newFilteredGroups = [];
-      if (v == "Any") {
+      if (v === "Any") {
         console.log("HHHH");
         newFilteredGroups = [...this.state.filteredGroups];
         console.log(newFilteredGroups);
@@ -92,6 +91,7 @@ export default class Groups extends Component {
           }
         }
       }
+      // eslint-disable-next-line
       this.state.filteredGroups = newFilteredGroups;
       this.setState({ ...this.state });
     }
