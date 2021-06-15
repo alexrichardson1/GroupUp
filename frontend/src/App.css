@@ -170,24 +170,18 @@ input[type="text"] {
 }
 
 .navAccount {
-  /* align-self: right; */
-  /* align-self: flex-end; */
-  position:fixed;
+  align-self: right;
+  align-self: flex-end;
+  /* position:fixed;
   right:30px;
   top:10px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0); */
 
 }
 
 .navHelp {
-  /* align-self: right; */
-  /* align-self: flex-end; */
-  position:fixed;
-  right:130px;
-  top:10px;
-  color: white;
+  color: rgb(238, 237, 237);
   background-color: rgba(0, 0, 0, 0);
-
 }
 
 .formBox {

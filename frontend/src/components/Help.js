@@ -70,10 +70,11 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body>
-              <Card.Title>The Back</Card.Title>
+              <Card.Title>Information</Card.Title>
               <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.
+                Choose a Hackathon. Groups should be displayed for your chosen
+                Hackathon. Make use of the filters if you have specific
+                requirements. Click 'Find out more', then click 'Join Group'
               </Card.Text>
               <Button onClick={this.handleClick(2)}>Click to flip</Button>
             </Card.Body>
