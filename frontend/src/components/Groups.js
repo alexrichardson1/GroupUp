@@ -140,8 +140,11 @@ export default class Groups extends Component {
             </LinkContainer>
           </Row>
           <Row>
-            <Col>{this.createFilterComponents()}</Col>
-            <Col>
+            <Col className="filterCol">
+              <h5>Filters:</h5>
+              {this.createFilterComponents()}
+            </Col>
+            <Col className="listingsCol">
               {this.state.filteredGroups.map((group) => (
                 <Group
                   group={group}
