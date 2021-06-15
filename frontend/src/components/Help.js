@@ -64,10 +64,6 @@ export default class Help extends Component {
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body>
               <Card.Title>How To Join A Group</Card.Title>
-              <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.
-              </Card.Text>
               <Button onClick={this.handleClick(2)}>Click to flip</Button>
             </Card.Body>
           </Card>
@@ -92,11 +88,6 @@ export default class Help extends Component {
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>How To Advertise Your Group</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
               <Button onClick={this.handleClick(3)}>Click to flip</Button>
             </Card.Body>
           </Card>
