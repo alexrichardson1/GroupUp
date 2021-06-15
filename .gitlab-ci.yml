@@ -31,6 +31,7 @@ stage-server:
   stage: server
   before_script: []
   script:
+    - cd backend
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
