@@ -111,6 +111,17 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             </LinkContainer>
           </NavDropdown>
         </Nav>
+        <LinkContainer to="/help">
+          <Navbar.Brand
+            className="navHelp"
+            expand
+            title="Account"
+            id="collasible-nav-dropdown"
+            style={{ color: "white" }}
+          >
+            Help
+          </Navbar.Brand>
+        </LinkContainer>
       </Navbar.Collapse>
     </Navbar>
   );
