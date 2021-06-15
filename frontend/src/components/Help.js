@@ -96,11 +96,10 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
-              <Card.Title>The Back</Card.Title>
+              <Card.Title>Information</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                Choose a Hackathon. Click 'Advertise my group!'. Fill out the
+                required information. Click 'Submit'.
               </Card.Text>
               <Button onClick={this.handleClick(3)}>Click to flip</Button>
             </Card.Body>
