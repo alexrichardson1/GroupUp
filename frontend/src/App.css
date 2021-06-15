@@ -179,6 +179,17 @@ input[type="text"] {
 
 }
 
+.navHelp {
+  /* align-self: right; */
+  /* align-self: flex-end; */
+  position:fixed;
+  right:130px;
+  top:10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+
+}
+
 .formBox {
   padding-top: 20px;
 }
