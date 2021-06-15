@@ -65,11 +65,13 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
           color: "white",
         }}
       >
-        <img
-          className="logoImage"
-          src="https://i.imgur.com/w92t1xH.png"
-          alt="logoooo"
-        />
+        <LinkContainer to="/home">
+          <img
+            className="logoImage"
+            src="https://i.imgur.com/w92t1xH.png"
+            alt="logoooo"
+          />
+        </LinkContainer>
         <img
           className="splitterImage"
           src={process.env.PUBLIC_URL + "/three-dots.svg"}
@@ -79,7 +81,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="mr-auto" className="container-fluid">
           {!logginIn && (
             <Navbar.Brand style={{ color: "rgb(238, 237, 237)" }}>
               {loginMessage()}
@@ -96,7 +98,8 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
         </Nav>
         <Nav
           style={{ "background-color": "rgb(0,0,0,0)" }}
-          className="navAccount"
+          // className="navAccount"
+          className="container-fluid"
         >
           <NavDropdown expand title="Account" id="collasible-nav-dropdown">
             <LinkContainer to="/home" activeClassName="">
