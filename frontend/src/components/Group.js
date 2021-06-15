@@ -1,4 +1,4 @@
-import { Button, Card, ListGroup, Table } from "react-bootstrap";
+import { Button, Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Group = ({ group, requirementNames }) => {
