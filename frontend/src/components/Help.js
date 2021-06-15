@@ -113,6 +113,11 @@ export default class Help extends Component {
           <Card>
             <Card.Body>
               <Card.Title>How To Advertise Your Group</Card.Title>
+              <Card.Img
+                variant="top"
+                className="cardPicture"
+                src={process.env.PUBLIC_URL + "/announce.webp"}
+              />
             </Card.Body>
             <Card.Footer>
               <Button onClick={this.handleClick(3)}>Click to flip</Button>
@@ -122,6 +127,11 @@ export default class Help extends Component {
           <Card>
             <Card.Body>
               <Card.Title>Information</Card.Title>
+              <Card.Img
+                variant="top"
+                className="cardPicture"
+                src={process.env.PUBLIC_URL + "/announce.webp"}
+              />
               <Card.Text>
                 Choose a Hackathon. Click 'Advertise my group!'. Fill out the
                 required information. Click 'Submit'.
