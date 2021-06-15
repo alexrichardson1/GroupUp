@@ -121,8 +121,12 @@ input[type="text"] {
   align-self: center;
   background-color: rgba(0, 0, 0, 0);
   height: 35px;
-  /* padding-right: 10px; */
-  /* height: 10px; */
+  border-right: 5px ridge white;
+  outline-offset: 10px;
+}
+
+.logoImage:hover {
+  cursor: pointer;
 }
 
 .navBar {
@@ -170,23 +174,12 @@ input[type="text"] {
 }
 
 .navAccount {
-  align-self: right;
-  align-self: flex-end;
-  /* position:fixed;
-  right:30px;
-  top:10px;
-  background-color: rgba(0, 0, 0, 0); */
-
-}
-
-.navHelp {
-  color: rgb(238, 237, 237);
   background-color: rgba(0, 0, 0, 0);
+  color: white;
 }
 
 .formBox {
   padding-top: 20px;
 }
-
 
 /* colours: 17252a 2b7a7b 3aafa9 def2f1*/
