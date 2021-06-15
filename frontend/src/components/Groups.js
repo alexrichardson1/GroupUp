@@ -143,7 +143,11 @@ export default class Groups extends Component {
             <Col>{this.createFilterComponents()}</Col>
             <Col>
               {this.state.filteredGroups.map((group) => (
-                <Group group={group} key={group.id} />
+                <Group
+                  group={group}
+                  requirementNames={this.state.requirements}
+                  key={group.id}
+                />
               ))}
             </Col>
           </Row>
