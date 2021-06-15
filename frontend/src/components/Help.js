@@ -35,16 +35,8 @@ export default class Help extends Component {
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
               <Card.Title>What Is A Hackathon?</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
+              <Button onClick={this.handleClick(1)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(1)}>Click to flip</Button>
           </Card>
 
           <Card>
@@ -59,11 +51,8 @@ export default class Help extends Component {
                 hackathon team! Use our filters to narrow down groups based on
                 the programming language used, their time zone and more!
               </Card.Text>
+              <Button onClick={this.handleClick(1)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(1)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
 
@@ -74,16 +63,13 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body>
-              <Card.Title>How To Post Your Group</Card.Title>
+              <Card.Title>How To Join A Group</Card.Title>
               <Card.Text>
                 This card has supporting text below as a natural lead-in to
                 additional content.
               </Card.Text>
+              <Button onClick={this.handleClick(2)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(2)}>Click to flip</Button>
           </Card>
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
@@ -93,11 +79,8 @@ export default class Help extends Component {
                 This card has supporting text below as a natural lead-in to
                 additional content.
               </Card.Text>
+              <Button onClick={this.handleClick(2)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(2)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
 
@@ -108,17 +91,14 @@ export default class Help extends Component {
           <Card>
             {/* <Card.Img variant="top" src="../images/groups.webp/100px160" /> */}
             <Card.Body>
-              <Card.Title>How To Join A Group</Card.Title>
+              <Card.Title>How To Advertise Your Group</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
               </Card.Text>
+              <Button onClick={this.handleClick(3)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(3)}>Click to flip</Button>
           </Card>
 
           <Card>
@@ -130,11 +110,8 @@ export default class Help extends Component {
                 lead-in to additional content. This content is a little bit
                 longer.
               </Card.Text>
+              <Button onClick={this.handleClick(3)}>Click to flip</Button>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-            <Button onClick={this.handleClick(3)}>Click to flip</Button>
           </Card>
         </ReactCardFlip>
       </div>
