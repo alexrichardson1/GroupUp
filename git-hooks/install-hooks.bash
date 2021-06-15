@@ -5,7 +5,7 @@
 HOOK_DIR=git-hooks
 GIT_DIR=$(git rev-parse --git-dir)
 
-chmod +x pre-commit.py commit-msg.py pre-push.bash post-checkout.py
+chmod +x pre-commit.py commit-msg.py pre-push.bash
 
 echo "Installing hooks..."
 # symlinks to the pre-commit script
