@@ -19,7 +19,6 @@ const DetailedGroup = () => {
   const [projectId, setProjectId] = useState(0);
   const [project, setProject] = useState([]);
 
-  const membersNeeded = maxMembers - teammates.length;
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
 
@@ -60,7 +59,7 @@ const DetailedGroup = () => {
 
     getProject();
     getGroup();
-  }, [groupId]);
+  }, [groupId, projectId]);
 
   return (
     <React.Fragment>
