@@ -93,7 +93,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
           })}
         </Nav>
 
-        <Nav className="ms-auto" pullRight>
+        <Nav className="ms-auto" pullright>
           <LinkContainer to="/help">
             <Navbar.Brand
               title="Help"
