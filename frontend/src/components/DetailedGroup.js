@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
@@ -6,6 +6,7 @@ import { Button, ListGroup, Table } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
+import { UserContext } from "components/auth/UserContext";
 
 const DetailedGroup = () => {
   const { id } = useParams();
@@ -18,9 +19,27 @@ const DetailedGroup = () => {
   const [adRequirements, setAdRequirements] = useState("");
   const [projectId, setProjectId] = useState(0);
   const [project, setProject] = useState([]);
+  const { value } = useContext(UserContext);
 
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
+
+  const joinGroup = async () => {
+    var result = {};
+    await axios
+      .post(`${config.API_URL}/group/join`, {
+        groupid: groupId,
+        name: value,
+      })
+      .then((res) => {
+        const group = res.data;
+        result = group;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return result;
+  };
 
   useEffect(() => {
     const getGroup = async () => {
@@ -109,7 +128,7 @@ const DetailedGroup = () => {
         </div>
       )}
       <Button onClick={() => history.goBack()}>Go Back</Button>
-      <Button>Join Group</Button>
+      <Button onClick={() => joinGroup()}>Join Group</Button>
     </React.Fragment>
   );
 };
