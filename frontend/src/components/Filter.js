@@ -16,7 +16,9 @@ const Filter = ({
       <Accordion>
         <Card>
           <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-            {requirementName}
+            {requirementName === "Timezone"
+              ? "Timezone (UTC +/-)"
+              : requirementName}
             <img
               className="dropdownIcons"
               src={process.env.PUBLIC_URL + "/chevron-down.svg"}
@@ -39,7 +41,11 @@ const Filter = ({
                       key={req}
                       onChange={() => filterFunction(requirementName, req)}
                     >
-                      {req}
+                      {requirementName === "Timezone"
+                        ? req > -1
+                          ? "+" + req
+                          : req
+                        : req}
                     </ToggleButton>
                   );
                 })}
