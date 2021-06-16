@@ -1,5 +1,7 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { UserContext } from "components/auth/UserContext";
+import { useContext } from "react";
 
 function getLinkElems(renderBool, linkList, linkNameList) {
   const boldPosition = renderBool.filter((item) => item).length;
@@ -43,6 +45,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
   const logginIn = renderBool.reduce((val, next) => {
     return val && next;
   });
+  const { value } = useContext(UserContext);
   const loginMessage = () => {
     switch (loginPage) {
       case 0:
@@ -110,11 +113,14 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
           <NavDropdown
             className="navAccount"
             title={
-              <img
-                className="splitterImage"
-                src={process.env.PUBLIC_URL + "/person-circle.svg"}
-                alt="my-account"
-              />
+              <span className="accountSpan">
+                {value}
+                <img
+                  className="splitterImage"
+                  src={process.env.PUBLIC_URL + "/person-circle.svg"}
+                  alt="my-account"
+                />
+              </span>
             }
             id="collasible-nav-dropdown"
             style={{ color: "rgb(238, 237, 237)" }}
