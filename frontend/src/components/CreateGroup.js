@@ -195,16 +195,6 @@ class CreateGroup extends Component {
     return components;
   };
 
-  testFunc = () => {
-    console.log(this.state.requirementValues);
-    console.log(
-      "Requirements: " +
-        this.state.requirementNames +
-        this.state.requirementValues +
-        "..."
-    );
-  };
-
   render() {
     return (
       <Container>
@@ -213,7 +203,6 @@ class CreateGroup extends Component {
           create={true}
           id={this.props.id}
         />
-        <Button onClick={this.testFunc}>TESTTEETSTS</Button>
         <h1>Advertise your group</h1>
         <Form onSubmit={this.handleSubmit}>
           <Col>
