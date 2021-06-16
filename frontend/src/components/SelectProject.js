@@ -1,18 +1,12 @@
 import React from "react";
-import { Dropdown, Table, Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useHistory } from "react-router-dom";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { config } from "../Constants";
 
 const SelectProject = () => {
-  const history = useHistory();
-  const handleProjectClick = (id) => {
-    history.push("/listing/" + id);
-  };
-
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -30,11 +24,6 @@ const SelectProject = () => {
     };
     getProjects();
   }, []);
-
-  const testFunc = () => {
-    console.log("hellloooo");
-    console.log(projects);
-  };
 
   return (
     <div>
@@ -66,9 +55,6 @@ const SelectProject = () => {
           ))}
         </tbody>
       </Table>
-      {/* <LinkContainer to="/listings">
-        <Button>Show groups</Button>
-      </LinkContainer> */}
     </div>
   );
 };
