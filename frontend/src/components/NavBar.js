@@ -109,8 +109,13 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
           </LinkContainer>
           <NavDropdown
             className="navAccount"
-            expand
-            title="Account"
+            title={
+              <img
+                className="splitterImage"
+                src={process.env.PUBLIC_URL + "/person-circle.svg"}
+                alt="my-account"
+              />
+            }
             id="collasible-nav-dropdown"
             style={{ color: "rgb(238, 237, 237)" }}
           >
