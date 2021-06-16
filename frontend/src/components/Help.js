@@ -142,6 +142,45 @@ export default class Help extends Component {
             </Card.Footer>
           </Card>
         </ReactCardFlip>
+
+        <ReactCardFlip
+          isFlipped={this.state.flipped.has(4)}
+          flipDirection="horizontal"
+        >
+          <Card>
+            <Card.Body>
+              <Card.Title>How do hackathons work?</Card.Title>
+              <Card.Img
+                variant="top"
+                className="cardPicture"
+                src={process.env.PUBLIC_URL + "/hackathons2.jpg"}
+              />
+            </Card.Body>
+            <Card.Footer>
+              <Button onClick={this.handleClick(4)}>Click to flip</Button>
+            </Card.Footer>
+          </Card>
+
+          <Card>
+            <Card.Body>
+              <Card.Title>Information</Card.Title>
+              <Card.Img
+                variant="top"
+                className="cardPicture"
+                src={process.env.PUBLIC_URL + "/hackathons2.jpg"}
+              />
+              <Card.Text>
+                A theme is given to you and a time limit. Work together with
+                your team to produce some software that is linked to the theme
+                in that time limit and present it to try and win the best
+                project award!
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <Button onClick={this.handleClick(4)}>Click to flip</Button>
+            </Card.Footer>
+          </Card>
+        </ReactCardFlip>
       </div>
     );
   }
