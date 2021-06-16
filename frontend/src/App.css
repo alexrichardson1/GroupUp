@@ -196,6 +196,7 @@ input[type="text"] {
 .navAccount {
   background-color: rgba(0, 0, 0, 0);
   color: white;
+  padding-right: 40px;
 }
 
 .formBox {
