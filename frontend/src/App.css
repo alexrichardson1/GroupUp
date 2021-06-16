@@ -199,6 +199,13 @@ input[type="text"] {
   padding-right: 40px;
 }
 
+.accountSpan {
+  padding-left: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  margin-right: 5px;
+}
+
 .formBox {
   padding-top: 20px;
 }
