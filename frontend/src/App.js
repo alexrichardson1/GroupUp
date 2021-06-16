@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Groups from "components/Groups";
 import Home from "components/Home";
 import SelectProject from "components/SelectProject";
@@ -12,6 +12,7 @@ import SignUp from "components/auth/SignUp";
 import ForgotPassword from "components/auth/ForgotPassword";
 // import data from "Teams";
 import Help from "components/Help";
+import { UserContext } from "components/auth/UserContext";
 
 function GroupsFunc() {
   const { id } = useParams();
@@ -24,20 +25,28 @@ function CreateGroupFunc() {
 }
 
 const App = () => {
+  const [value, setValue] = useState("");
+
   return (
     <Router>
-      <div className="container">
-        <Route path="/" exact component={Login}></Route>
-        <Route path="/signup" exact component={SignUp}></Route>
-        <Route path="/forgotpassword" exact component={ForgotPassword}></Route>
-        <Route path="/home" exact component={Home}></Route>
-        <Route path="/selection" exact component={SelectProject}></Route>
-        {/* <Route path="/listings" exact render={() => <Groups />}></Route> */}
-        <Route path="/group/:id" children={<DetailedGroup />}></Route>
-        <Route path="/listing/:id" children={<GroupsFunc />}></Route>
-        <Route path="/createGroup/:id" children={<CreateGroupFunc />}></Route>
-        <Route path="/help" exact component={Help}></Route>
-      </div>
+      <UserContext.Provider value={{ value, setValue }}>
+        <div className="container">
+          <Route path="/" exact component={Login}></Route>
+          <Route path="/signup" exact component={SignUp}></Route>
+          <Route
+            path="/forgotpassword"
+            exact
+            component={ForgotPassword}
+          ></Route>
+          <Route path="/home" exact component={Home}></Route>
+          <Route path="/selection" exact component={SelectProject}></Route>
+          {/* <Route path="/listings" exact render={() => <Groups />}></Route> */}
+          <Route path="/group/:id" children={<DetailedGroup />}></Route>
+          <Route path="/listing/:id" children={<GroupsFunc />}></Route>
+          <Route path="/createGroup/:id" children={<CreateGroupFunc />}></Route>
+          <Route path="/help" exact component={Help}></Route>
+        </div>
+      </UserContext.Provider>
     </Router>
   );
 };
