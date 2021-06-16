@@ -8,6 +8,7 @@ function sql(filename) {
 
 export const groupSQL = {
   addGroup: sql("../sql/addGroup.sql"),
+  joinGroup: sql("../sql/joinGroup.sql"),
   getAllGroups: sql("../sql/getAllGroups.sql"),
   getHackathonGroups: sql("../sql/getHackathonGroups.sql"),
   getGroup: sql("../sql/getGroup.sql"),
