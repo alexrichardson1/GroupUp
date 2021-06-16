@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/NavBar";
 import axios from "axios";
 import Filter from "components/Filter";
-import { config } from "../Constants";
+import { config } from "Constants";
 
 export default class Groups extends Component {
   constructor(props) {
