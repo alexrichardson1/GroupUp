@@ -89,7 +89,7 @@ const DetailedGroup = () => {
         create={false}
       />
       <h1>{leaderFirstName}'s Group</h1>
-      <p>1 members needed.</p>
+      <div>1 members needed.</div>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -125,7 +125,7 @@ const DetailedGroup = () => {
       {adRequirements && (
         <div>
           <h5>Additional Requirements:</h5>
-          <p>{adRequirements}</p>
+          <div>{adRequirements}</div>
         </div>
       )}
       <Button onClick={() => history.goBack()}>Go Back</Button>
