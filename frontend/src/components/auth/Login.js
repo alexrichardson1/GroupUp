@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // import { LinkContainer } from "react-router-bootstrap";s
 import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
-import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
