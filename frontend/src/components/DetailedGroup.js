@@ -35,7 +35,6 @@ const DetailedGroup = () => {
         const group = res.data;
         result = group;
         alert("Successfully joined group!");
-        window.location.reload(false);
       })
       .catch((error) => {
         console.log(error);
