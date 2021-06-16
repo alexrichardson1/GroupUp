@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState("");
+  const [username, setUsername] = useState("");
   // const { value, setValue } = useContext(UserContext);
   const { setValue } = useContext(UserContext);
 
@@ -18,12 +18,12 @@ const Login = () => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
 
-    setUserEmail(value);
+    setUsername(value);
     console.log("gelllo");
   };
 
   const handleSubmit = () => {
-    setValue(userEmail);
+    setValue(username);
     history.push("/home");
   };
 
@@ -33,12 +33,12 @@ const Login = () => {
       <h2>Login!</h2>
       <Form>
         <Form.Group>
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="you@email.com"
-            name="userEmail"
-            value={userEmail}
+            placeholder="John Smith"
+            name="username"
+            value={username}
             onChange={handleInputChange}
           />
           <Form.Text className="text-muted">
