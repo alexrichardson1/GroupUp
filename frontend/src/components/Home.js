@@ -5,7 +5,7 @@ import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
-import Group from "components/Group";
+// import Group from "components/Group";
 
 export default class Home extends Component {
   static contextType = UserContext;
