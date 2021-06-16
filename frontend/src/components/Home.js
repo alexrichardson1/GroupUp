@@ -5,6 +5,7 @@ import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
+import Group from "components/Group";
 
 export default class Home extends Component {
   static contextType = UserContext;
@@ -57,13 +58,13 @@ export default class Home extends Component {
 
   filterGroupsOnName = () => {
     // const { user, setUser } = this.context;
-    this.state.groups.filter((group) => group.leader === "Reece");
+    // TODO: change James Smith to value
+    return this.state.groups.filter((group) => group.leader === "James Smith");
   };
 
   render() {
     return (
       <div>
-        <Button onClick={this.filterGroupsOnName()}></Button>
         <NavBar renderBool={[true, false, false, false]} create={false} />
         <Jumbotron>
           <h1 className="title">Welcome to GroupUp</h1>
@@ -74,34 +75,27 @@ export default class Home extends Component {
             <Button>Get Started</Button>
           </LinkContainer>
           <h3 className="groupsHome">Groups you're already in.</h3>
-          <Card border="secondary">
-            <Card.Body>
-              <Card.Title>Jason Bourne's Group</Card.Title>
-              <Card.Text>
-                <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
-                <ListGroup.Item variant="flush">You</ListGroup.Item>
-                <ListGroup.Item variant="flush">Alex Duku</ListGroup.Item>
-                <ListGroup.Item variant="flush">Jaimi Ajmeera</ListGroup.Item>
-              </Card.Text>
-              <LinkContainer to={"/group/0"}>
-                <Button>More Info</Button>
-              </LinkContainer>
-            </Card.Body>
-          </Card>
-          <Card border="secondary">
-            <Card.Body>
-              <Card.Title>Alice Ecila's Group</Card.Title>
-              <Card.Text>
-                <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
-                <ListGroup.Item variant="flush">You</ListGroup.Item>
-                <ListGroup.Item variant="flush">Jeff Jeffery</ListGroup.Item>
-                <ListGroup.Item variant="flush">Harry Arnold</ListGroup.Item>
-              </Card.Text>
-              <LinkContainer to={"/group/1"}>
-                <Button>More Info</Button>
-              </LinkContainer>
-            </Card.Body>
-          </Card>
+          <div>
+            {this.filterGroupsOnName().map((group) => (
+              // <Group
+              //   group={group}
+              //   requirementNames={this.state.requirements}
+              //   key={group.id}
+              // />
+              <Card.Body>
+                <Card.Title>{group.leader}'s Group</Card.Title>
+                <Card.Text>
+                  <ListGroup.Item variant="dark">Other Members:</ListGroup.Item>
+                  {group.teammates.map((teammate) => (
+                    <ListGroup.Item variant="flush">{teammate}</ListGroup.Item>
+                  ))}
+                </Card.Text>
+                <LinkContainer to={`/group/${group.id}`}>
+                  <Button>More Info</Button>
+                </LinkContainer>
+              </Card.Body>
+            ))}
+          </div>
         </Jumbotron>
       </div>
     );
