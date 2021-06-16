@@ -28,6 +28,7 @@ const Filter = ({
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <ToggleButtonGroup
+                defaultValue={"Any"}
                 vertical
                 name={requirementName}
                 type="radio"
