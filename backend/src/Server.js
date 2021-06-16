@@ -21,6 +21,16 @@ app.post("/group/add", async (req, res) => {
   }
 });
 
+app.post("/group/join", async (req, res) => {
+  try {
+    const joinedGroup = await Database.joinGroup(req.body);
+    console.log(joinedGroup);
+    res.json(joinedGroup);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.get("/group", async (req, res) => {
   try {
     const groups = await Database.getAllGroups();
