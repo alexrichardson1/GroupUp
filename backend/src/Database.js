@@ -31,6 +31,22 @@ class Database {
     return result;
   }
 
+  static async joinGroup(attr) {
+    var result = {};
+
+    await db
+      .one(groupSQL.joinGroup, attr)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
+
   static async getAllGroups() {
     var result = {};
 
