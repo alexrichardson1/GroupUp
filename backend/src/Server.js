@@ -91,6 +91,16 @@ app.post("/project/one", async (req, res) => {
   }
 });
 
+app.post("/user/login/update", async (req, res) => {
+  try {
+    const updatedUser = await Database.updateUserLogin(req.body);
+    console.log(updatedUser);
+    res.json(updatedUser);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
