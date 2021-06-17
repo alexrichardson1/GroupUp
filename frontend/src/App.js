@@ -26,10 +26,11 @@ function CreateGroupFunc() {
 
 const App = () => {
   const [value, setValue] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <Router>
-      <UserContext.Provider value={{ value, setValue }}>
+      <UserContext.Provider value={{ value, setValue, email, setEmail }}>
         <div className="container">
           <Route path="/" exact component={Login}></Route>
           <Route path="/signup" exact component={SignUp}></Route>
