@@ -35,25 +35,8 @@ export default class Home extends Component {
     return result;
   }
 
-  async getProject() {
-    var result = "";
-    await axios
-      .get(`${config.API_URL}/project`)
-      .then((res) => {
-        const projects = res.data;
-        result = projects.filter(
-          (proj) => proj.id === Number(this.props.id)
-        )[0];
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    return result;
-  }
-
   async componentDidMount() {
     this.setState({ groups: await this.getGroups() });
-    this.setState({ project: await this.getProject() });
   }
 
   filterGroupsOnName = () => {
