@@ -74,21 +74,21 @@ const Home = () => {
   };
 
   const getPersonalisedGroups = () => {
-    const groups = getGroups();
-    const filtered = getGroups().filter((gr) => gr.requirements.includes());
-    return filtered;
+    // const groups = getGroups();
+    // const filtered = getGroups().filter((gr) => gr.requirements.includes());
+    // return filtered;
   };
 
   const personalFilters = () => {
-    {
-      filteredGroups.map((group) => (
-        <Group
-          group={group}
-          requirementNames={this.state.requirements}
-          key={group.id}
-        />
-      ));
-    }
+    // {
+    //   filteredGroups.map((group) => (
+    //     <Group
+    //       group={group}
+    //       requirementNames={this.state.requirements}
+    //       key={group.id}
+    //     />
+    //   ));
+    // }
   };
 
   return (
