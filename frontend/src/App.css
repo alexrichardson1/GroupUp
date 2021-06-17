@@ -206,6 +206,11 @@ input[type="text"] {
   margin-right: 5px;
 }
 
+.datePosted {
+  font-size: 15px;
+  font-style: italic;
+}
+
 .formBox {
   padding-top: 20px;
 }
