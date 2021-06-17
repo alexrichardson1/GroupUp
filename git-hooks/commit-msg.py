@@ -18,7 +18,7 @@ def exit_failure(error_message):
 
 def follows_convention(first_line):
     # strip trailing space
-    first_line = first_line.rstrip()
+    # first_line = first_line.rstrip()
     # located in the README
     types = ["feat", "fix", "style", "refactor",
              "perf", "test", "docs", "chore", "build", "ci"]
@@ -67,7 +67,8 @@ def update_commit_msg(file):
         new_commit_message_append = new_commit_message.append
         for line in lines:
             # remove leading whitespace
-            line = line.lstrip()
+            if line != "\n":
+                line = line.lstrip()
             line_startswith = line.startswith
             # ignore comments
             if line_startswith("#"):
