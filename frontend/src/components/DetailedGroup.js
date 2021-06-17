@@ -129,7 +129,13 @@ const DetailedGroup = () => {
         </div>
       )}
       <Button onClick={() => history.goBack()}>Go Back</Button>
-      <Button onClick={() => joinGroup()}>Join Group</Button>
+      <Button
+        onClick={() => {
+          if (value) joinGroup();
+        }}
+      >
+        Join Group
+      </Button>
     </React.Fragment>
   );
 };
