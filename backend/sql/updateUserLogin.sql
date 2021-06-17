@@ -1,3 +1,3 @@
 UPDATE users
-SET "lastlogin" = ${ time }
-WHERE "email" = ${ email }
+SET "lastlogin" = ${time}
+WHERE "email" = ${email}

@@ -1,3 +1,3 @@
 SELECT *
 FROM groups
-WHERE "id" = $ { groupid }
+WHERE "id" = ${groupid}

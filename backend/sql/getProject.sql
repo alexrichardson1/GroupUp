@@ -1,3 +1,3 @@
 SELECT *
 FROM projects
-WHERE "id" = $ { projectid }
+WHERE "id" = ${projectid}
