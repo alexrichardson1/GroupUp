@@ -86,7 +86,7 @@ class UpdateCommitMsg(TestCase):
             hook.update_commit_msg(
                 self.file_path) == [
                 'feat(foo): Add feature\n',
-                '',
+                '\n',
                 'Co-authored-by: Hussein, Mazen <mazen.hussein319@imperial.ac.uk>'])
 
     def test_update_commit_msg_replaces_co_authors_with_unknown_authors(self):
@@ -98,7 +98,7 @@ class UpdateCommitMsg(TestCase):
             hook.update_commit_msg(
                 self.file_path) == [
                 'feat(foo): Add feature\n',
-                '',
+                '\n',
                 'Co-authored-by: Hussein, Mazen <mazen.hussein319@imperial.ac.uk>'])
 
 
