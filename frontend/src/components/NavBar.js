@@ -45,7 +45,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
   const logginIn = renderBool.reduce((val, next) => {
     return val && next;
   });
-  const { value } = useContext(UserContext);
+  const { value, email } = useContext(UserContext);
   const loginMessage = () => {
     switch (loginPage) {
       case 0:
@@ -114,7 +114,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             className="navAccount"
             title={
               <span className="accountSpan">
-                {value}
+                {value}, {email}
                 <img
                   className="splitterImage"
                   src={process.env.PUBLIC_URL + "/person-circle.svg"}
