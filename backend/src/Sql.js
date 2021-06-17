@@ -19,3 +19,7 @@ export const projectSQL = {
   getProject: sql("../sql/getProject.sql"),
   getAllProjects: sql("../sql/getAllProjects.sql"),
 };
+
+export const userSQL = {
+  updateUserLogin: sql("../sql/updateUserLogin.sql"),
+};
