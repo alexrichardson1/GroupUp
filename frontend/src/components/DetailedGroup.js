@@ -75,12 +75,12 @@ const DetailedGroup = () => {
         .catch((error) => {
           console.error(error);
         });
-      document.title = `${leader}'s Group`;
     };
 
+    document.title = `${leader}'s Group`;
     getProject();
     getGroup();
-  }, [groupId, projectId]);
+  }, [groupId, projectId, leader]);
 
   const isJoined = () => {
     return leader === value || teammates.some((name) => name === value);
