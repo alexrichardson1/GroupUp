@@ -40,10 +40,6 @@ const Login = () => {
             value={username}
             onChange={handleInputChange}
           />
-          <Form.Text className="text-muted">
-            Leader is just the point of contact, it can really be any group
-            member.
-          </Form.Text>
         </Form.Group>
         {/* <Form.Group>
             <Form.Label>Password</Form.Label>
