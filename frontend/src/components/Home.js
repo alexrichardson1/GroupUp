@@ -59,7 +59,11 @@ export default class Home extends Component {
   filterGroupsOnName = () => {
     // const { user, setUser } = this.context;
     // TODO: change James Smith to value
-    return this.state.groups.filter((group) => group.leader === "James Smith");
+    return this.state.groups.filter(
+      (group) =>
+        group.leader === "James Smith" ||
+        group.teammates.some((member) => member === "James Smith")
+    );
   };
 
   render() {
