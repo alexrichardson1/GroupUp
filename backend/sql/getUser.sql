@@ -1,3 +1,3 @@
 SELECT *
-FROM projects
+FROM users
 WHERE "email" = ${email}

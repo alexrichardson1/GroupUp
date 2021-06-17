@@ -121,6 +121,16 @@ app.get("/user/one", async (req, res) => {
   }
 });
 
+app.get("/user/", async (req, res) => {
+  try {
+    const users = await Database.getAllUsers();
+    console.log(users);
+    res.json(users);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

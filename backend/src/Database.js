@@ -143,6 +143,22 @@ class Database {
     return result;
   }
 
+  static async getAllUsers() {
+    var result = {};
+
+    await db
+      .any(userSQL.getAllUsers)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
+
   static async updateUserLogin(attr) {
     var result = {};
 
