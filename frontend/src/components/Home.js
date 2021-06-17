@@ -81,11 +81,6 @@ export default class Home extends Component {
           <h3 className="groupsHome">Groups you're already in.</h3>
           <div>
             {this.filterGroupsOnName().map((group) => (
-              // <Group
-              //   group={group}
-              //   requirementNames={this.state.requirements}
-              //   key={group.id}
-              // />
               <Card.Body>
                 <Card.Title>{group.leader}'s Group</Card.Title>
                 <Card.Text>
