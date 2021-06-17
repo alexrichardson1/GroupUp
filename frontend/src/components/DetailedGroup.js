@@ -81,6 +81,10 @@ const DetailedGroup = () => {
     getGroup();
   }, [groupId, projectId]);
 
+  const isJoined = () => {
+    return leader === value || teammates.some((name) => name === value);
+  };
+
   return (
     <React.Fragment>
       <NavBar
@@ -129,7 +133,12 @@ const DetailedGroup = () => {
         </div>
       )}
       <Button onClick={() => history.goBack()}>Go Back</Button>
-      <Button onClick={() => joinGroup()}>Join Group</Button>
+      <Button
+        disabled={isJoined() ? "disabled" : ""}
+        onClick={() => joinGroup()}
+      >
+        {isJoined() ? "Already joined" : "Join Group"}
+      </Button>
     </React.Fragment>
   );
 };
