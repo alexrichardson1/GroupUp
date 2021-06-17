@@ -5,10 +5,17 @@ import axios from "axios";
 import { config } from "Constants";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "components/auth/UserContext";
+import Group from "components/Group";
 
 const Home = () => {
   const [groups, setGroups] = useState([]);
   const { value } = useContext(UserContext);
+  const [filteredGroups, setFilteredGroups] = useState([]);
+  const { email } = useContext(UserContext);
+
+  useEffect(() => {
+    setFilteredGroups(getPersonalisedGroups());
+  }, []);
 
   const filterGroupsOnName = () => {
     return groups.filter(
@@ -25,6 +32,7 @@ const Home = () => {
         .then((res) => {
           const group = res.data;
           setGroups(group);
+          setFilteredGroups(group);
           console.log(group);
         })
         .catch((error) => {
@@ -34,9 +42,59 @@ const Home = () => {
     getGroups();
   }, []);
 
+  // const getGroups = async () => {
+  //   var result = "";
+  //   await axios
+  //     .get(`${config.API_URL}/group`)
+  //     .then((res) => {
+  //       const groups = res.data;
+  //       result = groups;
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  //   return result;
+  // };
+
+  const getUser = async () => {
+    var result = [];
+    await axios
+      .post(`${config.API_URL}/user/one`, {
+        email: email,
+      })
+      .then((res) => {
+        const groups = res.data;
+        result = groups;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(result);
+    return result;
+  };
+
+  const getPersonalisedGroups = () => {
+    const groups = getGroups();
+    const filtered = getGroups().filter((gr) => gr.requirements.includes());
+    return filtered;
+  };
+
+  const personalFilters = () => {
+    {
+      filteredGroups.map((group) => (
+        <Group
+          group={group}
+          requirementNames={this.state.requirements}
+          key={group.id}
+        />
+      ));
+    }
+  };
+
   return (
     <div>
       <NavBar renderBool={[true, false, false, false]} create={false} />
+      <Button onClick={getUser()}>sdsd</Button>
       <Jumbotron>
         <h1 className="title">Welcome to GroupUp</h1>
         <div>
@@ -46,6 +104,11 @@ const Home = () => {
           <Button>Get Started</Button>
         </LinkContainer>
         <h3 className="groupsHome">Groups you're already in.</h3>
+        <div>
+          {/*  {filterGroupsOnName().map((group) => (
+            
+           ))} */}
+        </div>
         <div>
           {filterGroupsOnName().map((group) => (
             <Card.Body>
