@@ -47,6 +47,7 @@ const Group = ({ group, requirementNames }) => {
               ))}
             </ListGroup> */}
           </Card.Text>
+          <Card.Footer className="text-muted">1 Day Ago</Card.Footer>
           <LinkContainer to={groupDetailsLink}>
             <Button>Find out more</Button>
           </LinkContainer>
