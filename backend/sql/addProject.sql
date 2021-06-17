@@ -1,7 +1,3 @@
-INSERT INTO "projects" (
-    "id",
-    "name",
-    "requirements"
-)
-VALUES (${id}, ${name}, ${requirements})
+INSERT INTO "projects" ("id", "name", "requirements")
+VALUES ($ { id }, $ { name }, $ { requirements })
 RETURNING *
