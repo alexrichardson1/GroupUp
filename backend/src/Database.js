@@ -158,6 +158,21 @@ class Database {
 
     return result;
   }
+
+  static async updateActiveFilter(attr) {
+    var result = {};
+    await db
+      .one(userSQL.updateActiveFilter, attr)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
+
+    return result;
+  }
 }
 
 export default Database;
