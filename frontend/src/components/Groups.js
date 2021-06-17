@@ -54,6 +54,25 @@ export default class Groups extends Component {
     return result;
   }
 
+  async postFilter(userEmail, filters) {
+    console.log("added filters for: " + userEmail);
+    console.log("Filters: " + filters);
+    var result = {};
+    await axios
+      .post(`${config.API_URL}/user/activefilter/update`, {
+        filters: filters,
+        email: userEmail,
+      })
+      .then((res) => {
+        const filters = res.data;
+        result = filters;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return result;
+  }
+
   async componentDidMount() {
     this.setState({ groups: await this.getGroups() });
     this.setState({ project: await this.getProject() });
@@ -127,13 +146,22 @@ export default class Groups extends Component {
     console.log(email);
   };
 
+  testFunc = ({ email }) => {
+    const vals = [];
+    for (const [, v] of this.state.activeFilters.entries()) {
+      vals.push(v);
+    }
+    this.postFilter(email, vals);
+    // console.log("added filters for: " + email);
+    // console.log("Filters: " + vals);
+  };
+
   render() {
     return (
       <UserContext.Consumer>
         {({ email }) => (
           <div>
             <Navbar renderBool={[true, true, true, false]} create={false} />
-            <Button onClick="testFunc">Email: {email}</Button>
             <Container>
               <Row>
                 <Col>
@@ -144,7 +172,12 @@ export default class Groups extends Component {
                   </h3>
                 </Col>
                 <Col className="advertCol align-items-center">
-                  <Button className="advertBtn">Save this search</Button>
+                  <Button
+                    className="advertBtn"
+                    onClick={() => this.testFunc({ email })}
+                  >
+                    Save this search
+                  </Button>
                   <LinkContainer to={`/createGroup/${this.props.id}`}>
                     <Button className="advertBtn">Advertise my group</Button>
                   </LinkContainer>
