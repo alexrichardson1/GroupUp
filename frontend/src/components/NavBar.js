@@ -114,7 +114,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             className="navAccount"
             title={
               <span className="accountSpan">
-                {value}, {email}
+                {value}
                 <img
                   className="splitterImage"
                   src={process.env.PUBLIC_URL + "/person-circle.svg"}
@@ -125,8 +125,10 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             id="collasible-nav-dropdown"
             style={{ color: "rgb(238, 237, 237)" }}
           >
-            <LinkContainer to="/home" activeClassName="">
-              <NavDropdown.Item href="#action/3.1">My Groups</NavDropdown.Item>
+            <LinkContainer to="/savedsearches" activeClassName="">
+              <NavDropdown.Item href="#action/3.1">
+                Saved Searches
+              </NavDropdown.Item>
             </LinkContainer>
             <LinkContainer to="" activeClassName="">
               <NavDropdown.Item href="#action/3.2">My Account</NavDropdown.Item>
