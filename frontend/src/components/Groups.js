@@ -58,6 +58,7 @@ export default class Groups extends Component {
     this.setState({ project: await this.getProject() });
     this.setState({ filteredGroups: this.state.groups });
     this.setState({ requirements: this.hackathonReqs() });
+    document.title = "Available Listings";
   }
 
   hackathonReqs = () => {

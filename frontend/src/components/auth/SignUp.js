@@ -4,6 +4,10 @@ import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 
 class SignUp extends Component {
+  componentDidMount() {
+    document.title = "Sign Up";
+  }
+
   render() {
     return (
       <div>

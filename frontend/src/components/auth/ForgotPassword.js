@@ -4,6 +4,10 @@ import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 
 class ForgotPassword extends Component {
+  componentDidMount() {
+    document.title = "Forgot Password ?";
+  }
+
   render() {
     return (
       <div>

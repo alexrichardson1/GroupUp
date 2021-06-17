@@ -63,6 +63,7 @@ class CreateGroup extends Component {
   async componentDidMount() {
     const proj = await this.getProject();
     this.setState({ requirementNames: proj.requirements });
+    document.title = "Create a listing!";
   }
 
   /* Functions to handle form submission */

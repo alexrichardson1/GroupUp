@@ -61,6 +61,7 @@ const DetailedGroup = () => {
         .catch((error) => {
           console.log(error);
         });
+      document.title = `${leader}'s Group`;
     };
 
     const getProject = async () => {

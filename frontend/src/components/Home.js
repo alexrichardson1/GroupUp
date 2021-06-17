@@ -31,6 +31,7 @@ const Home = () => {
           console.error(error);
         });
     };
+    document.title = "Home";
     getGroups();
   }, []);
 
