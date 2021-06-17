@@ -23,4 +23,5 @@ export const projectSQL = {
 export const userSQL = {
   updateUserLogin: sql("../sql/updateUserLogin.sql"),
   updateActiveFilter: sql("../sql/updateActiveFilter.sql"),
+  getUser: sql("../sql/getUser.sql"),
 };
