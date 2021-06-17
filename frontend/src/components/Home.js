@@ -5,17 +5,13 @@ import axios from "axios";
 import { config } from "Constants";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "components/auth/UserContext";
-import Group from "components/Group";
 
 const Home = () => {
   const [groups, setGroups] = useState([]);
   const { value } = useContext(UserContext);
   const [filteredGroups, setFilteredGroups] = useState([]);
+  const [user, setUser] = useState([]);
   const { email } = useContext(UserContext);
-
-  useEffect(() => {
-    setFilteredGroups(getPersonalisedGroups());
-  }, []);
 
   const filterGroupsOnName = () => {
     return groups.filter(
@@ -33,13 +29,31 @@ const Home = () => {
           const group = res.data;
           setGroups(group);
           setFilteredGroups(group);
-          console.log(group);
         })
         .catch((error) => {
           console.error(error);
         });
     };
+    const getUser = async () => {
+      var result = [];
+      await axios
+        .post(`${config.API_URL}/user/one`, {
+          email: email,
+        })
+        .then((res) => {
+          const groups = res.data;
+          result = groups;
+          console.log("results");
+          console.log("results: " + result);
+          setUser(result);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return result;
+    };
     getGroups();
+    getUser();
   }, []);
 
   // const getGroups = async () => {
@@ -56,26 +70,15 @@ const Home = () => {
   //   return result;
   // };
 
-  const getUser = async () => {
-    var result = [];
-    await axios
-      .post(`${config.API_URL}/user/one`, {
-        email: email,
-      })
-      .then((res) => {
-        const groups = res.data;
-        result = groups;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log(result);
-    return result;
-  };
-
   const getPersonalisedGroups = () => {
-    // const groups = getGroups();
-    // const filtered = getGroups().filter((gr) => gr.requirements.includes());
+    console.log("USERs");
+    console.log(user);
+    // const filters = user.filters;
+    // console.log("filters: ");
+    // console.log(filters);
+    /*const filtered = filteredGroups().filter((gr) =>
+      gr.requirements.includes()
+    );*/
     // return filtered;
   };
 
@@ -94,7 +97,7 @@ const Home = () => {
   return (
     <div>
       <NavBar renderBool={[true, false, false, false]} create={false} />
-      <Button onClick={getUser()}>sdsd</Button>
+      <Button onClick={() => getPersonalisedGroups()}>sdsd</Button>
       <Jumbotron>
         <h1 className="title">Welcome to GroupUp</h1>
         <div>
