@@ -56,7 +56,7 @@ export default class Groups extends Component {
   async componentDidMount() {
     this.setState({ groups: await this.getGroups() });
     this.setState({ project: await this.getProject() });
-    this.setState({ filteredGroups: this.state.groups });
+    this.setState({ filteredGroups: await this.getGroups() });
     this.setState({ requirements: this.hackathonReqs() });
   }
 
@@ -84,7 +84,6 @@ export default class Groups extends Component {
       if (v === "Any") {
         console.log("HHHH");
         newFilteredGroups = [...this.state.filteredGroups];
-        console.log(newFilteredGroups);
       } else {
         for (let i = 0; i < this.state.filteredGroups.length; i++) {
           if (this.state.filteredGroups[i].requirements.includes(v)) {
@@ -137,6 +136,7 @@ export default class Groups extends Component {
               </h3>
             </Col>
             <Col className="advertCol align-items-center">
+              <Button className="advertBtn">Save this search</Button>
               <LinkContainer to={`/createGroup/${this.props.id}`}>
                 <Button className="advertBtn">Advertise my group</Button>
               </LinkContainer>
