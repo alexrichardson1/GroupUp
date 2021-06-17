@@ -3,11 +3,8 @@ import { Button, Jumbotron, Card, ListGroup } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
-// import { useState, useEffect, useContext } from "react";
 import { UserContext } from "components/auth/UserContext";
 import { Component } from "react";
-import { getSuggestedQuery } from "@testing-library/react";
-import Group from "components/Group";
 
 export default class Home extends Component {
   constructor(props) {

@@ -1,12 +1,8 @@
-import { LinkContainer } from "react-router-bootstrap";
-import { Button, Jumbotron, Card, ListGroup } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
-// import { useState, useEffect, useContext } from "react";
 import { UserContext } from "components/auth/UserContext";
 import { Component } from "react";
-import { getSuggestedQuery } from "@testing-library/react";
 import Group from "components/Group";
 
 export default class SavedSearches extends Component {
@@ -18,15 +14,6 @@ export default class SavedSearches extends Component {
       projects: [],
     };
   }
-
-  // name is value
-  filterGroupsOnName = (name) => {
-    return this.state.groups.filter(
-      (group) =>
-        group.leader === name ||
-        group.teammates.some((member) => member === name)
-    );
-  };
 
   async getGroups() {
     let result = "";

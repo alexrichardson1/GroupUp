@@ -45,7 +45,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
   const logginIn = renderBool.reduce((val, next) => {
     return val && next;
   });
-  const { value, email } = useContext(UserContext);
+  const { value } = useContext(UserContext);
   const loginMessage = () => {
     switch (loginPage) {
       case 0:
