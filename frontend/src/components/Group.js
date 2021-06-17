@@ -6,8 +6,6 @@ const Group = ({ group, requirementNames }) => {
 
   let groupDetailsLink = "/group/" + id;
 
-  const date = new Date();
-
   const getPostedTimeAgo = () => {
     if (posted == null) {
       return "Date unknown";
@@ -37,8 +35,6 @@ const Group = ({ group, requirementNames }) => {
       return "Posted more than a month ago";
     }
   };
-
-  const dbDateToNumber = (curDate) => {};
 
   return (
     <div>
