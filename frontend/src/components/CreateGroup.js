@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
-import { config } from "../Constants";
+import { config } from "Constants";
 import {
   Form,
   Button,
