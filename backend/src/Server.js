@@ -111,6 +111,16 @@ app.post("/user/activefilter/update", async (req, res) => {
   }
 });
 
+app.get("/user/one", async (req, res) => {
+  try {
+    const project = await Database.getUser(req.body);
+    console.log(project);
+    res.json(project);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
