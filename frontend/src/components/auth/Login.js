@@ -11,7 +11,7 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
 
-  const { setValue } = useContext(UserContext);
+  const { setValue, setEmail } = useContext(UserContext);
   const history = useHistory();
   const date = new Date().toISOString();
 
@@ -46,6 +46,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     setValue(username);
+    setEmail(userEmail);
     updateLogin();
     history.push("/home");
   };
