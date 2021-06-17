@@ -2,9 +2,43 @@ import { Button, Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Group = ({ group, requirementNames }) => {
-  const { id, leader, requirements } = group;
+  const { id, leader, requirements, posted } = group;
 
   let groupDetailsLink = "/group/" + id;
+
+  const date = new Date();
+
+  const getPostedTimeAgo = () => {
+    if (posted == null) {
+      return "Date unknown";
+    }
+    const dayAsDate = new Date(posted.substring(0, 10));
+
+    const hoursToMills = 3600000 * parseInt(posted.substring(11, 13));
+    const minutesToMills = 60000 * parseInt(posted.substring(14, 16));
+    const secondsToMills = 1000 * parseInt(posted.substring(17, 19));
+
+    const datePostedAsNum =
+      dayAsDate + hoursToMills + minutesToMills + secondsToMills;
+
+    const difference = new Date() - datePostedAsNum;
+
+    if (difference < 2629800000) {
+      if (difference > 604800000) {
+        return "Posted " + Math.floor(difference / 604800000) + " weeks ago";
+      } else if (difference > 86400000) {
+        return "Posted " + Math.floor(difference / 86400000) + " days ago";
+      } else if (difference > 3600000) {
+        return "Posted " + Math.floor(difference / 3600000) + " hours ago";
+      } else {
+        return "Posted less than an hour ago";
+      }
+    } else {
+      return "Posted more than a month ago";
+    }
+  };
+
+  const dbDateToNumber = (curDate) => {};
 
   return (
     <div>
@@ -39,15 +73,10 @@ const Group = ({ group, requirementNames }) => {
                 ))}
               </tbody>
             </Table>
-            {/* <ListGroup variant="flush">
-              {Object.entries(requirements).map(([key, val]) => (
-                <ListGroup.Item key={key}>
-                  {key} {val}
-                </ListGroup.Item>
-              ))}
-            </ListGroup> */}
           </Card.Text>
-          <Card.Footer className="text-muted datePosted">1 Day Ago</Card.Footer>
+          <Card.Footer className="text-muted datePosted">
+            {getPostedTimeAgo()}
+          </Card.Footer>
           <LinkContainer to={groupDetailsLink}>
             <Button>Find out more</Button>
           </LinkContainer>
