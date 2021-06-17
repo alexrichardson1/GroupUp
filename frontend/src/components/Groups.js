@@ -7,6 +7,7 @@ import Navbar from "components/NavBar";
 import axios from "axios";
 import Filter from "components/Filter";
 import { config } from "Constants";
+import UserContext from "components/auth/UserContext";
 
 export default class Groups extends Component {
   constructor(props) {
@@ -122,46 +123,55 @@ export default class Groups extends Component {
     return comps;
   };
 
+  saveFilters = (email) => {
+    console.log(email);
+  };
+
   render() {
     return (
-      <div>
-        <Navbar renderBool={[true, true, true, false]} create={false} />
-        <Container>
-          <Row>
-            <Col>
-              <h3>
-                {this.state.filteredGroups.length} Groups looking for members
-                in: 
-                {this.state.project.name}
-              </h3>
-            </Col>
-            <Col className="advertCol align-items-center">
-              <Button className="advertBtn">Save this search</Button>
-              <LinkContainer to={`/createGroup/${this.props.id}`}>
-                <Button className="advertBtn">Advertise my group</Button>
-              </LinkContainer>
-            </Col>
-          </Row>
-          {/* <Row> */}
+      <UserContext.Consumer>
+        {({ email }) => (
+          <div>
+            <Navbar renderBool={[true, true, true, false]} create={false} />
+            <Button onClick="testFunc">Email: {email}</Button>
+            <Container>
+              <Row>
+                <Col>
+                  <h3>
+                    {this.state.filteredGroups.length} Groups looking for
+                    members in: 
+                    {this.state.project.name}
+                  </h3>
+                </Col>
+                <Col className="advertCol align-items-center">
+                  <Button className="advertBtn">Save this search</Button>
+                  <LinkContainer to={`/createGroup/${this.props.id}`}>
+                    <Button className="advertBtn">Advertise my group</Button>
+                  </LinkContainer>
+                </Col>
+              </Row>
+              {/* <Row> */}
 
-          {/* </Row> */}
-          <Row>
-            <Col className="filterCol">
-              <h5>Filters:</h5>
-              {this.createFilterComponents()}
-            </Col>
-            <Col className="listingsCol">
-              {this.state.filteredGroups.map((group) => (
-                <Group
-                  group={group}
-                  requirementNames={this.state.requirements}
-                  key={group.id}
-                />
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </div>
+              {/* </Row> */}
+              <Row>
+                <Col className="filterCol">
+                  <h5>Filters:</h5>
+                  {this.createFilterComponents()}
+                </Col>
+                <Col className="listingsCol">
+                  {this.state.filteredGroups.map((group) => (
+                    <Group
+                      group={group}
+                      requirementNames={this.state.requirements}
+                      key={group.id}
+                    />
+                  ))}
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        )}
+      </UserContext.Consumer>
     );
   }
 }
