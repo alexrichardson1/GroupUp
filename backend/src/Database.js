@@ -170,6 +170,21 @@ class Database {
       .catch((error) => {
         console.log("ERROR:", error); // print error;
       });
+    return result;
+  }
+
+  static async getUser(attr) {
+    var result = {};
+
+    await db
+      .oneOrNone(userSQL.getUser, attr)
+      .then((data) => {
+        console.log(data);
+        result = data;
+      })
+      .catch((error) => {
+        console.log("ERROR:", error); // print error;
+      });
 
     return result;
   }
