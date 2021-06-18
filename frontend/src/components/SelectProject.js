@@ -22,6 +22,7 @@ const SelectProject = () => {
           console.log(error);
         });
     };
+    document.title = "Select a Hackathon";
     getProjects();
   }, []);
 

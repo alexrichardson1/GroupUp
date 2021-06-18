@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 // import { LinkContainer } from "react-router-bootstrap";s
 import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
@@ -32,6 +32,10 @@ const Login = () => {
       });
     return result;
   };
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   /* Functions to handle form submission */
   const handleInputChange = (event) => {

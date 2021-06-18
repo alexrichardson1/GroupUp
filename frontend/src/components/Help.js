@@ -22,6 +22,10 @@ export default class Help extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Need Help?";
+  }
+
   render() {
     return (
       <div>

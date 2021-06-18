@@ -77,9 +77,14 @@ const DetailedGroup = () => {
         });
     };
 
+    document.title = `${leader}'s Group`;
     getProject();
     getGroup();
-  }, [groupId, projectId]);
+  }, [groupId, projectId, leader]);
+
+  const isJoined = () => {
+    return leader === value || teammates.some((name) => name === value);
+  };
 
   return (
     <React.Fragment>
@@ -133,8 +138,9 @@ const DetailedGroup = () => {
         onClick={() => {
           if (value) joinGroup();
         }}
+        disabled={isJoined() ? "disabled" : ""}
       >
-        Join Group
+        {isJoined() ? "Already joined" : "Join Group"}
       </Button>
     </React.Fragment>
   );
