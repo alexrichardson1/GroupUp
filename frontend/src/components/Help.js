@@ -120,7 +120,7 @@ export default class Help extends Component {
               <Card.Img
                 variant="top"
                 className="cardPicture"
-                src={process.env.PUBLIC_URL + "/announce.webp"}
+                src={process.env.PUBLIC_URL + "/advertise.jpg"}
               />
             </Card.Body>
             <Card.Footer>
@@ -134,7 +134,7 @@ export default class Help extends Component {
               <Card.Img
                 variant="top"
                 className="cardPicture"
-                src={process.env.PUBLIC_URL + "/announce.webp"}
+                src={process.env.PUBLIC_URL + "/advertise.jpg"}
               />
               <Card.Text>
                 Choose a Hackathon. Click 'Advertise my group!'. Fill out the
