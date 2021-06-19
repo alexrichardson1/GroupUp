@@ -21,6 +21,10 @@ export default class Groups extends Component {
     };
   }
 
+  groupIsFull(group) {
+    return 1 + group.teammates.length >= group.maxmembers;
+  }
+
   async getGroups() {
     var result = [];
     await axios
@@ -35,7 +39,7 @@ export default class Groups extends Component {
       .catch((error) => {
         console.log(error);
       });
-    return result;
+    return result.filter((group) => !this.groupIsFull(group));
   }
 
   async getProject() {
