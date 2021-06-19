@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
+import { UserContext } from "components/auth/UserContext";
 
 async function addGroup(data) {
   var result = {};
@@ -32,7 +33,8 @@ class CreateGroup extends Component {
     super(props);
     this.state = {
       leaderName: "",
-      maxmembers: 0,
+      leaderEmail: "",
+      maxmembers: 4,
       teammates: "",
       requirementNames: [],
       adrequirements: "",
@@ -41,6 +43,8 @@ class CreateGroup extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  static contextType = UserContext;
 
   getProject = async () => {
     var result = [];
@@ -62,6 +66,10 @@ class CreateGroup extends Component {
     const proj = await this.getProject();
     this.setState({ requirementNames: proj.requirements });
     document.title = "Create a listing!";
+    let value = this.context;
+    console.log(value);
+    this.setState({ leaderName: value.value });
+    this.setState({ leaderEmail: value.email });
   }
 
   /* Functions to handle form submission */
@@ -80,7 +88,6 @@ class CreateGroup extends Component {
     this.state.requirementNames.map((req) =>
       requirementValues.push(this.state[req])
     );
-    console.log("Req values on submit: " + this.state.requirementValues);
     const info = {
       leader: this.state.leaderName,
       maxmembers: this.state.maxmembers,
@@ -88,17 +95,15 @@ class CreateGroup extends Component {
       requirements: requirementValues,
       adrequirements: this.state.adrequirements,
       projectid: this.props.id,
+      leaderemail: this.state.leaderEmail,
+      posted: new Date().toISOString(),
     };
     console.log(info);
     await addGroup(info);
-    window.location.reload();
+    // window.location.reload();
   };
 
   uniqueComponent = (name) => {
-    const n = this.state.requirementNames.findIndex((e) => e === name);
-    console.log(
-      "Generating unique component: " + name + " with index value " + n
-    );
     return (
       <InputGroup className="mb-3" key={name}>
         <InputGroup.Prepend>
@@ -108,14 +113,9 @@ class CreateGroup extends Component {
           name={name}
           value={this.state[name]}
           onChange={this.handleInputChange}
-        >
-          {/* {Object.entries(programmingLanguages).map(([key, val]) => (
-            <option>{val}</option>
-          ))} */}
-        </FormControl>
+        ></FormControl>
       </InputGroup>
     );
-    // }
   };
 
   reqsToComponents = (names) => {
@@ -124,6 +124,10 @@ class CreateGroup extends Component {
       components.push(this.uniqueComponent(req));
     });
     return components;
+  };
+
+  setUser = (value) => {
+    this.setState({ user: value });
   };
 
   render() {
@@ -145,15 +149,35 @@ class CreateGroup extends Component {
             >
               <Form.Label>Leader's Name</Form.Label>
               <Form.Control
+                disabled
                 type="text"
-                placeholder="Name"
+                placeholder={this.state.leaderName}
                 name="leaderName"
                 value={this.state.leaderName}
-                onChange={this.handleInputChange}
+                // onChange={this.handleInputChange}
               />
               <Form.Text className="text-muted">
                 Leader is just the point of contact, it can really be any group
                 member.
+              </Form.Text>
+            </Form.Group>
+            <Form.Group
+              className="formBox"
+              as={Col}
+              controlId="formLeaderName"
+              key="formLeaderName"
+            >
+              <Form.Label>Leader's Email</Form.Label>
+              <Form.Control
+                disabled
+                type="text"
+                placeholder={this.state.leaderEmail}
+                name="leaderEmail"
+                value={this.state.leaderEmail}
+              />
+              <Form.Text className="text-muted">
+                This is the first point of contact for new members, make sure
+                you are active on this email!
               </Form.Text>
             </Form.Group>
           </Col>
@@ -161,9 +185,7 @@ class CreateGroup extends Component {
           <label htmlFor="basic-url" className="formBox" key="labelllll">
             A few things you need to specify about your group:
           </label>
-          {/* {this.state.requirementNames.map((req) => {
-            this.uniqueComponent(req);
-          })} */}
+
           {this.reqsToComponents(this.state.requirementNames).map((req) => {
             return req;
           })}
@@ -198,7 +220,7 @@ class CreateGroup extends Component {
               onChange={this.handleInputChange}
             />
             <Form.Text className="text-muted">
-              Optionally add teammates names if you feel it would be meaningful.
+              Add Teammates here (comma-separated).
             </Form.Text>
           </Form.Group>
 
