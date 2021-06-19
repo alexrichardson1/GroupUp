@@ -34,11 +34,19 @@ function getLinkElems(renderBool, linkList, linkNameList) {
   return navLinks;
 }
 
-const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
+const NavBar = ({
+  renderBool,
+  create,
+  id,
+  loginPage,
+  helpPage,
+  savedSearches,
+  hackathon,
+}) => {
   const linkNameList = [
-    "Home",
-    "Select Group",
-    "Group Listings",
+    savedSearches ? "Saved Searches" : "Home",
+    hackathon ? "" : "Select Group",
+    hackathon ? "Register a hackathon" : "Group Listings",
     create ? "Create a group" : "Join a group",
   ];
   const linkList = ["/home", "/selection", "/listing/" + id, ""];
@@ -61,6 +69,7 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
   const help = "Help";
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
+
   return (
     <Navbar className="navBar" expand="lg" fixed="top">
       <Navbar.Brand
@@ -126,16 +135,14 @@ const NavBar = ({ renderBool, create, id, loginPage, helpPage }) => {
             style={{ color: "rgb(238, 237, 237)" }}
           >
             <LinkContainer to="/savedsearches" activeClassName="">
-              <NavDropdown.Item href="#action/3.1">
-                Saved Searches
-              </NavDropdown.Item>
+              <NavDropdown.Item>Saved Searches</NavDropdown.Item>
             </LinkContainer>
-            <LinkContainer to="" activeClassName="">
-              <NavDropdown.Item href="#action/3.2">My Account</NavDropdown.Item>
+            <LinkContainer to="/myGroups" activeClassName="">
+              <NavDropdown.Item>My Groups</NavDropdown.Item>
             </LinkContainer>
             <NavDropdown.Divider />
             <LinkContainer to="/" activeClassName="">
-              <NavDropdown.Item href="#action/3.4">Sign Out</NavDropdown.Item>
+              <NavDropdown.Item>Sign Out</NavDropdown.Item>
             </LinkContainer>
           </NavDropdown>
         </Nav>
