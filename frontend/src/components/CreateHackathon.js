@@ -126,12 +126,22 @@ class CreateHackathon extends Component {
             "Include a little bit about your hackathon, to make sure users are on the right page."
           )}
 
-          {this.genFormComponent(
-            "Hours",
-            "24",
-            "hours",
-            "The length of your hackathon as number of hours."
-          )}
+          <Form.Group
+            className="formBox"
+            as={Col}
+            controlId="formLeaderName"
+            key="formLeaderName"
+          >
+            <Form.Label>Length of Hackathon (Hours)</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="24"
+              name="hours"
+              value={this.state.hours}
+              onChange={this.handleInputChange}
+              isInvalid={this.state.hours.length === 0}
+            />
+          </Form.Group>
 
           <Form.Group
             className="formBox"
