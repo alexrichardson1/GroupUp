@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
 import { config } from "Constants";
-import { Form, Button, Container, Col } from "react-bootstrap";
+import { Form, Button, Container, Col, Alert } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 
@@ -48,17 +48,29 @@ class CreateHackathon extends Component {
   }
 
   handleSubmit = async (e) => {
-    e.preventDefault();
-    const info = {
-      name: this.state.hackathonName,
-      requirements: this.state.requirements.split(", "),
-      description: this.state.description,
-      hours: this.state.hours,
-      date: new Date(this.state.date).toISOString(),
-      location: this.state.location,
-    };
-    await addProject(info);
-    window.location.reload();
+    if (
+      this.state.hackathonName === "" ||
+      this.state.requirements.length === 0 ||
+      this.state.description === "" ||
+      this.state.hours === "" ||
+      isNaN(parseInt(this.state.hours)) ||
+      this.state.date === "" ||
+      this.state.location === ""
+    ) {
+      // do nothing
+    } else {
+      e.preventDefault();
+      const info = {
+        name: this.state.hackathonName,
+        requirements: this.state.requirements.split(", "),
+        description: this.state.description,
+        hours: this.state.hours,
+        date: new Date(this.state.date).toISOString(),
+        location: this.state.location,
+      };
+      await addProject(info);
+      window.location.reload();
+    }
   };
 
   genFormComponent = (label, placeholder, stateName, mutedText) => {
@@ -76,6 +88,7 @@ class CreateHackathon extends Component {
           name={stateName}
           value={this.state[stateName]}
           onChange={this.handleInputChange}
+          isInvalid={this.state[stateName].length === 0}
         />
         <Form.Text className="text-muted">{mutedText}</Form.Text>
       </Form.Group>
@@ -133,6 +146,7 @@ class CreateHackathon extends Component {
               name="date"
               value={this.state.date}
               onChange={this.handleInputChange}
+              isInvalid={this.state.date.length === 0}
             />
           </Form.Group>
 
