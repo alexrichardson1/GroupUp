@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
 import { config } from "Constants";
-import { Form, Button, Container, Col, Alert } from "react-bootstrap";
+import { Form, Button, Container, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 
