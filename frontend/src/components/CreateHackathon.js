@@ -6,10 +6,10 @@ import { Form, Button, Container, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 
-async function addGroup(data) {
+async function addProject(data) {
   var result = {};
   await axios
-    .post(`${config.API_URL}/group/add`, data)
+    .post(`${config.API_URL}/project/add`, data)
     .then((res) => {
       const group = res.data;
       result = group;
@@ -48,17 +48,17 @@ class CreateHackathon extends Component {
   }
 
   handleSubmit = async (e) => {
-    // e.preventDefault();
-    // const info = {
-    //   name: this.state.hackathonName,
-    //   requirements: this.state.requirements,
-    //   description: this.state.description,
-    //   hours: this.state.hours,
-    //   date: this.state.date,
-    //   location: this.state.location,
-    // };
-    // await addProject(info);
-    // window.location.reload();
+    e.preventDefault();
+    const info = {
+      name: this.state.hackathonName,
+      requirements: this.state.requirements.split(", "),
+      description: this.state.description,
+      hours: this.state.hours,
+      date: new Date(this.state.date).toISOString(),
+      location: this.state.location,
+    };
+    await addProject(info);
+    window.location.reload();
   };
 
   genFormComponent = (label, placeholder, stateName, mutedText) => {
