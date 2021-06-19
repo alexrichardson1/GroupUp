@@ -14,6 +14,7 @@ import ForgotPassword from "components/auth/ForgotPassword";
 import Help from "components/Help";
 import { UserContext } from "components/auth/UserContext";
 import SavedSearches from "components/SavedSearches";
+import CreateHackathon from "components/CreateHackathon";
 
 function GroupsFunc() {
   const { id } = useParams();
@@ -47,6 +48,11 @@ const App = () => {
           <Route path="/group/:id" children={<DetailedGroup />}></Route>
           <Route path="/listing/:id" children={<GroupsFunc />}></Route>
           <Route path="/createGroup/:id" children={<CreateGroupFunc />}></Route>
+          <Route
+            path="/createHackathon"
+            exact
+            component={CreateHackathon}
+          ></Route>
           <Route path="/help" exact component={Help}></Route>
         </div>
       </UserContext.Provider>
