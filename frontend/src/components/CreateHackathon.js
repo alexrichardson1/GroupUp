@@ -101,6 +101,7 @@ class CreateHackathon extends Component {
         <NavBar
           renderBool={[true, true, true, false]}
           create={true}
+          hackathon={true}
           id={this.props.id}
         />
         <h1>Adding your Hackathon to our list</h1>
