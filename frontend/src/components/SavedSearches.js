@@ -99,7 +99,11 @@ export default class SavedSearches extends Component {
       <UserContext.Consumer>
         {({ email, value }) => (
           <div>
-            <NavBar renderBool={[false, false, false, false]} create={false} />
+            <NavBar
+              renderBool={[true, false, false, false]}
+              create={false}
+              savedSearches={true}
+            />
             <h3 className="groupsHome">Your personalised search results.</h3>
             <h6 className="text-muted">Filters: JavaScript, C++</h6>
             <div>
