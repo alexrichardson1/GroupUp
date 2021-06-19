@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-// import { LinkContainer } from "react-router-bootstrap";s
 import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
@@ -9,7 +8,7 @@ import { config } from "Constants";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [users, setUsers] = useState([]);
 
   const { setValue, setEmail } = useContext(UserContext);
   const history = useHistory();
@@ -34,24 +33,39 @@ const Login = () => {
   };
 
   useEffect(() => {
+    const getAllUsers = async () => {
+      var result = [];
+      await axios
+        .get(`${config.API_URL}/user/`)
+        .then((res) => {
+          const projects = res.data;
+          result = projects;
+          setUsers(result);
+          console.log(projects);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return result;
+    };
     document.title = "Login";
+    getAllUsers();
   }, []);
 
   /* Functions to handle form submission */
   const handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    if (target.name === "username") {
-      setUsername(value);
-    } else {
-      setUserEmail(value);
-    }
+    setUserEmail(value);
   };
 
   const handleSubmit = () => {
-    setValue(username);
     setEmail(userEmail);
     updateLogin();
+    console.log(users);
+    const user = users.filter((u) => u.email === userEmail)[0].fullname;
+    console.log(user);
+    setValue(user);
     history.push("/home");
   };
 
@@ -60,16 +74,6 @@ const Login = () => {
       <NavBar renderBool={[false, false, false, false]} loginPage={0} />
       <h2>Login!</h2>
       <Form>
-        <Form.Group>
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="John Smith"
-            name="username"
-            value={username}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -80,19 +84,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        {/* <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group> */}
-        {/* <LinkContainer to="/home"> */}
         <Button onClick={handleSubmit}>Login</Button>
-        {/* </LinkContainer> */}
-        {/* <LinkContainer to="/signup">
-            <Button>Create an Account</Button>
-          </LinkContainer>
-          <LinkContainer to="/forgotpassword">
-            <Button>Forgot Password?</Button>
-          </LinkContainer> */}
       </Form>
     </div>
   );
