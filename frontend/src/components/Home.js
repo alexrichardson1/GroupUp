@@ -14,7 +14,6 @@ export default class Home extends Component {
     };
   }
 
-  // name is value
   filterGroupsOnName = (name) => {
     return this.state.groups.filter(
       (group) =>
@@ -25,6 +24,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     this.setState({ groups: await this.getGroups() });
+    document.title = "Home";
   }
 
   async getGroups() {
@@ -60,28 +60,6 @@ export default class Home extends Component {
               <LinkContainer to="/selection">
                 <Button>Get Started</Button>
               </LinkContainer>
-
-              <h3 className="groupsHome">Groups you're already in.</h3>
-              <div>
-                {this.filterGroupsOnName(value).map((group) => (
-                  <Card.Body>
-                    <Card.Title>{group.leader}'s Group</Card.Title>
-                    <Card.Text>
-                      <ListGroup.Item variant="dark">
-                        Other Members:
-                      </ListGroup.Item>
-                      {group.teammates.map((teammate) => (
-                        <ListGroup.Item variant="flush">
-                          {teammate}
-                        </ListGroup.Item>
-                      ))}
-                    </Card.Text>
-                    <LinkContainer to={`/group/${group.id}`}>
-                      <Button>More Info</Button>
-                    </LinkContainer>
-                  </Card.Body>
-                ))}
-              </div>
             </Jumbotron>
           </div>
         )}
