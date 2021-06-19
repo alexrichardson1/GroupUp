@@ -30,6 +30,7 @@ const SelectProject = () => {
     <div>
       <NavBar renderBool={[true, true, false, false]} create={false} />
       <h1>List of Competitions Available</h1>
+
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -56,6 +57,9 @@ const SelectProject = () => {
           ))}
         </tbody>
       </Table>
+      <LinkContainer to="/createHackathon">
+        <Button className="advertBtn">Add my Hackathon</Button>
+      </LinkContainer>
     </div>
   );
 };
