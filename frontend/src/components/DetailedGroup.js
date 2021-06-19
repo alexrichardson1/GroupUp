@@ -35,6 +35,7 @@ const DetailedGroup = () => {
         const group = res.data;
         result = group;
         alert("Successfully joined group!");
+        setTeammates([...teammates, value]);
       })
       .catch((error) => {
         console.log(error);
