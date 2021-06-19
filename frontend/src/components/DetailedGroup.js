@@ -7,7 +7,6 @@ import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
-import ContactDetails from "components/ContactDetails";
 
 const DetailedGroup = () => {
   const { id } = useParams();
@@ -22,9 +21,6 @@ const DetailedGroup = () => {
   const [projectId, setProjectId] = useState(0);
   const [project, setProject] = useState([]);
   const [show, setShow] = useState(false);
-  const hide = () => {
-    setShow(false);
-  };
   const { value } = useContext(UserContext);
 
   const handleClose = () => setShow(false);
