@@ -77,11 +77,7 @@ class CreateHackathon extends Component {
           value={this.state[stateName]}
           onChange={this.handleInputChange}
         />
-        {mutedText !== "" ? (
-          <Form.Text className="text-muted">{mutedText}</Form.Text>
-        ) : (
-          <h6></h6>
-        )}
+        <Form.Text className="text-muted">{mutedText}</Form.Text>
       </Form.Group>
     );
   };
