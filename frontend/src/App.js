@@ -15,6 +15,7 @@ import Help from "components/Help";
 import { UserContext } from "components/auth/UserContext";
 import SavedSearches from "components/SavedSearches";
 import CreateHackathon from "components/CreateHackathon";
+import MyGroups from "components/MyGroups";
 
 function GroupsFunc() {
   const { id } = useParams();
@@ -42,6 +43,7 @@ const App = () => {
             component={ForgotPassword}
           ></Route>
           <Route path="/savedsearches" exact component={SavedSearches}></Route>
+          <Route path="/myGroups" exact component={MyGroups}></Route>
           <Route path="/home" exact component={Home}></Route>
           <Route path="/selection" exact component={SelectProject}></Route>
           {/* <Route path="/listings" exact render={() => <Groups />}></Route> */}
