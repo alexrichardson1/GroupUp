@@ -12,8 +12,6 @@ import {
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
-// import nationalities from "data/nationalities";
-// import programmingLanguages from "data/programming";
 
 async function addGroup(data) {
   var result = {};
@@ -97,74 +95,6 @@ class CreateGroup extends Component {
   };
 
   uniqueComponent = (name) => {
-    // if (name == "Timezone" || name == "timezone") {
-    //   console.log("Timezone found!!");
-    //   return (
-    //     <InputGroup>
-    //       <InputGroup.Prepend>
-    //         <InputGroup.Text id="basic-addon1">Timezone</InputGroup.Text>
-    //       </InputGroup.Prepend>
-    //       <FormControl
-    //         as="select"
-    //         custom
-    //         name="languages"
-    //         value={this.state.timezone}
-    //         onChange={this.handleInputChange}
-    //       >
-    //         <option>-12</option>
-    //         <option>-11</option>
-    //         <option>-10</option>
-    //         <option>-9</option>
-    //         <option>-8</option>
-    //         <option>-7</option>
-    //         <option>-6</option>
-    //         <option>-5</option>
-    //         <option>-4</option>
-    //         <option>-3</option>
-    //         <option>-2</option>
-    //         <option>-1</option>
-    //         <option>0</option>
-    //         <option>+1</option>
-    //         <option>+2</option>
-    //         <option>+3</option>
-    //         <option>+4</option>
-    //         <option>+5</option>
-    //         <option>+6</option>
-    //         <option>+7</option>
-    //         <option>+8</option>
-    //         <option>+9</option>
-    //         <option>+10</option>
-    //         <option>+11</option>
-    //         <option>+12</option>
-    //         <option>+13</option>
-    //         <option>+14</option>
-    //       </FormControl>
-    //     </InputGroup>
-    //   );
-    // } else if (name == "nationality" || name == "Nationality") {
-    //   console.log("Nationality found!!");
-    //   return (
-    //     <InputGroup className="mb-3">
-    //       <InputGroup.Prepend>
-    //         <InputGroup.Text id="basic-addon1">Nationality</InputGroup.Text>
-    //       </InputGroup.Prepend>
-    //       <Form.Group>
-    //         <FormControl
-    //           as="select"
-    //           custom
-    //           name="nationality"
-    //           value={this.state.nationality}
-    //           onChange={this.handleInputChange}
-    //         >
-    //           {Object.entries(nationalities).map(([key, val]) => (
-    //             <option>{val}</option>
-    //           ))}
-    //         </FormControl>
-    //       </Form.Group>
-    //     </InputGroup>
-    //   );
-    // } else {
-    // console.log("Generic found!!");
     const n = this.state.requirementNames.findIndex((e) => e === name);
     console.log(
       "Generating unique component: " + name + " with index value " + n
@@ -253,58 +183,6 @@ class CreateGroup extends Component {
               </Form.Text>
             </Form.Group>
           </Form.Row>
-
-          {/* <Form.Group
-            className="formBox"
-            controlId="formMembersNeeded"
-            key="formMembersNeeded"
-          >
-            <Form.Label>Members needed: </Form.Label>
-            <Form.Check
-              inline
-              label="1"
-              name="group1"
-              type="radio"
-              value={1}
-              key={`inline-radio-1`}
-              onChange={(e) =>
-                this.setState({ ...this.state, membersNeeded: e.target.value })
-              }
-            />
-            <Form.Check
-              inline
-              label="2"
-              name="group1"
-              type="radio"
-              value={2}
-              key={`inline-radio-2`}
-              onChange={(e) =>
-                this.setState({ ...this.state, membersNeeded: e.target.value })
-              }
-            />
-            <Form.Check
-              inline
-              label="3"
-              name="group1"
-              type="radio"
-              value={3}
-              key={`inline-radio-3`}
-              onChange={(e) =>
-                this.setState({ ...this.state, membersNeeded: e.target.value })
-              }
-            />
-            <Form.Check
-              inline
-              label="4"
-              name="group1"
-              type="radio"
-              value={4}
-              key={`inline-radio-4`}
-              onChange={(e) =>
-                this.setState({ ...this.state, membersNeeded: e.target.value })
-              }
-            />
-          </Form.Group> */}
 
           <Form.Group
             className="formBox"
