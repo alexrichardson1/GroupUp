@@ -1,5 +1,5 @@
 import { LinkContainer } from "react-router-bootstrap";
-import { Button, Jumbotron, Card, ListGroup } from "react-bootstrap";
+import { Button, Jumbotron } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
