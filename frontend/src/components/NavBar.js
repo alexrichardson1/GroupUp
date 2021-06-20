@@ -1,7 +1,9 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { UserContext } from "components/auth/UserContext";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import axios from "axios";
+import { config } from "Constants";
 
 function getLinkElems(renderBool, linkList, linkNameList) {
   const boldPosition = renderBool.filter((item) => item).length;
@@ -53,7 +55,9 @@ const NavBar = ({
   const logginIn = renderBool.reduce((val, next) => {
     return val && next;
   });
-  const { value } = useContext(UserContext);
+  const [email, setUserEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  // const { value } = useContext(UserContext);
   const loginMessage = () => {
     switch (loginPage) {
       case 0:
@@ -69,6 +73,41 @@ const NavBar = ({
   const help = "Help";
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
+
+  useEffect(() => {
+    getActive();
+  }, []);
+
+  const getActive = async () => {
+    var result = "";
+    await axios
+      .get(`${config.API_URL}/active/one`)
+      .then((res) => {
+        const user = res.data;
+        setUserEmail(user.email);
+        setFullName(user.fullname);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const clearActive = async () => {
+    var result = {};
+    await axios
+      .post(`${config.API_URL}/active/email/update`, {
+        email: "",
+        fullname: "",
+      })
+      .then((res) => {
+        const group = res.data;
+        result = group;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return result;
+  };
 
   return (
     <Navbar className="navBar" expand="lg" fixed="top">
@@ -123,7 +162,7 @@ const NavBar = ({
             className="navAccount"
             title={
               <span className="accountSpan">
-                {value}
+                {fullName}
                 <img
                   className="splitterImage"
                   src={process.env.PUBLIC_URL + "/person-circle.svg"}
@@ -142,7 +181,9 @@ const NavBar = ({
             </LinkContainer>
             <NavDropdown.Divider />
             <LinkContainer to="/" activeClassName="">
-              <NavDropdown.Item>Sign Out</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => clearActive()}>
+                Sign Out
+              </NavDropdown.Item>
             </LinkContainer>
           </NavDropdown>
         </Nav>
