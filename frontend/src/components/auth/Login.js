@@ -32,6 +32,22 @@ const Login = () => {
     return result;
   };
 
+  const updateActive = async () => {
+    var result = {};
+    await axios
+      .post(`${config.API_URL}/active/email/update`, {
+        email: userEmail,
+      })
+      .then((res) => {
+        const group = res.data;
+        result = group;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return result;
+  };
+
   useEffect(() => {
     const getAllUsers = async () => {
       var result = [];
@@ -62,6 +78,7 @@ const Login = () => {
   const handleSubmit = () => {
     setEmail(userEmail);
     updateLogin();
+    updateActive();
     console.log(users);
     const user = users.filter((u) => u.email === userEmail)[0].fullname;
     console.log(user);
