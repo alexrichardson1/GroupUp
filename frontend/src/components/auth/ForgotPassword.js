@@ -22,6 +22,7 @@ class ForgotPassword extends Component {
             </Form.Text>
           </Form.Group>
           <Button
+            disabled
             onClick={() => {
               alert("Email sent");
             }}
