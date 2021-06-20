@@ -112,6 +112,9 @@ const Login = () => {
       <LinkContainer to="/signup">
         <Button>Haven't Got An Account</Button>
       </LinkContainer>
+      <LinkContainer to="/forgotpassword">
+        <Button>Forgotten Your Password</Button>
+      </LinkContainer>
     </div>
   );
 };
