@@ -33,10 +33,15 @@ const Login = () => {
   };
 
   const updateActive = async () => {
+    let userFullName = "";
+    if (userEmail !== "") {
+      userFullName = users.filter((u) => u.email === userEmail)[0].fullname;
+    }
     var result = {};
     await axios
       .post(`${config.API_URL}/active/email/update`, {
         email: userEmail,
+        fullname: userFullName,
       })
       .then((res) => {
         const group = res.data;
