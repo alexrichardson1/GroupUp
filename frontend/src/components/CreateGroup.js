@@ -83,24 +83,32 @@ class CreateGroup extends Component {
   }
 
   handleSubmit = async (e) => {
-    e.preventDefault();
-    const requirementValues = [];
-    this.state.requirementNames.map((req) =>
-      requirementValues.push(this.state[req])
-    );
-    const info = {
-      leader: this.state.leaderName,
-      maxmembers: this.state.maxmembers,
-      teammates: this.state.teammates.split(", "),
-      requirements: requirementValues,
-      adrequirements: this.state.adrequirements,
-      projectid: this.props.id,
-      leaderemail: this.state.leaderEmail,
-      posted: new Date().toISOString(),
-    };
-    console.log(info);
-    await addGroup(info);
-    // window.location.reload();
+    let submit = true;
+    this.state.requirementNames.forEach((req) => {
+      if (this.state[req] === "") {
+        submit = false;
+      }
+    });
+    if (submit === true) {
+      e.preventDefault();
+      const requirementValues = [];
+      this.state.requirementNames.map((req) =>
+        requirementValues.push(this.state[req])
+      );
+      const info = {
+        leader: this.state.leaderName,
+        maxmembers: this.state.maxmembers,
+        teammates: this.state.teammates.split(", "),
+        requirements: requirementValues,
+        adrequirements: this.state.adrequirements,
+        projectid: this.props.id,
+        leaderemail: this.state.leaderEmail,
+        posted: new Date().toISOString(),
+      };
+      console.log(info);
+      await addGroup(info);
+      window.location.reload();
+    }
   };
 
   uniqueComponent = (name) => {
@@ -113,6 +121,7 @@ class CreateGroup extends Component {
           name={name}
           value={this.state[name]}
           onChange={this.handleInputChange}
+          isInvalid={!(this.state[name] && this.state[name].length !== 0)}
         ></FormControl>
       </InputGroup>
     );
