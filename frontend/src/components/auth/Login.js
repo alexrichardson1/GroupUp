@@ -5,6 +5,7 @@ import { UserContext } from "components/auth/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { config } from "Constants";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -94,13 +95,13 @@ const Login = () => {
   return (
     <div>
       <NavBar renderBool={[false, false, false, false]} loginPage={0} />
-      <h2>Login!</h2>
+      <h2>Login</h2>
       <Form>
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="text"
-            placeholder="johnsmith@email.com"
+            placeholder="johnsmith@example.com"
             name="userEmail"
             value={userEmail}
             onChange={handleInputChange}
@@ -108,6 +109,9 @@ const Login = () => {
         </Form.Group>
         <Button onClick={handleSubmit}>Login</Button>
       </Form>
+      <LinkContainer to="/signup">
+        <Button>Haven't Got An Account</Button>
+      </LinkContainer>
     </div>
   );
 };
