@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Alert, Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [users, setUsers] = useState([]);
+  const [invalid, setInvalid] = useState(false);
 
   const { setValue, setEmail } = useContext(UserContext);
   const history = useHistory();
@@ -82,20 +83,36 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    setEmail(userEmail);
-    updateLogin();
-    updateActive();
-    console.log(users);
-    const user = users.filter((u) => u.email === userEmail)[0].fullname;
-    console.log(user);
-    setValue(user);
-    history.push("/home");
+    let contains = false;
+    users.forEach((u) => {
+      if (u.email === userEmail) {
+        contains = true;
+      }
+    });
+    if (contains) {
+      setEmail(userEmail);
+      updateLogin();
+      updateActive();
+      console.log(users);
+      const user = users.filter((u) => u.email === userEmail)[0].fullname;
+      console.log(user);
+      setValue(user);
+      history.push("/home");
+    } else {
+      setInvalid(true);
+      // window.location.reload(false);
+    }
   };
 
   return (
     <div>
       <NavBar renderBool={[false, false, false, false]} loginPage={0} />
       <h2>Login</h2>
+      {invalid === true ? (
+        <Alert variant="danger">User with email not found.</Alert>
+      ) : (
+        <h9></h9>
+      )}
       <Form>
         <Form.Group>
           <Form.Label>Email</Form.Label>
@@ -107,7 +124,9 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Button onClick={handleSubmit}>Login</Button>
+        <Button disabled={!users.includes(users)} onClick={handleSubmit}>
+          Login
+        </Button>
         <LinkContainer to="/signup">
           <Button>Haven't Got An Account</Button>
         </LinkContainer>
