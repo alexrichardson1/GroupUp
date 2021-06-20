@@ -9,8 +9,11 @@ import {
   FormControl,
   Container,
   Col,
+  Alert,
+  Spinner,
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
 
@@ -38,6 +41,9 @@ class CreateGroup extends Component {
       teammates: "",
       requirementNames: [],
       adrequirements: "",
+      invalid: false,
+      invalid2: false,
+      redirect: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -92,6 +98,10 @@ class CreateGroup extends Component {
     });
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.idss);
+  }
+
   handleSubmit = async (e) => {
     let submit = true;
     this.state.requirementNames.forEach((req) => {
@@ -99,8 +109,8 @@ class CreateGroup extends Component {
         submit = false;
       }
     });
+    e.preventDefault();
     if (submit === true) {
-      e.preventDefault();
       const requirementValues = [];
       this.state.requirementNames.map((req) =>
         requirementValues.push(this.state[req])
@@ -117,7 +127,11 @@ class CreateGroup extends Component {
       };
       console.log(info);
       await addGroup(info);
-      // window.location.reload();
+      this.setState({ invalid: false });
+      this.id = setTimeout(() => this.setState({ redirect: true }), 3000);
+      this.setState({ invalid2: true });
+    } else {
+      this.setState({ invalid: true });
     }
   };
 
@@ -150,7 +164,9 @@ class CreateGroup extends Component {
   };
 
   render() {
-    return (
+    return this.state.redirect ? (
+      <Redirect to="/home" />
+    ) : (
       <Container>
         <NavBar
           renderBool={[true, true, true, true]}
@@ -158,96 +174,111 @@ class CreateGroup extends Component {
           id={this.props.id}
         />
         <h1>Advertise your group</h1>
-        <Form onSubmit={this.handleSubmit}>
-          <Col>
+        {this.state.invalid === true ? (
+          <Alert variant="danger">Fill in all fields.</Alert>
+        ) : (
+          <h9></h9>
+        )}
+        {this.state.invalid2 === true ? (
+          <Alert variant="success">Group advertised!</Alert>
+        ) : (
+          <h9></h9>
+        )}
+        {this.state.invalid2 === false ? (
+          <Form onSubmit={this.handleSubmit}>
+            <Col>
+              <Form.Group
+                className="formBox"
+                as={Col}
+                controlId="formLeaderName"
+                key="formLeaderName"
+              >
+                <Form.Label>Leader's Name</Form.Label>
+                <Form.Control
+                  disabled
+                  type="text"
+                  placeholder={this.state.leaderName}
+                  name="leaderName"
+                  value={this.state.leaderName}
+                  // onChange={this.handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  Leader is just the point of contact, it can really be any
+                  group member.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group
+                className="formBox"
+                as={Col}
+                controlId="formLeaderName"
+                key="formLeaderName"
+              >
+                <Form.Label>Leader's Email</Form.Label>
+                <Form.Control
+                  disabled
+                  type="text"
+                  placeholder={this.state.leaderEmail}
+                  name="leaderEmail"
+                  value={this.state.leaderEmail}
+                />
+                <Form.Text className="text-muted">
+                  This is the first point of contact for new members, make sure
+                  you are active on this email!
+                </Form.Text>
+              </Form.Group>
+            </Col>
+
+            <label htmlFor="basic-url" className="formBox" key="labelllll">
+              A few things you need to specify about your group, to help
+              understand the skills, interests and backgrounds your group
+              possess:
+            </label>
+
+            {this.reqsToComponents(this.state.requirementNames).map((req) => {
+              return req;
+            })}
+
+            <Form.Row>
+              <Form.Group controlId="adrequirements" key="adrequirements">
+                <Form.Label>Additional Notes</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="e.g. Experience in Robotics"
+                  name="adrequirements"
+                  value={this.state.adrequirements}
+                  onChange={this.handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  Any of your own requirements.
+                </Form.Text>
+              </Form.Group>
+            </Form.Row>
+
             <Form.Group
               className="formBox"
-              as={Col}
-              controlId="formLeaderName"
-              key="formLeaderName"
+              controlId="formOtherMembers"
+              key="formOtherMembers"
             >
-              <Form.Label>Leader's Name</Form.Label>
-              <Form.Control
-                disabled
-                type="text"
-                placeholder={this.state.leaderName}
-                name="leaderName"
-                value={this.state.leaderName}
-                // onChange={this.handleInputChange}
-              />
-              <Form.Text className="text-muted">
-                Leader is just the point of contact, it can really be any group
-                member.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group
-              className="formBox"
-              as={Col}
-              controlId="formLeaderName"
-              key="formLeaderName"
-            >
-              <Form.Label>Leader's Email</Form.Label>
-              <Form.Control
-                disabled
-                type="text"
-                placeholder={this.state.leaderEmail}
-                name="leaderEmail"
-                value={this.state.leaderEmail}
-              />
-              <Form.Text className="text-muted">
-                This is the first point of contact for new members, make sure
-                you are active on this email!
-              </Form.Text>
-            </Form.Group>
-          </Col>
-
-          <label htmlFor="basic-url" className="formBox" key="labelllll">
-            A few things you need to specify about your group, to help
-            understand the skills, interests and backgrounds your group possess:
-          </label>
-
-          {this.reqsToComponents(this.state.requirementNames).map((req) => {
-            return req;
-          })}
-
-          <Form.Row>
-            <Form.Group controlId="adrequirements" key="adrequirements">
-              <Form.Label>Additional Notes</Form.Label>
+              <Form.Label>Other Members names</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="e.g. Experience in Robotics"
-                name="adrequirements"
-                value={this.state.adrequirements}
+                placeholder="e.g. John, Mary, Adam"
+                name="teammates"
+                value={this.state.teammates}
                 onChange={this.handleInputChange}
               />
               <Form.Text className="text-muted">
-                Any of your own requirements.
+                Add Teammates here (comma-separated).
               </Form.Text>
             </Form.Group>
-          </Form.Row>
 
-          <Form.Group
-            className="formBox"
-            controlId="formOtherMembers"
-            key="formOtherMembers"
-          >
-            <Form.Label>Other Members names</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="e.g. John, Mary, Adam"
-              name="teammates"
-              value={this.state.teammates}
-              onChange={this.handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              Add Teammates here (comma-separated).
-            </Form.Text>
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        ) : (
+          <Spinner animation="grow" />
+        )}
       </Container>
     );
   }
