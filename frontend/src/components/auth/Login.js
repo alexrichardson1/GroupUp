@@ -83,13 +83,14 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    let contains = false;
-    users.forEach((u) => {
-      if (u.email === userEmail) {
-        contains = true;
-      }
-    });
-    if (contains) {
+    // let contains = false;
+    // users.forEach((u) => {
+    //   if (u.email === userEmail) {
+    //     contains = true;
+    //   }
+    // });
+    const emails = users.map((user) => user.email);
+    if (emails.includes(userEmail)) {
       setEmail(userEmail);
       updateLogin();
       updateActive();
@@ -124,7 +125,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Button disabled={!users.includes(users)} onClick={handleSubmit}>
+        <Button disabled={userEmail === ""} onClick={handleSubmit}>
           Login
         </Button>
         <LinkContainer to="/signup">
