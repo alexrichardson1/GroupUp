@@ -111,9 +111,29 @@ app.post("/user/activefilter/update", async (req, res) => {
   }
 });
 
+app.post("/active/email/update", async (req, res) => {
+  try {
+    const updatedUser = await Database.updateActive(req.body);
+    console.log(updatedUser);
+    res.json(updatedUser);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
 app.get("/user/one", async (req, res) => {
   try {
     const project = await Database.getUser(req.body);
+    console.log(project);
+    res.json(project);
+  } catch (error) {
+    res.body = "Error: " + error;
+  }
+});
+
+app.get("/active/one", async (req, res) => {
+  try {
+    const project = await Database.getActive();
     console.log(project);
     res.json(project);
   } catch (error) {
