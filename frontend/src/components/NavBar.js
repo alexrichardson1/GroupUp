@@ -1,7 +1,6 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { UserContext } from "components/auth/UserContext";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from "Constants";
 
@@ -55,7 +54,6 @@ const NavBar = ({
   const logginIn = renderBool.reduce((val, next) => {
     return val && next;
   });
-  const [email, setUserEmail] = useState("");
   const [fullName, setFullName] = useState("");
   // const { value } = useContext(UserContext);
   const loginMessage = () => {
@@ -79,12 +77,10 @@ const NavBar = ({
   }, []);
 
   const getActive = async () => {
-    var result = "";
     await axios
       .get(`${config.API_URL}/active/one`)
       .then((res) => {
         const user = res.data;
-        setUserEmail(user.email);
         setFullName(user.fullname);
       })
       .catch((error) => {
