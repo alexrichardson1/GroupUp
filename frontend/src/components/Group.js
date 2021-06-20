@@ -10,26 +10,28 @@ const Group = ({ group, requirementNames }) => {
     if (posted == null) {
       return "Date unknown";
     }
-    const dayAsDate = new Date(posted.substring(0, 10));
+    console.log(posted);
+    const dayAsDate = new Date(posted.substring(0, 10)).getTime();
+    console.log("Day as milli: " + dayAsDate);
 
-    const hoursToMills = 3600000 * parseInt(posted.substring(11, 13));
-    const minutesToMills = 60000 * parseInt(posted.substring(14, 16));
-    const secondsToMills = 1000 * parseInt(posted.substring(17, 19));
+    // const hoursToMills = 3600000 * parseInt(posted.substring(11, 13));
+    // const minutesToMills = 60000 * parseInt(posted.substring(14, 16));
 
-    const datePostedAsNum =
-      dayAsDate + hoursToMills + minutesToMills + secondsToMills;
+    // const datePostedAsNum = dayAsDate + hoursToMills + minutesToMills;
 
-    const difference = new Date() - datePostedAsNum;
+    const difference = Date.now() - dayAsDate;
 
     if (difference < 2629800000) {
       if (difference > 604800000) {
         return "Posted " + Math.floor(difference / 604800000) + " weeks ago";
       } else if (difference > 86400000) {
-        return "Posted " + Math.floor(difference / 86400000) + " days ago";
-      } else if (difference > 3600000) {
-        return "Posted " + Math.floor(difference / 3600000) + " hours ago";
+        return (
+          "Posted " +
+          Math.floor(difference / 86400000) +
+          (Math.floor(difference / 86400000) === 1 ? " day ago" : " days ago")
+        );
       } else {
-        return "Posted less than an hour ago";
+        return "Posted less than a day ago.";
       }
     } else {
       return "Posted more than a month ago";
