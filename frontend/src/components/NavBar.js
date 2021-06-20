@@ -154,34 +154,38 @@ const NavBar = ({
               />
             </Navbar.Brand>
           </LinkContainer>
-          <NavDropdown
-            className="navAccount"
-            title={
-              <span className="accountSpan">
-                {fullName}
-                <img
-                  className="splitterImage"
-                  src={process.env.PUBLIC_URL + "/person-circle.svg"}
-                  alt="my-account"
-                />
-              </span>
-            }
-            id="collasible-nav-dropdown"
-            style={{ color: "rgb(238, 237, 237)" }}
-          >
-            <LinkContainer to="/savedsearches" activeClassName="">
-              <NavDropdown.Item>Saved Searches</NavDropdown.Item>
-            </LinkContainer>
-            <LinkContainer to="/myGroups" activeClassName="">
-              <NavDropdown.Item>My Groups</NavDropdown.Item>
-            </LinkContainer>
-            <NavDropdown.Divider />
-            <LinkContainer to="/" activeClassName="">
-              <NavDropdown.Item onClick={() => clearActive()}>
-                Sign Out
-              </NavDropdown.Item>
-            </LinkContainer>
-          </NavDropdown>
+          {fullName !== "" ? (
+            <NavDropdown
+              className="navAccount"
+              title={
+                <span className="accountSpan">
+                  {fullName}
+                  <img
+                    className="splitterImage"
+                    src={process.env.PUBLIC_URL + "/person-circle.svg"}
+                    alt="my-account"
+                  />
+                </span>
+              }
+              id="collasible-nav-dropdown"
+              style={{ color: "rgb(238, 237, 237)" }}
+            >
+              <LinkContainer to="/savedsearches" activeClassName="">
+                <NavDropdown.Item>Saved Search</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/myGroups" activeClassName="">
+                <NavDropdown.Item>My Groups</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <LinkContainer to="/" activeClassName="">
+                <NavDropdown.Item onClick={() => clearActive()}>
+                  Sign Out
+                </NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          ) : (
+            <h9></h9>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
