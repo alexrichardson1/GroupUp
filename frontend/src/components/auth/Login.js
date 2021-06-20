@@ -26,7 +26,6 @@ const Login = () => {
       .then((res) => {
         const group = res.data;
         result = group;
-        alert("Successfully logged in!");
       })
       .catch((error) => {
         console.log(error);
@@ -83,12 +82,6 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    // let contains = false;
-    // users.forEach((u) => {
-    //   if (u.email === userEmail) {
-    //     contains = true;
-    //   }
-    // });
     const emails = users.map((user) => user.email);
     if (emails.includes(userEmail)) {
       setEmail(userEmail);
@@ -123,6 +116,7 @@ const Login = () => {
             name="userEmail"
             value={userEmail}
             onChange={handleInputChange}
+            isInvalid={userEmail === ""}
           />
         </Form.Group>
         <Button disabled={userEmail === ""} onClick={handleSubmit}>
