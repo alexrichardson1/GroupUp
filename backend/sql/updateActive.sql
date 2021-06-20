@@ -1,4 +1,4 @@
 UPDATE active
-SET "email" = ${email}
+SET "fullname" = ${fullname}, "email" = ${email} --, "name" = ${name}
 WHERE "id" = 1
 RETURNING *
