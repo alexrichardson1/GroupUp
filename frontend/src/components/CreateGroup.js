@@ -62,14 +62,24 @@ class CreateGroup extends Component {
     return result;
   };
 
+  getActive = async () => {
+    await axios
+      .get(`${config.API_URL}/active/one`)
+      .then((res) => {
+        const user = res.data;
+        this.setState({ leaderEmail: user.email });
+        this.setState({ leaderName: user.fullname });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   async componentDidMount() {
+    this.getActive();
     const proj = await this.getProject();
     this.setState({ requirementNames: proj.requirements });
     document.title = "Create a listing!";
-    let value = this.context;
-    console.log(value);
-    this.setState({ leaderName: value.value });
-    this.setState({ leaderEmail: value.email });
   }
 
   /* Functions to handle form submission */
