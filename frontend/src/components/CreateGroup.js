@@ -202,7 +202,8 @@ class CreateGroup extends Component {
           </Col>
 
           <label htmlFor="basic-url" className="formBox" key="labelllll">
-            A few things you need to specify about your group:
+            A few things you need to specify about your group, to help
+            understand the skills, interests and backgrounds your group possess:
           </label>
 
           {this.reqsToComponents(this.state.requirementNames).map((req) => {
@@ -211,7 +212,7 @@ class CreateGroup extends Component {
 
           <Form.Row>
             <Form.Group controlId="adrequirements" key="adrequirements">
-              <Form.Label>Other Requirements/Additional Notes</Form.Label>
+              <Form.Label>Additional Notes</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="e.g. Experience in Robotics"
@@ -230,7 +231,7 @@ class CreateGroup extends Component {
             controlId="formOtherMembers"
             key="formOtherMembers"
           >
-            <Form.Label>Other Members names (Optional)</Form.Label>
+            <Form.Label>Other Members names</Form.Label>
             <Form.Control
               type="text"
               placeholder="e.g. John, Mary, Adam"
