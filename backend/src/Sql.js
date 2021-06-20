@@ -26,3 +26,8 @@ export const userSQL = {
   getUser: sql("../sql/getUser.sql"),
   getAllUsers: sql("../sql/getAllUsers.sql"),
 };
+
+export const activeSQL = {
+  updateActive: sql("../sql/updateActive.sql"),
+  getActive: sql("../sql/getActive.sql"),
+};
