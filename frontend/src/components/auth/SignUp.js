@@ -29,6 +29,7 @@ class SignUp extends Component {
           </Form.Group>
           <LinkContainer to="/home">
             <Button
+              disabled
               onClick={() => {
                 alert("Successfully created an account.");
               }}
