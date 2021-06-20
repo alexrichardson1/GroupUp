@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Group from "components/Group";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/NavBar";
@@ -18,7 +18,18 @@ export default class Groups extends Component {
       requirements: [],
       filteredGroups: [],
       activeFilters: new Map(),
+      modalShow: false,
     };
+  }
+
+  handleClose() {
+    this.setState({ modalShow: false });
+  }
+  handleShow() {
+    this.setState({ modalShow: true });
+    for (const [k, v] of this.state.activeFilters.entries()) {
+      console.log(k + " -> " + v);
+    }
   }
 
   groupIsFull(group) {
@@ -151,14 +162,12 @@ export default class Groups extends Component {
     console.log(email);
   };
 
-  testFunc = ({ email }) => {
+  postEmail = ({ email }) => {
     const vals = [];
     for (const [, v] of this.state.activeFilters.entries()) {
       vals.push(v);
     }
     this.postFilter(email, vals);
-    // console.log("added filters for: " + email);
-    // console.log("Filters: " + vals);
   };
 
   render() {
@@ -167,6 +176,24 @@ export default class Groups extends Component {
         {({ email }) => (
           <div>
             <Navbar renderBool={[true, true, true, false]} create={false} />
+            <Modal show={this.state.modalShow} onHide={this.handleClose}>
+              <Modal.Header>
+                <Modal.Title>Saved</Modal.Title>
+              </Modal.Header>
+
+              <Modal.Body>
+                <p>
+                  Your current filtered search has been saved. Find it under
+                  your account.
+                </p>
+              </Modal.Body>
+
+              <Modal.Footer>
+                <Button variant="secondary" onClick={() => this.handleClose()}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
             <Container>
               <Row>
                 <Col>
@@ -179,7 +206,10 @@ export default class Groups extends Component {
                 <Col className="advertCol align-items-center">
                   <Button
                     className="advertBtn"
-                    onClick={() => this.testFunc({ email })}
+                    onClick={() => {
+                      this.handleShow();
+                      this.postEmail(email);
+                    }}
                   >
                     Save this search
                   </Button>
