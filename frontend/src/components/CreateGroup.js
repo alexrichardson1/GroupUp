@@ -95,7 +95,7 @@ class CreateGroup extends Component {
   handleSubmit = async (e) => {
     let submit = true;
     this.state.requirementNames.forEach((req) => {
-      if (this.state[req] === "") {
+      if (this.state[req] === "" || this.state[req] === undefined) {
         submit = false;
       }
     });
@@ -117,7 +117,7 @@ class CreateGroup extends Component {
       };
       console.log(info);
       await addGroup(info);
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
