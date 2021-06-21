@@ -1,5 +1,5 @@
 const prod = {
-  API_URL: "https://group-up-drp.herokuapp.com",
+  API_URL: "https://group-up-server.herokuapp.com",
 };
 
 const local = {
