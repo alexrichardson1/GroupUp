@@ -46,7 +46,7 @@ const NavBar = ({
 }) => {
   const linkNameList = [
     savedSearches ? "Saved Searches" : "Home",
-    hackathon ? "" : "Select Group",
+    "Select Hackathon",
     hackathon ? "Register a hackathon" : "Group Listings",
     create ? "Create a group" : "Join a group",
   ];
