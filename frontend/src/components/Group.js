@@ -1,10 +1,10 @@
 import { Button, Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const Group = ({ group, requirementNames }) => {
+const Group = ({ group, requirementNames, projectId }) => {
   const { id, leader, requirements, posted } = group;
 
-  let groupDetailsLink = "/group/" + id;
+  let groupDetailsLink = "/group/" + id + "/" + projectId;
 
   const getPostedTimeAgo = () => {
     if (posted == null) {

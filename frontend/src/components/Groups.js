@@ -231,6 +231,7 @@ export default class Groups extends Component {
                     <Group
                       group={group}
                       requirementNames={this.state.requirements}
+                      projectId={this.props.id}
                       key={group.id}
                     />
                   ))}

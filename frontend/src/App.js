@@ -47,7 +47,10 @@ const App = () => {
           <Route path="/home" exact component={Home}></Route>
           <Route path="/selection" exact component={SelectProject}></Route>
           {/* <Route path="/listings" exact render={() => <Groups />}></Route> */}
-          <Route path="/group/:id" children={<DetailedGroup />}></Route>
+          <Route
+            path="/group/:id/:projectId"
+            children={<DetailedGroup />}
+          ></Route>
           <Route path="/listing/:id" children={<GroupsFunc />}></Route>
           <Route path="/createGroup/:id" children={<CreateGroupFunc />}></Route>
           <Route

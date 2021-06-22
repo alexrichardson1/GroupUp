@@ -9,17 +9,25 @@ import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
 
 const DetailedGroup = () => {
-  const { id } = useParams();
+  const { id, projectId } = useParams();
   const groupId = parseInt(id);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [leader, setLeader] = useState("");
   const [maxMembers, setMaxMembers] = useState(0);
   const [teammates, setTeammates] = useState([]);
-  const [requirements, setRequirements] = useState({});
+  const [requirements, setRequirements] = useState([]); // requirement values: e.g. Java, +1
   const [adRequirements, setAdRequirements] = useState("");
-  const [projectId, setProjectId] = useState(0);
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState({
+    id: -1,
+    name: "",
+    requirements: [], // requirement NAMES
+    description: "",
+    hours: 24,
+    date: "2021-07-07T23:00:00.000Z",
+    location: "",
+  });
+
   const [show, setShow] = useState(false);
   const { value } = useContext(UserContext);
 
@@ -48,7 +56,7 @@ const DetailedGroup = () => {
     return result;
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     const getGroup = async () => {
       await axios
         .post(`${config.API_URL}/group/one`, {
@@ -62,7 +70,6 @@ const DetailedGroup = () => {
           setTeammates(group.teammates);
           setRequirements(group.requirements);
           setAdRequirements(group.adrequirements);
-          setProjectId(group.projectid);
           setEmail(group.leaderemail);
         })
         .catch((error) => {
@@ -76,7 +83,9 @@ const DetailedGroup = () => {
         .get(`${config.API_URL}/project`)
         .then((res) => {
           const projects = res.data;
-          result = projects.filter((proj) => proj.id === projectId)[0];
+          result = projects.filter(
+            (proj) => proj.id === parseInt(projectId)
+          )[0];
           setProject(result);
         })
         .catch((error) => {
@@ -85,9 +94,9 @@ const DetailedGroup = () => {
     };
 
     document.title = `${leader}'s Group`;
-    getProject();
-    getGroup();
-  }, [groupId, projectId, leader]);
+    await getGroup();
+    await getProject();
+  }, []);
 
   const isJoined = () => {
     return leader === value || teammates.some((name) => name === value);
@@ -151,7 +160,7 @@ const DetailedGroup = () => {
       </ListGroup>
       {adRequirements && (
         <div>
-          <h5>Additional Requirements:</h5>
+          <h5>Additional Requirement, projectId s:</h5>
           <div>{adRequirements}</div>
         </div>
       )}
@@ -161,7 +170,7 @@ const DetailedGroup = () => {
         onClick={() => {
           if (value) joinGroup();
         }}
-        disabled={isJoined() ? "disabled" : ""}
+        disabled={isJoined()}
       >
         {isJoined() ? "Already joined" : "Join Group"}
       </Button>
