@@ -166,7 +166,7 @@ const DetailedGroup = () => {
       </ListGroup>
       {adRequirements && (
         <div>
-          <h5>Additional Requirement, projectId s:</h5>
+          <h5>Additional Requirements:</h5>
           <div>{adRequirements}</div>
         </div>
       )}
