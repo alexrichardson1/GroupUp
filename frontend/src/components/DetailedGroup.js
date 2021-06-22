@@ -56,47 +56,53 @@ const DetailedGroup = () => {
     return result;
   };
 
-  useEffect(async () => {
-    const getGroup = async () => {
-      await axios
-        .post(`${config.API_URL}/group/one`, {
-          groupid: groupId,
-        })
-        .then((res) => {
-          const group = res.data;
-          console.log(group);
-          setLeader(group.leader);
-          setMaxMembers(group.maxmembers);
-          setTeammates(group.teammates);
-          setRequirements(group.requirements);
-          setAdRequirements(group.adrequirements);
-          setEmail(group.leaderemail);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
+  useEffect(
+    // eslint-disable-next-line
+    async () => {
+      const getGroup = async () => {
+        await axios
+          .post(`${config.API_URL}/group/one`, {
+            groupid: groupId,
+          })
+          .then((res) => {
+            const group = res.data;
+            console.log(group);
+            setLeader(group.leader);
+            setMaxMembers(group.maxmembers);
+            setTeammates(group.teammates);
+            setRequirements(group.requirements);
+            setAdRequirements(group.adrequirements);
+            setEmail(group.leaderemail);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
 
-    const getProject = async () => {
-      var result = "";
-      await axios
-        .get(`${config.API_URL}/project`)
-        .then((res) => {
-          const projects = res.data;
-          result = projects.filter(
-            (proj) => proj.id === parseInt(projectId)
-          )[0];
-          setProject(result);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+      const getProject = async () => {
+        var result = "";
+        await axios
+          .get(`${config.API_URL}/project`)
+          .then((res) => {
+            const projects = res.data;
+            result = projects.filter(
+              (proj) => proj.id === parseInt(projectId)
+            )[0];
+            setProject(result);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
 
-    document.title = `${leader}'s Group`;
-    await getGroup();
-    await getProject();
-  }, []);
+      document.title = `${leader}'s Group`;
+      await getGroup();
+      await getProject();
+      // eslint-disable-next-line
+    },
+    // eslint-disable-next-line
+    []
+  );
 
   const isJoined = () => {
     return leader === value || teammates.some((name) => name === value);
