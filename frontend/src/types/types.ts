@@ -9,7 +9,7 @@ interface GroupT {
   posted: string;
 }
 
-interface Project {
+interface ProjectT {
   id: number;
   name: string;
   requirements: string[];
@@ -19,4 +19,4 @@ interface Project {
   location: string;
 }
 
-export type { GroupT, Project };
+export type { GroupT, ProjectT };

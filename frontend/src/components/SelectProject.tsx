@@ -4,10 +4,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
-import { Project } from "types/types";
+import { ProjectT } from "types/types";
 
 const SelectProject = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectT[]>([]);
 
   useEffect(() => {
     const getProjects = async () => {
