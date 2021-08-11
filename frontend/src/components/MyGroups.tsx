@@ -5,19 +5,26 @@ import { UserContext } from "components/auth/UserContext";
 import { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Button, Card, ListGroup } from "react-bootstrap";
+import { GroupT } from "types/types";
 
-export default class MyGroups extends Component {
-  constructor(props) {
+interface Props {}
+
+interface State {
+  filteredGroups: GroupT[];
+}
+
+export default class MyGroups extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       filteredGroups: [],
     };
   }
 
-  static contextType = UserContext;
+  static override contextType = UserContext;
 
-  async getGroups() {
-    let result = "";
+  async getGroups(): Promise<GroupT[]> {
+    var result: GroupT[] = [];
     await axios
       .get(`${config.API_URL}/group/`)
       .then((res) => {
@@ -27,11 +34,10 @@ export default class MyGroups extends Component {
       .catch((error) => {
         console.error(error);
       });
-
     return result;
   }
 
-  async componentDidMount() {
+  override async componentDidMount() {
     this.setState({ filteredGroups: await this.getGroups() }, () =>
       this.filterMyGroups()
     );
@@ -49,7 +55,7 @@ export default class MyGroups extends Component {
     });
   };
 
-  render() {
+  override render() {
     return (
       <div>
         <NavBar
