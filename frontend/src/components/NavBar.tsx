@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from "Constants";
 
-function getLinkElems(renderBool, linkList, linkNameList) {
+function getLinkElems(
+  renderBool: boolean[],
+  linkList: string[],
+  linkNameList: string[]
+) {
   const boldPosition = renderBool.filter((item) => item).length;
   const navLinks = [];
   for (let i = 0; i < boldPosition; i++) {
@@ -35,6 +39,16 @@ function getLinkElems(renderBool, linkList, linkNameList) {
   return navLinks;
 }
 
+interface Props {
+  renderBool: boolean[];
+  create: boolean;
+  id: number;
+  loginPage: number;
+  helpPage: boolean;
+  savedSearches: boolean;
+  hackathon: boolean;
+}
+
 const NavBar = ({
   renderBool,
   create,
@@ -43,7 +57,7 @@ const NavBar = ({
   helpPage,
   savedSearches,
   hackathon,
-}) => {
+}: Props) => {
   const linkNameList = [
     savedSearches ? "Saved Searches" : "Home",
     "Select Hackathon",
@@ -140,7 +154,8 @@ const NavBar = ({
           })}
         </Nav>
 
-        <Nav className="ms-auto" pullright>
+        <Nav className="ms-auto">
+          {/* <Nav className="ms-auto" pullright> */}
           <LinkContainer to="/help">
             <Navbar.Brand
               title="Help"
@@ -184,7 +199,7 @@ const NavBar = ({
               </LinkContainer>
             </NavDropdown>
           ) : (
-            <h9></h9>
+            <h6></h6>
           )}
         </Nav>
       </Navbar.Collapse>
