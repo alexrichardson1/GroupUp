@@ -9,4 +9,14 @@ interface Group {
   posted: string;
 }
 
-export type { Group };
+interface Project {
+  id: number;
+  name: string;
+  requirements: string[];
+  description: string;
+  hours: number;
+  date: string;
+  location: string;
+}
+
+export type { Group, Project };
