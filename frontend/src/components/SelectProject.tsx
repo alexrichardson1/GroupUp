@@ -1,13 +1,13 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import NavBar from "components/NavBar";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { config } from "../Constants";
+import { config } from "Constants";
+import { Project } from "types/types";
 
 const SelectProject = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     const getProjects = async () => {
