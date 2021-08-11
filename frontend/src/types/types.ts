@@ -1,4 +1,4 @@
-interface Group {
+interface GroupT {
   leader: string;
   maxmembers: number;
   teammates: string[];
@@ -19,4 +19,4 @@ interface Project {
   location: string;
 }
 
-export type { Group, Project };
+export type { GroupT, Project };
