@@ -41,12 +41,12 @@ function getLinkElems(
 
 interface Props {
   renderBool: boolean[];
-  create: boolean;
-  id: number;
-  loginPage: number;
-  helpPage: boolean;
-  savedSearches: boolean;
-  hackathon: boolean;
+  create?: boolean;
+  id?: number;
+  loginPage?: number;
+  helpPage?: boolean;
+  savedSearches?: boolean;
+  hackathon?: boolean;
 }
 
 const NavBar = ({
