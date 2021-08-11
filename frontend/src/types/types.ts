@@ -19,4 +19,14 @@ interface ProjectT {
   location: string;
 }
 
-export type { GroupT, ProjectT };
+interface UserT {
+  id: number;
+  fullname: string;
+  email: string;
+  password: string;
+  activefilter: string[];
+  lastlogin: string;
+  groupsid: number;
+}
+
+export type { GroupT, ProjectT, UserT };
