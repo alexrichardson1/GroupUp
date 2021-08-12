@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 
 class ForgotPassword extends Component {
-  componentDidMount() {
+  override componentDidMount() {
     document.title = "Forgot Password ?";
   }
 
-  render() {
+  override render() {
     return (
       <div>
         <NavBar renderBool={[false, false, false, false]} loginPage={2} />
