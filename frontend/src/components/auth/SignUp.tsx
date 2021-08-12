@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 
 class SignUp extends Component {
-  componentDidMount() {
+  override componentDidMount() {
     document.title = "Sign Up";
   }
 
-  render() {
+  override render() {
     return (
       <div>
         <NavBar renderBool={[false, false, false, false]} loginPage={1} />
