@@ -1,20 +1,23 @@
 import { Component } from "react";
-import React from "react";
 import { Button, Card } from "react-bootstrap";
 import ReactCardFlip from "react-card-flip";
 import Navbar from "components/NavBar";
 
-export default class Help extends Component {
+interface State {
+  flipped: Set<number>;
+}
+
+export default class Help extends Component<{}, State> {
   constructor() {
-    super();
+    super({});
     this.state = {
       flipped: new Set(),
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(id) {
-    return (e) => {
+  handleClick(id: number) {
+    return (e: Event) => {
       e.preventDefault();
       let flipped = new Set(this.state.flipped);
       flipped.has(id) ? flipped.delete(id) : flipped.add(id);
@@ -22,11 +25,11 @@ export default class Help extends Component {
     };
   }
 
-  componentDidMount() {
+  override componentDidMount() {
     document.title = "Need Help?";
   }
 
-  render() {
+  override render() {
     return (
       <div>
         <Navbar renderBool={[false, false, false, false]} helpPage={true} />
@@ -45,7 +48,12 @@ export default class Help extends Component {
               />
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(1)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(1)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
 
@@ -67,7 +75,12 @@ export default class Help extends Component {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(1)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(1)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
         </ReactCardFlip>
@@ -86,7 +99,12 @@ export default class Help extends Component {
               />
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(2)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(2)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
 
@@ -105,7 +123,12 @@ export default class Help extends Component {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(2)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(2)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
         </ReactCardFlip>
@@ -124,7 +147,12 @@ export default class Help extends Component {
               />
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(3)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(3)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
 
@@ -142,7 +170,12 @@ export default class Help extends Component {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(3)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(3)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
         </ReactCardFlip>
@@ -161,7 +194,12 @@ export default class Help extends Component {
               />
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(4)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(4)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
 
@@ -181,7 +219,12 @@ export default class Help extends Component {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button onClick={this.handleClick(4)}>Click to flip</Button>
+              <Button
+                //@ts-ignore
+                onClick={this.handleClick(4)}
+              >
+                Click to flip
+              </Button>
             </Card.Footer>
           </Card>
         </ReactCardFlip>
