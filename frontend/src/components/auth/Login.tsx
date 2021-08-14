@@ -101,7 +101,7 @@ const Login = () => {
       user = filteredUsers[0];
     }
     console.log(user);
-    setUser(user);
+    setUser(user.fullname);
     history.push("/home");
   };
 
