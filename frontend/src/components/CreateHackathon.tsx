@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import axios from "axios";
 import "components/styles.css";
 import { config } from "Constants";
@@ -6,9 +6,11 @@ import { Form, Button, Container, Col, Alert, Spinner } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 import { Redirect } from "react-router";
+import { GroupT, ProjectT } from "types/types";
+import { dummyGroup } from "api";
 
-async function addProject(data) {
-  var result = {};
+async function addProject(data: ProjectT): Promise<GroupT> {
+  var result: GroupT = dummyGroup;
   await axios
     .post(`${config.API_URL}/project/add`, data)
     .then((res) => {
@@ -21,12 +23,28 @@ async function addProject(data) {
   return result;
 }
 
-class CreateHackathon extends Component {
-  constructor(props) {
+interface Props {
+  id: number;
+}
+
+interface State {
+  hackathonName: string;
+  requirements: string;
+  description: string;
+  hours: string;
+  date: string;
+  location: string;
+  invalid: boolean;
+  invalid2: boolean;
+  redirect: boolean;
+}
+
+class CreateHackathon extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       hackathonName: "",
-      requirements: [],
+      requirements: "",
       description: "",
       hours: "",
       date: "",
@@ -40,18 +58,19 @@ class CreateHackathon extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async componentDidMount() {}
+  override async componentDidMount() {}
 
-  handleInputChange(event) {
+  handleInputChange(event: any) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
 
+    //@ts-ignore
     this.setState({
       [target.name]: value,
     });
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async (e: any) => {
     e.preventDefault();
     if (
       this.state.hackathonName === "" ||
@@ -64,22 +83,29 @@ class CreateHackathon extends Component {
     ) {
       this.setState({ invalid: true });
     } else {
-      const info = {
+      const info: ProjectT = {
         name: this.state.hackathonName,
         requirements: this.state.requirements.split(", "),
         description: this.state.description,
-        hours: this.state.hours,
+        hours: parseInt(this.state.hours),
         date: new Date(this.state.date).toISOString(),
         location: this.state.location,
       };
       await addProject(info);
       this.setState({ invalid: false });
-      this.id = setTimeout(() => this.setState({ redirect: true }), 3000);
+      const TIMEOUT = 3000;
+      //@ts-ignore
+      this.id = setTimeout(() => this.setState({ redirect: true }), TIMEOUT);
       this.setState({ invalid2: true });
     }
   };
 
-  genFormComponent = (label, placeholder, stateName, mutedText) => {
+  genFormComponent = (
+    label: string,
+    placeholder: string,
+    stateName: string,
+    mutedText: string
+  ) => {
     return (
       <Form.Group
         className="formBox"
@@ -92,8 +118,10 @@ class CreateHackathon extends Component {
           type="text"
           placeholder={placeholder}
           name={stateName}
+          //@ts-ignore
           value={this.state[stateName]}
           onChange={this.handleInputChange}
+          //@ts-ignore
           isInvalid={this.state[stateName].length === 0}
         />
         <Form.Text className="text-muted">{mutedText}</Form.Text>
@@ -101,7 +129,7 @@ class CreateHackathon extends Component {
     );
   };
 
-  render() {
+  override render() {
     return this.state.redirect ? (
       <Redirect to="/home" />
     ) : (
@@ -116,12 +144,12 @@ class CreateHackathon extends Component {
         {this.state.invalid === true ? (
           <Alert variant="danger">Fill in all fields.</Alert>
         ) : (
-          <h9></h9>
+          <h6></h6>
         )}
         {this.state.invalid2 === true ? (
           <Alert variant="success">Hackathon is now available!</Alert>
         ) : (
-          <h9></h9>
+          <h6></h6>
         )}
         {this.state.invalid2 === false ? (
           <Form onSubmit={this.handleSubmit}>
@@ -199,4 +227,5 @@ class CreateHackathon extends Component {
   }
 }
 
+//@ts-ignore
 export default withRouter(CreateHackathon);
