@@ -5,12 +5,19 @@ import {
   ToggleButtonGroup,
 } from "react-bootstrap";
 
+interface Props {
+  requirementName: string;
+  requirementsList: string[];
+  filterFunction: any;
+  resetFunction: any;
+}
+
 const Filter = ({
   requirementName,
   requirementsList,
   filterFunction,
   resetFunction,
-}) => {
+}: Props) => {
   return (
     <div>
       <Accordion>
@@ -43,7 +50,7 @@ const Filter = ({
                       onChange={() => filterFunction(requirementName, req)}
                     >
                       {requirementName === "Timezone"
-                        ? req > -1
+                        ? parseInt(req) > -1
                           ? "+" + req
                           : req
                         : req}
