@@ -7,14 +7,29 @@ import Navbar from "components/NavBar";
 import axios from "axios";
 import Filter from "components/Filter";
 import { config } from "Constants";
-import UserContext from "components/auth/UserContext";
+import { UserContext } from "components/auth/UserContext";
+import { GroupT, ProjectT } from "types/types";
+import { dummyProject } from "api";
 
-export default class Groups extends Component {
-  constructor(props) {
+interface Props {
+  id: number;
+}
+
+interface State {
+  groups: GroupT[];
+  projects: ProjectT;
+  requirements: string[];
+  filteredGroups: GroupT[];
+  activeFilters: Map<string, string>;
+  modalShow: boolean;
+}
+
+export default class Groups extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       groups: [],
-      project: "",
+      projects: dummyProject,
       requirements: [],
       filteredGroups: [],
       activeFilters: new Map(),
@@ -32,12 +47,12 @@ export default class Groups extends Component {
     }
   }
 
-  groupIsFull(group) {
+  groupIsFull(group: GroupT) {
     return 1 + group.teammates.length >= group.maxmembers;
   }
 
-  async getGroups() {
-    var result = [];
+  async getGroups(): Promise<GroupT[]> {
+    var result: GroupT[] = [];
     await axios
       .post(`${config.API_URL}/group/hackathon`, {
         hackathonid: this.props.id,
@@ -52,16 +67,19 @@ export default class Groups extends Component {
       });
     return result.filter((group) => !this.groupIsFull(group));
   }
-
-  async getProject() {
-    var result = "";
+  // TODO: getProject()
+  async getProjects(): Promise<ProjectT> {
+    var result: ProjectT = dummyProject;
     await axios
       .get(`${config.API_URL}/project`)
       .then((res) => {
-        const projects = res.data;
-        result = projects.filter(
+        const projects: ProjectT[] = res.data;
+        const project = projects.filter(
           (proj) => proj.id === Number(this.props.id)
         )[0];
+        if (project) {
+          result = project;
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -69,7 +87,7 @@ export default class Groups extends Component {
     return result;
   }
 
-  async postFilter(userEmail, filters) {
+  async postFilter(userEmail: string, filters: any[]) {
     console.log("added filters for: " + userEmail);
     console.log("Filters: " + filters);
     var result = {};
@@ -88,25 +106,30 @@ export default class Groups extends Component {
     return result;
   }
 
-  async componentDidMount() {
+  override async componentDidMount() {
     this.setState({ groups: await this.getGroups() });
-    this.setState({ project: await this.getProject() });
+    this.setState({ projects: await this.getProjects() });
     this.setState({ filteredGroups: await this.getGroups() });
     this.setState({ requirements: this.hackathonReqs() });
     document.title = "Available Listings";
   }
 
   hackathonReqs = () => {
-    return this.state.project.requirements;
+    return this.state.projects.requirements;
   };
 
-  allReqVars = (reqIndex) => {
-    const vars = [];
-    this.state.groups.map((g) => vars.push(g.requirements[reqIndex]));
+  allReqVars = (reqIndex: number) => {
+    const vars: string[] = [];
+    this.state.groups.map((g) => {
+      const requirement = g.requirements[reqIndex];
+      if (requirement) {
+        vars.push(requirement);
+      }
+    });
     return [...new Set(vars)];
   };
 
-  filterGroupsOnReq = (reqName, reqVar) => {
+  filterGroupsOnReq = (reqName: string, reqVar: string) => {
     this.addFilter(reqName, reqVar);
     this.setState(
       (state) => ({ filteredGroups: state.groups }),
@@ -118,31 +141,34 @@ export default class Groups extends Component {
     for (const [, v] of this.state.activeFilters.entries()) {
       let newFilteredGroups = [];
       if (v === "Any") {
-        console.log("HHHH");
         newFilteredGroups = [...this.state.filteredGroups];
       } else {
         for (let i = 0; i < this.state.filteredGroups.length; i++) {
-          if (this.state.filteredGroups[i].requirements.includes(v)) {
+          if (
+            this.state.filteredGroups[i] &&
+            //@ts-ignore
+            this.state.filteredGroups[i].requirements.includes(v)
+          ) {
             newFilteredGroups.push(this.state.filteredGroups[i]);
           }
         }
       }
-      // eslint-disable-next-line
+      //@ts-ignore
       this.state.filteredGroups = newFilteredGroups;
       this.setState({ ...this.state });
     }
   };
 
-  addFilter = (key, value) => {
+  addFilter = (key: string, value: string) => {
     this.setState({ activeFilters: this.state.activeFilters.set(key, value) });
   };
 
-  removeFilter = (key) => {
+  removeFilter = (key: string) => {
     this.filterGroupsOnReq(key, "Any");
   };
 
   createFilterComponents = () => {
-    const comps = [];
+    const comps: JSX.Element[] = [];
     this.state.requirements.forEach((req) => {
       comps.push(
         <Filter
@@ -158,11 +184,11 @@ export default class Groups extends Component {
     return comps;
   };
 
-  saveFilters = (email) => {
+  saveFilters = (email: string) => {
     console.log(email);
   };
 
-  postEmail = ({ email }) => {
+  postEmail = (email: string) => {
     const vals = [];
     for (const [, v] of this.state.activeFilters.entries()) {
       vals.push(v);
@@ -170,7 +196,7 @@ export default class Groups extends Component {
     this.postFilter(email, vals);
   };
 
-  render() {
+  override render() {
     return (
       <UserContext.Consumer>
         {({ email }) => (
@@ -200,7 +226,7 @@ export default class Groups extends Component {
                   <h3>
                     {this.state.filteredGroups.length} Groups looking for
                     members in: 
-                    {this.state.project.name}
+                    {this.state.projects.name}
                   </h3>
                 </Col>
                 <Col className="advertCol align-items-center">
