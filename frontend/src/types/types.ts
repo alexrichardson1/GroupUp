@@ -1,5 +1,5 @@
 interface GroupT {
-  id: number;
+  id?: number;
   leader: string;
   maxmembers: number;
   teammates: string[];
