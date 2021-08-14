@@ -21,7 +21,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false
+    "allowUnreachableCode": false,
+    "downlevelIteration": true
   },
   "include": ["src"]
 }
