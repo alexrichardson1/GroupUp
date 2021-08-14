@@ -10,7 +10,6 @@ import CreateGroup from "components/CreateGroup";
 import Login from "components/auth/Login";
 import SignUp from "components/auth/SignUp";
 import ForgotPassword from "components/auth/ForgotPassword";
-// import data from "Teams";
 import Help from "components/Help";
 import { UserContext } from "components/auth/UserContext";
 import SavedSearches from "components/SavedSearches";
@@ -18,22 +17,23 @@ import CreateHackathon from "components/CreateHackathon";
 import MyGroups from "components/MyGroups";
 
 function GroupsFunc() {
-  const { id } = useParams();
-  return <Groups id={id} />;
+  const { id } = useParams<{ id: string }>();
+  return <Groups id={parseInt(id)} />;
 }
 
 function CreateGroupFunc() {
-  const { id } = useParams();
-  return <CreateGroup id={id} />;
+  const { id } = useParams<{ id: string }>();
+  //@ts-ignore
+  return <CreateGroup id={parseInt(id)} />;
 }
 
 const App = () => {
-  const [value, setValue] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
 
   return (
     <Router>
-      <UserContext.Provider value={{ value, setValue, email, setEmail }}>
+      <UserContext.Provider value={{ user, setUser, email, setEmail }}>
         <div className="container">
           <Route path="/" exact component={Login}></Route>
           <Route path="/signup" exact component={SignUp}></Route>
@@ -46,7 +46,6 @@ const App = () => {
           <Route path="/myGroups" exact component={MyGroups}></Route>
           <Route path="/home" exact component={Home}></Route>
           <Route path="/selection" exact component={SelectProject}></Route>
-          {/* <Route path="/listings" exact render={() => <Groups />}></Route> */}
           <Route
             path="/group/:id/:projectId"
             children={<DetailedGroup />}
