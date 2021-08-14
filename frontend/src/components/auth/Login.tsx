@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
@@ -6,13 +6,15 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { config } from "Constants";
 import { LinkContainer } from "react-router-bootstrap";
+import { UserT } from "types/types";
+import { dummyUser } from "api";
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState("");
-  const [users, setUsers] = useState([]);
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [users, setUsers] = useState<UserT[]>([]);
   const [invalid, setInvalid] = useState(false);
 
-  const { setValue, setEmail } = useContext(UserContext);
+  const { setUser, setEmail } = useContext(UserContext);
   const history = useHistory();
   const date = new Date().toISOString();
 
@@ -34,29 +36,31 @@ const Login = () => {
   };
 
   const updateActive = async () => {
-    let userFullName = "";
+    var userFullName = dummyUser.fullname;
     if (userEmail !== "") {
-      userFullName = users.filter((u) => u.email === userEmail)[0].fullname;
+      const filteredUsers = users.filter((u) => u.email === userEmail);
+      if (filteredUsers[0]) {
+        userFullName = filteredUsers[0].fullname;
+      }
     }
-    var result = {};
+    var result: UserT = dummyUser;
     await axios
       .post(`${config.API_URL}/active/email/update`, {
         email: userEmail,
         fullname: userFullName,
       })
       .then((res) => {
-        const group = res.data;
-        result = group;
+        result = res.data;
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
     return result;
   };
 
   useEffect(() => {
     const getAllUsers = async () => {
-      var result = [];
+      var result: UserT[] = [];
       await axios
         .get(`${config.API_URL}/user/`)
         .then((res) => {
@@ -75,7 +79,7 @@ const Login = () => {
   }, []);
 
   /* Functions to handle form submission */
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     setUserEmail(value);
@@ -83,19 +87,22 @@ const Login = () => {
 
   const handleSubmit = () => {
     const emails = users.map((user) => user.email);
-    if (emails.includes(userEmail)) {
-      setEmail(userEmail);
-      updateLogin();
-      updateActive();
-      console.log(users);
-      const user = users.filter((u) => u.email === userEmail)[0].fullname;
-      console.log(user);
-      setValue(user);
-      history.push("/home");
-    } else {
+    if (!emails.includes(userEmail)) {
       setInvalid(true);
-      // window.location.reload(false);
+      return;
     }
+    setEmail(userEmail);
+    updateLogin();
+    updateActive();
+    console.log(users);
+    var user = dummyUser;
+    const filteredUsers = users.filter((u) => u.email === userEmail);
+    if (filteredUsers[0]) {
+      user = filteredUsers[0];
+    }
+    console.log(user);
+    setUser(user);
+    history.push("/home");
   };
 
   return (
@@ -105,7 +112,7 @@ const Login = () => {
       {invalid === true ? (
         <Alert variant="danger">User with email not found.</Alert>
       ) : (
-        <h9></h9>
+        <h6></h6>
       )}
       <Form>
         <Form.Group>
