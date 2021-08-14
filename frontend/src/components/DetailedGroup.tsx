@@ -7,29 +7,23 @@ import NavBar from "components/NavBar";
 import axios from "axios";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
+import { ProjectT } from "types/types";
+import { dummyProject } from "api";
 
 const DetailedGroup = () => {
-  const { id, projectId } = useParams();
+  const { id, projectId } = useParams<{ id: string; projectId: string }>();
   const groupId = parseInt(id);
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [leader, setLeader] = useState("");
-  const [maxMembers, setMaxMembers] = useState(0);
-  const [teammates, setTeammates] = useState([]);
-  const [requirements, setRequirements] = useState([]); // requirement values: e.g. Java, +1
-  const [adRequirements, setAdRequirements] = useState("");
-  const [project, setProject] = useState({
-    id: -1,
-    name: "",
-    requirements: [], // requirement NAMES
-    description: "",
-    hours: 24,
-    date: "2021-07-07T23:00:00.000Z",
-    location: "",
-  });
+  const [email, setEmail] = useState<String>("");
+  const [leader, setLeader] = useState<String>("");
+  const [maxMembers, setMaxMembers] = useState<Number>(0);
+  const [teammates, setTeammates] = useState<String[]>([]);
+  const [requirements, setRequirements] = useState<string[]>([]); // requirement values: e.g. Java, +1
+  const [adRequirements, setAdRequirements] = useState<String>("");
+  const [project, setProject] = useState(dummyProject);
 
   const [show, setShow] = useState(false);
-  const { value } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,13 +36,13 @@ const DetailedGroup = () => {
     await axios
       .post(`${config.API_URL}/group/join`, {
         groupid: groupId,
-        name: value,
+        name: user,
       })
       .then((res) => {
         const group = res.data;
         result = group;
         alert("Successfully joined group!");
-        setTeammates([...teammates, value]);
+        setTeammates([...teammates, user]);
       })
       .catch((error) => {
         console.log(error);
@@ -56,63 +50,61 @@ const DetailedGroup = () => {
     return result;
   };
 
-  useEffect(
-    // eslint-disable-next-line
-    async () => {
-      const getGroup = async () => {
-        await axios
-          .post(`${config.API_URL}/group/one`, {
-            groupid: groupId,
-          })
-          .then((res) => {
-            const group = res.data;
-            console.log(group);
-            setLeader(group.leader);
-            setMaxMembers(group.maxmembers);
-            setTeammates(group.teammates);
-            setRequirements(group.requirements);
-            setAdRequirements(group.adrequirements);
-            setEmail(group.leaderemail);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+  //@ts-ignore
+  useEffect(async () => {
+    const getGroup = async () => {
+      await axios
+        .post(`${config.API_URL}/group/one`, {
+          groupid: groupId,
+        })
+        .then((res) => {
+          const group = res.data;
+          console.log(group);
+          setLeader(group.leader);
+          setMaxMembers(group.maxmembers);
+          setTeammates(group.teammates);
+          setRequirements(group.requirements);
+          setAdRequirements(group.adrequirements);
+          setEmail(group.leaderemail);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
-      const getProject = async () => {
-        var result = "";
-        await axios
-          .get(`${config.API_URL}/project`)
-          .then((res) => {
-            const projects = res.data;
-            result = projects.filter(
-              (proj) => proj.id === parseInt(projectId)
-            )[0];
-            setProject(result);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      };
+    const getProject = async () => {
+      var result: ProjectT = dummyProject;
+      await axios
+        .get(`${config.API_URL}/project`)
+        .then((res) => {
+          const projects: ProjectT[] = res.data;
+          const filteredProjects = projects.filter(
+            (proj) => proj.id === parseInt(projectId)
+          );
+          if (filteredProjects[0]) {
+            result = filteredProjects[0];
+          }
+          setProject(result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
 
-      document.title = `${leader}'s Group`;
-      await getGroup();
-      await getProject();
-      // eslint-disable-next-line
-    },
-    // eslint-disable-next-line
-    []
-  );
+    document.title = `${leader}'s Group`;
+    await getGroup();
+    await getProject();
+  }, []);
 
   const isJoined = () => {
-    return leader === value || teammates.some((name) => name === value);
+    return leader === user || teammates.some((name) => name === user);
   };
 
   return (
     <React.Fragment>
       <NavBar
         renderBool={[true, true, true, true]}
-        id={projectId}
+        id={parseInt(projectId)}
         create={false}
       />
       <Modal show={show} onHide={handleClose}>
@@ -140,19 +132,26 @@ const DetailedGroup = () => {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(requirements).map(([key, val]) => (
+          {Object.entries(requirements).map(([key, val]: [string, string]) => (
             <tr>
               <td>
-                {project.requirements[key] === "Timezone"
-                  ? "Timezone (UTC +/-)"
-                  : project.requirements[key]}
+                {
+                  //@ts-ignore
+                  project.requirements[key] === "Timezone"
+                    ? "Timezone (UTC +/-)"
+                    : //@ts-ignore
+                      project.requirements[key]
+                }
               </td>
               <td>
-                {project.requirements[key] === "Timezone"
-                  ? val > -1
-                    ? "+" + val
+                {
+                  //@ts-ignore
+                  project.requirements[key] === "Timezone"
+                    ? parseInt(val) > -1
+                      ? "+" + val
+                      : val
                     : val
-                  : val}
+                }
               </td>
             </tr>
           ))}
@@ -174,7 +173,7 @@ const DetailedGroup = () => {
       <Button onClick={handleShow}>Contact Leader</Button>
       <Button
         onClick={() => {
-          if (value) joinGroup();
+          if (user) joinGroup();
         }}
         disabled={isJoined()}
       >
