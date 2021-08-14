@@ -11,7 +11,7 @@ interface GroupT {
 }
 
 interface ProjectT {
-  id: number;
+  id?: number;
   name: string;
   requirements: string[];
   description: string;
