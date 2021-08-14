@@ -30,4 +30,9 @@ interface UserT {
   groupsid: number;
 }
 
-export type { GroupT, ProjectT, UserT };
+interface ActiveT {
+  id: number;
+  email: string;
+}
+
+export type { GroupT, ProjectT, UserT, ActiveT };
