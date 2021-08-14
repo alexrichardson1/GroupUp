@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { ChangeEvent, Component } from "react";
 import axios from "axios";
 import "components/styles.css";
 import { config } from "Constants";
@@ -16,8 +16,9 @@ import { withRouter } from "react-router-dom";
 import { Redirect } from "react-router";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
+import { ActiveT, GroupT, ProjectT } from "types/types";
 
-async function addGroup(data) {
+async function addGroup(data: GroupT) {
   var result = {};
   await axios
     .post(`${config.API_URL}/group/add`, data)
@@ -31,15 +32,31 @@ async function addGroup(data) {
   return result;
 }
 
-class CreateGroup extends Component {
-  constructor(props) {
+interface Props {
+  id: number;
+}
+
+interface State {
+  leader: string;
+  maxmembers: number;
+  teammates: string;
+  requirements: string[];
+  adrequirements: string;
+  leaderemail: string;
+  invalid: boolean;
+  invalid2: boolean;
+  redirect: boolean;
+}
+
+class CreateGroup extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      leaderName: "",
-      leaderEmail: "",
+      leader: "",
+      leaderemail: "",
       maxmembers: 4,
       teammates: "",
-      requirementNames: [],
+      requirements: [],
       adrequirements: "",
       invalid: false,
       invalid2: false,
@@ -50,10 +67,18 @@ class CreateGroup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  static contextType = UserContext;
+  static override contextType = UserContext;
 
   getProject = async () => {
-    var result = [];
+    var result: ProjectT = {
+      id: 0,
+      name: "",
+      requirements: [],
+      description: "",
+      hours: 0,
+      date: "",
+      location: "",
+    };
     await axios
       .post(`${config.API_URL}/project/one`, {
         projectid: this.props.id,
@@ -72,70 +97,80 @@ class CreateGroup extends Component {
     await axios
       .get(`${config.API_URL}/active/one`)
       .then((res) => {
-        const user = res.data;
-        this.setState({ leaderEmail: user.email });
-        this.setState({ leaderName: user.fullname });
+        const user: ActiveT = res.data;
+        this.setState({ leaderemail: user.email });
+        // TODO
+        //@ts-ignore
+        this.setState({ leader: user.fullname });
+        //@ts-ignore
+        console.log(`EXPECT ERROR ${user.fullname}`);
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  async componentDidMount() {
+  override async componentDidMount() {
     this.getActive();
     const proj = await this.getProject();
-    this.setState({ requirementNames: proj.requirements });
+    this.setState({ requirements: proj.requirements });
     document.title = "Create a listing!";
   }
 
   /* Functions to handle form submission */
-  handleInputChange(event) {
+  handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
 
+    //@ts-ignore
     this.setState({
       [target.name]: value,
     });
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
+    //@ts-ignore
     clearTimeout(this.idss);
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async (e: any) => {
     let submit = true;
-    this.state.requirementNames.forEach((req) => {
+    this.state.requirements.forEach((req) => {
+      // @ts-ignore
       if (this.state[req] === "" || this.state[req] === undefined) {
         submit = false;
       }
     });
     e.preventDefault();
     if (submit === true) {
-      const requirementValues = [];
-      this.state.requirementNames.map((req) =>
+      const requirementValues: string[] = [];
+      this.state.requirements.map((req) =>
+        //@ts-ignore
         requirementValues.push(this.state[req])
       );
       const info = {
-        leader: this.state.leaderName,
+        leader: this.state.leader,
         maxmembers: this.state.maxmembers,
         teammates: this.state.teammates.split(", "),
         requirements: requirementValues,
         adrequirements: this.state.adrequirements,
         projectid: this.props.id,
-        leaderemail: this.state.leaderEmail,
+        leaderemail: this.state.leaderemail,
         posted: new Date().toISOString(),
       };
       console.log(info);
       await addGroup(info);
       this.setState({ invalid: false });
-      this.id = setTimeout(() => this.setState({ redirect: true }), 3000);
+      const TIMEOUT = 3000;
+      //@ts-ignore
+      this.id = setTimeout(() => this.setState({ redirect: true }), TIMEOUT);
       this.setState({ invalid2: true });
     } else {
       this.setState({ invalid: true });
     }
   };
 
-  uniqueComponent = (name) => {
+  uniqueComponent = (name: string) => {
     return (
       <InputGroup className="mb-3" key={name}>
         <InputGroup.Prepend>
@@ -143,27 +178,25 @@ class CreateGroup extends Component {
         </InputGroup.Prepend>
         <FormControl
           name={name}
-          value={this.state[name]}
+          value={this.state.leader}
+          // value={this.state[name]}
           onChange={this.handleInputChange}
-          isInvalid={!(this.state[name] && this.state[name].length !== 0)}
+          // isInvalid={!(this.state[name] && this.state[name].length !== 0)}
+          isInvalid={!(this.state.leader && this.state.leader.length !== 0)}
         ></FormControl>
       </InputGroup>
     );
   };
 
-  reqsToComponents = (names) => {
-    const components = [];
+  reqsToComponents = (names: string[]): JSX.Element[] => {
+    const components: JSX.Element[] = [];
     names.forEach((req) => {
       components.push(this.uniqueComponent(req));
     });
     return components;
   };
 
-  setUser = (value) => {
-    this.setState({ user: value });
-  };
-
-  render() {
+  override render() {
     return this.state.redirect ? (
       <Redirect to="/home" />
     ) : (
@@ -177,12 +210,12 @@ class CreateGroup extends Component {
         {this.state.invalid === true ? (
           <Alert variant="danger">Fill in all fields.</Alert>
         ) : (
-          <h9></h9>
+          <h6></h6>
         )}
         {this.state.invalid2 === true ? (
           <Alert variant="success">Group advertised!</Alert>
         ) : (
-          <h9></h9>
+          <h6></h6>
         )}
         {this.state.invalid2 === false ? (
           <Form onSubmit={this.handleSubmit}>
@@ -197,9 +230,9 @@ class CreateGroup extends Component {
                 <Form.Control
                   disabled
                   type="text"
-                  placeholder={this.state.leaderName}
-                  name="leaderName"
-                  value={this.state.leaderName}
+                  placeholder={this.state.leader}
+                  name="leader"
+                  value={this.state.leader}
                   // onChange={this.handleInputChange}
                 />
                 <Form.Text className="text-muted">
@@ -217,9 +250,9 @@ class CreateGroup extends Component {
                 <Form.Control
                   disabled
                   type="text"
-                  placeholder={this.state.leaderEmail}
-                  name="leaderEmail"
-                  value={this.state.leaderEmail}
+                  placeholder={this.state.leaderemail}
+                  name="leaderemail"
+                  value={this.state.leaderemail}
                 />
                 <Form.Text className="text-muted">
                   This is the first point of contact for new members, make sure
@@ -234,7 +267,7 @@ class CreateGroup extends Component {
               possess:
             </label>
 
-            {this.reqsToComponents(this.state.requirementNames).map((req) => {
+            {this.reqsToComponents(this.state.requirements).map((req) => {
               return req;
             })}
 
@@ -284,4 +317,5 @@ class CreateGroup extends Component {
   }
 }
 
+//@ts-ignore
 export default withRouter(CreateGroup);
