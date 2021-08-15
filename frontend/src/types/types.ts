@@ -34,6 +34,7 @@ interface ActiveT {
   id: number;
   email: string;
   fullname: string;
+  filters: any[];
 }
 
 export type { GroupT, ProjectT, UserT, ActiveT };
