@@ -34,6 +34,17 @@ const dummyUser: UserT = {
   groupsid: -1,
 };
 
+async function addProject(data: ProjectT) {
+  await axios
+    .post(`${config.API_URL}/project/add`, data)
+    .then((res) => {
+      console.log(`Project added: ${res.data}`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 async function getGroup(groupId: number) {
   const group = dummyGroup;
   await axios
@@ -120,6 +131,7 @@ async function getUsers(): Promise<UserT[]> {
 }
 
 export {
+  addProject,
   getProject,
   getProjects,
   dummyProject,
