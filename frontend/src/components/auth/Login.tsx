@@ -13,26 +13,22 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [users, setUsers] = useState<UserT[]>([]);
   const [invalid, setInvalid] = useState(false);
-
   const { setUser, setEmail } = useContext(UserContext);
   const history = useHistory();
   const date = new Date().toISOString();
 
   const updateLogin = async () => {
-    var result = {};
     await axios
       .post(`${config.API_URL}/user/login/update`, {
         email: userEmail,
         time: date,
       })
       .then((res) => {
-        const group = res.data;
-        result = group;
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-    return result;
   };
 
   const updateActive = async () => {
@@ -105,15 +101,18 @@ const Login = () => {
     history.push("/home");
   };
 
+  function wrongLogin() : JSX.Element | null {
+    if (invalid) {
+      return <Alert variant="danger">User with email not found.</Alert>
+    }
+    return null
+  }
+
   return (
     <div>
       <NavBar renderBool={[false, false, false, false]} loginPage={0} />
       <h2>Login</h2>
-      {invalid === true ? (
-        <Alert variant="danger">User with email not found.</Alert>
-      ) : (
-        <h6></h6>
-      )}
+      {wrongLogin()}
       <Form>
         <Form.Group>
           <Form.Label>Email</Form.Label>
