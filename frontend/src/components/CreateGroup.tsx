@@ -17,6 +17,7 @@ import { Redirect } from "react-router";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
 import { ActiveT, GroupT, ProjectT } from "types/types";
+import { allFieldsNotFilledIn } from "common/render";
 
 async function addGroup(data: GroupT) {
   var result = {};
@@ -196,16 +197,9 @@ class CreateGroup extends Component<Props, State> {
     return components;
   };
 
-  allFieldsNotFilledIn() {
-    if (this.state.invalid) {
-      return <Alert variant="danger">Fill in all fields.</Alert>
-    }
-    return null;
-  }
-
   groupAdvertised() {
     if (this.state.invalid2) {
-      return <Alert variant="success">Group advertised!</Alert>
+      return <Alert variant="success">Group advertised!</Alert>;
     }
     return null;
   }
@@ -221,7 +215,7 @@ class CreateGroup extends Component<Props, State> {
           id={this.props.id}
         />
         <h1>Advertise your group</h1>
-        {this.allFieldsNotFilledIn()}
+        {allFieldsNotFilledIn(this.state.invalid)}
         {this.groupAdvertised()}
         {!this.state.invalid2 ? (
           <Form onSubmit={this.handleSubmit}>
