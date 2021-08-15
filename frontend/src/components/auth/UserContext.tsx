@@ -1,4 +1,4 @@
-import { dummyUser } from "api";
+import { dummyUser } from "common/api";
 import { createContext } from "react";
 
 interface UserContextT {

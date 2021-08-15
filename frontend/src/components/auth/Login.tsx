@@ -7,7 +7,7 @@ import axios from "axios";
 import { config } from "Constants";
 import { LinkContainer } from "react-router-bootstrap";
 import { UserT } from "types/types";
-import { dummyUser } from "api";
+import { dummyUser } from "common/api";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState<string>("");
@@ -101,11 +101,11 @@ const Login = () => {
     history.push("/home");
   };
 
-  function wrongLogin() : JSX.Element | null {
+  function wrongLogin(): JSX.Element | null {
     if (invalidLogin) {
-      return <Alert variant="danger">User with email not found.</Alert>
+      return <Alert variant="danger">User with email not found.</Alert>;
     }
-    return null
+    return null;
   }
 
   return (

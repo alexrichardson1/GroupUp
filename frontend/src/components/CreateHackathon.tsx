@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 import { Redirect } from "react-router";
 import { GroupT, ProjectT } from "types/types";
-import { dummyGroup } from "api";
+import { dummyGroup } from "common/api";
 import { allFieldsNotFilledIn } from "common/render";
 
 async function addProject(data: ProjectT): Promise<GroupT> {

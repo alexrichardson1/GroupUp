@@ -9,7 +9,7 @@ import Filter from "components/Filter";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
 import { GroupT, ProjectT } from "types/types";
-import { dummyProject } from "api";
+import { dummyProject } from "common/api";
 
 interface Props {
   id: number;

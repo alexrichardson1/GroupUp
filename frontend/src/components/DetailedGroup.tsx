@@ -8,7 +8,7 @@ import axios from "axios";
 import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
 import { ProjectT } from "types/types";
-import { dummyProject } from "api";
+import { dummyProject } from "common/api";
 
 const DetailedGroup = () => {
   const { id, projectId } = useParams<{ id: string; projectId: string }>();
