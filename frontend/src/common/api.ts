@@ -51,7 +51,7 @@ async function getGroup(groupId: number) {
 }
 
 async function getGroups() {
-  var result: GroupT[] = [];
+  var result: GroupT[] = [dummyGroup];
   await axios
     .get(`${config.API_URL}/group`)
     .then((res) => {
@@ -79,7 +79,7 @@ async function getProject(id: number) {
 }
 
 async function getProjects() {
-  var result: ProjectT[] = [];
+  var result: ProjectT[] = [dummyProject];
   await axios
     .get(`${config.API_URL}/project`)
     .then((res) => {
@@ -107,7 +107,7 @@ async function getUser(email: string) {
 }
 
 async function getUsers(): Promise<UserT[]> {
-  var result: UserT[] = [];
+  var result: UserT[] = [dummyUser];
   await axios
     .get(`${config.API_URL}/user`)
     .then((res) => {
