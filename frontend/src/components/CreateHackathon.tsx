@@ -8,6 +8,7 @@ import NavBar from "components/NavBar";
 import { Redirect } from "react-router";
 import { GroupT, ProjectT } from "types/types";
 import { dummyGroup } from "api";
+import { allFieldsNotFilledIn } from "common/render";
 
 async function addProject(data: ProjectT): Promise<GroupT> {
   var result: GroupT = dummyGroup;
@@ -131,7 +132,7 @@ class CreateHackathon extends Component<Props, State> {
 
   hackathonNowAvailable() {
     if (this.state.invalid2) {
-      return <Alert variant="success">Hackathon is now available!</Alert>
+      return <Alert variant="success">Hackathon is now available!</Alert>;
     }
     return null;
   }
@@ -148,11 +149,7 @@ class CreateHackathon extends Component<Props, State> {
           id={this.props.id}
         />
         <h1>Adding your Hackathon to our list</h1>
-        {this.state.invalid === true ? (
-          <Alert variant="danger">Fill in all fields.</Alert>
-        ) : (
-          <h6></h6>
-        )}
+        {allFieldsNotFilledIn(this.state.invalid)}
         {this.hackathonNowAvailable()}
         {!this.state.invalid2 ? (
           <Form onSubmit={this.handleSubmit}>
