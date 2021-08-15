@@ -33,6 +33,7 @@ interface UserT {
 interface ActiveT {
   id: number;
   email: string;
+  fullname: string;
 }
 
 export type { GroupT, ProjectT, UserT, ActiveT };
