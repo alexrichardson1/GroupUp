@@ -1,6 +1,6 @@
 import { ActiveT, GroupT, ProjectT, UserT } from "types/types";
 import axios from "axios";
-import { config } from "Constants";
+import { config } from "common/config";
 
 const dummyGroup: GroupT = {
   id: -1,
