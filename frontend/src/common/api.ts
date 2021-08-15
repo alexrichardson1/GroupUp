@@ -163,6 +163,20 @@ async function getUsers() {
   return result;
 }
 
+async function updateUserLastLogin(userEmail: string, time: string) {
+  await axios
+    .post(`${config.API_URL}/user/login/update`, {
+      email: userEmail,
+      time: time,
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 async function getActive() {
   var result = dummyActive;
   await axios
@@ -218,6 +232,7 @@ export {
   dummyGroup,
   getUser,
   getUsers,
+  updateUserLastLogin,
   dummyUser,
   getActive,
   setActive,
