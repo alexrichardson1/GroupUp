@@ -175,6 +175,20 @@ async function getActive() {
   return result;
 }
 
+async function setActive(email: string, fullName: string) {
+  await axios
+    .post(`${config.API_URL}/active/email/update`, {
+      email: email,
+      fullname: fullName,
+    })
+    .then((res) => {
+      console.log(`Updated active: ${res.data}`);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 export {
   addProject,
   getProject,
@@ -189,5 +203,6 @@ export {
   getUsers,
   dummyUser,
   getActive,
+  setActive,
   dummyActive,
 };
