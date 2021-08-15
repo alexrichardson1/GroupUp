@@ -1,4 +1,4 @@
-import { GroupT, ProjectT, UserT } from "types/types";
+import { ActiveT, GroupT, ProjectT, UserT } from "types/types";
 import axios from "axios";
 import { config } from "Constants";
 
@@ -32,6 +32,12 @@ const dummyUser: UserT = {
   activefilter: ["FILTER"],
   lastlogin: "LAST LOGIN",
   groupsid: -1,
+};
+
+const dummyActive: ActiveT = {
+  id: -1,
+  fullname: "FULL NAME",
+  email: "DUMMY@EMAIL.COM",
 };
 
 async function addGroup(data: GroupT) {
@@ -128,10 +134,23 @@ async function getUser(email: string) {
   return result;
 }
 
-async function getUsers(): Promise<UserT[]> {
+async function getUsers() {
   var result: UserT[] = [dummyUser];
   await axios
     .get(`${config.API_URL}/user`)
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return result;
+}
+
+async function getActive() {
+  var result = dummyActive;
+  await axios
+    .get(`${config.API_URL}/active/one`)
     .then((res) => {
       result = res.data;
     })
@@ -153,4 +172,6 @@ export {
   getUser,
   getUsers,
   dummyUser,
+  getActive,
+  dummyActive,
 };
