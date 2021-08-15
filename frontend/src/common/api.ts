@@ -38,6 +38,7 @@ const dummyActive: ActiveT = {
   id: -1,
   fullname: "FULL NAME",
   email: "DUMMY@EMAIL.COM",
+  filters: [],
 };
 
 async function addGroup(data: GroupT) {
@@ -189,6 +190,22 @@ async function setActive(email: string, fullName: string) {
     });
 }
 
+async function setFilters(userEmail: string, filters: any[]) {
+  await axios
+    .post(`${config.API_URL}/user/activefilter/update`, {
+      filters: filters,
+      email: userEmail,
+    })
+    .then((res) => {
+      console.log(`Added filters for: ${userEmail}`);
+      console.log(`Filters: ${filters}`);
+      console.log(`Updated active: ${res.data}`);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 export {
   addProject,
   getProject,
@@ -204,5 +221,6 @@ export {
   dummyUser,
   getActive,
   setActive,
+  setFilters,
   dummyActive,
 };
