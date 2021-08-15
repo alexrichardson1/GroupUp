@@ -129,6 +129,13 @@ class CreateHackathon extends Component<Props, State> {
     );
   };
 
+  hackathonNowAvailable() {
+    if (this.state.invalid2) {
+      return <Alert variant="success">Hackathon is now available!</Alert>
+    }
+    return null;
+  }
+
   override render() {
     return this.state.redirect ? (
       <Redirect to="/home" />
@@ -146,12 +153,8 @@ class CreateHackathon extends Component<Props, State> {
         ) : (
           <h6></h6>
         )}
-        {this.state.invalid2 === true ? (
-          <Alert variant="success">Hackathon is now available!</Alert>
-        ) : (
-          <h6></h6>
-        )}
-        {this.state.invalid2 === false ? (
+        {this.hackathonNowAvailable()}
+        {!this.state.invalid2 ? (
           <Form onSubmit={this.handleSubmit}>
             {this.genFormComponent(
               "Hackathon Name",
