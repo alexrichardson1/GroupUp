@@ -199,7 +199,7 @@ const NavBar = ({
               </LinkContainer>
             </NavDropdown>
           ) : (
-            <h6></h6>
+            null
           )}
         </Nav>
       </Navbar.Collapse>
