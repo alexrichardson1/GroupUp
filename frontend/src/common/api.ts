@@ -51,6 +51,21 @@ async function addGroup(data: GroupT) {
     });
 }
 
+async function joinGroup(groupId: number, name: string) {
+  await axios
+    .post(`${config.API_URL}/group/join`, {
+      groupid: groupId,
+      name: name,
+    })
+    .then((res) => {
+      console.log(`Group joined: ${res.data}`);
+      alert("Successfully joined group!");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 async function getGroup(groupId: number) {
   const group = dummyGroup;
   await axios
@@ -166,6 +181,7 @@ export {
   getProjects,
   dummyProject,
   addGroup,
+  joinGroup,
   getGroup,
   getGroups,
   dummyGroup,
