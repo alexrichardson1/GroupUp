@@ -1,7 +1,5 @@
 import { ChangeEvent, Component } from "react";
-import axios from "axios";
 import "components/styles.css";
-import { config } from "Constants";
 import {
   Form,
   Button,
@@ -16,22 +14,8 @@ import { withRouter } from "react-router-dom";
 import { Redirect } from "react-router";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
-import { ActiveT, GroupT, ProjectT } from "types/types";
 import { allFieldsNotFilledIn } from "common/render";
-
-async function addGroup(data: GroupT) {
-  var result = {};
-  await axios
-    .post(`${config.API_URL}/group/add`, data)
-    .then((res) => {
-      const group = res.data;
-      result = group;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return result;
-}
+import { addGroup, getActive, getProject } from "common/api";
 
 interface Props {
   id: number;
@@ -70,50 +54,11 @@ class CreateGroup extends Component<Props, State> {
 
   static override contextType = UserContext;
 
-  getProject = async () => {
-    var result: ProjectT = {
-      id: 0,
-      name: "",
-      requirements: [],
-      description: "",
-      hours: 0,
-      date: "",
-      location: "",
-    };
-    await axios
-      .post(`${config.API_URL}/project/one`, {
-        projectid: this.props.id,
-      })
-      .then((res) => {
-        const project = res.data;
-        result = project;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result;
-  };
-
-  getActive = async () => {
-    await axios
-      .get(`${config.API_URL}/active/one`)
-      .then((res) => {
-        const user: ActiveT = res.data;
-        this.setState({ leaderemail: user.email });
-        // TODO
-        //@ts-ignore
-        this.setState({ leader: user.fullname });
-        //@ts-ignore
-        console.log(`EXPECT ERROR ${user.fullname}`);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   override async componentDidMount() {
-    this.getActive();
-    const proj = await this.getProject();
+    const { email, fullname } = await getActive();
+    this.setState({ leaderemail: email });
+    this.setState({ leader: fullname });
+    const proj = await getProject(this.props.id);
     this.setState({ requirements: proj.requirements });
     document.title = "Create a listing!";
   }

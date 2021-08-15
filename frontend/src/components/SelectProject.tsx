@@ -2,28 +2,19 @@ import { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import NavBar from "components/NavBar";
-import axios from "axios";
-import { config } from "Constants";
 import { ProjectT } from "types/types";
+import { getProjects } from "common/api";
 
 const SelectProject = () => {
   const [projects, setProjects] = useState<ProjectT[]>([]);
 
+  async function setup() {
+    setProjects(await getProjects());
+  }
+
   useEffect(() => {
-    const getProjects = async () => {
-      await axios
-        .get(`${config.API_URL}/project`)
-        .then((res) => {
-          const projects = res.data;
-          console.log(projects);
-          setProjects(projects);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
     document.title = "Select a Hackathon";
-    getProjects();
+    setup();
   }, []);
 
   return (

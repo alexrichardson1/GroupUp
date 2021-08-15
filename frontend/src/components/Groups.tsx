@@ -4,12 +4,10 @@ import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/NavBar";
-import axios from "axios";
 import Filter from "components/Filter";
-import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
 import { GroupT, ProjectT } from "types/types";
-import { dummyProject } from "common/api";
+import { dummyProject, getGroups, getProject, setFilters } from "common/api";
 
 interface Props {
   id: number;
@@ -51,65 +49,10 @@ export default class Groups extends Component<Props, State> {
     return 1 + group.teammates.length >= group.maxmembers;
   }
 
-  async getGroups(): Promise<GroupT[]> {
-    var result: GroupT[] = [];
-    await axios
-      .post(`${config.API_URL}/group/hackathon`, {
-        hackathonid: this.props.id,
-      })
-
-      .then((res) => {
-        const groups = res.data;
-        result = groups;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result.filter((group) => !this.groupIsFull(group));
-  }
-  // TODO: getProject()
-  async getProjects(): Promise<ProjectT> {
-    var result: ProjectT = dummyProject;
-    await axios
-      .get(`${config.API_URL}/project`)
-      .then((res) => {
-        const projects: ProjectT[] = res.data;
-        const project = projects.filter(
-          (proj) => proj.id === Number(this.props.id)
-        )[0];
-        if (project) {
-          result = project;
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    return result;
-  }
-
-  async postFilter(userEmail: string, filters: any[]) {
-    console.log("added filters for: " + userEmail);
-    console.log("Filters: " + filters);
-    var result = {};
-    await axios
-      .post(`${config.API_URL}/user/activefilter/update`, {
-        filters: filters,
-        email: userEmail,
-      })
-      .then((res) => {
-        const filters = res.data;
-        result = filters;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result;
-  }
-
   override async componentDidMount() {
-    this.setState({ groups: await this.getGroups() });
-    this.setState({ projects: await this.getProjects() });
-    this.setState({ filteredGroups: await this.getGroups() });
+    this.setState({ groups: await getGroups() });
+    this.setState({ projects: await getProject(this.props.id) });
+    this.setState({ filteredGroups: await getGroups() });
     this.setState({ requirements: this.hackathonReqs() });
     document.title = "Available Listings";
   }
@@ -120,7 +63,7 @@ export default class Groups extends Component<Props, State> {
 
   allReqVars = (reqIndex: number) => {
     const vars: string[] = [];
-    this.state.groups.map((g) => {
+    this.state.groups.forEach((g) => {
       const requirement = g.requirements[reqIndex];
       if (requirement) {
         vars.push(requirement);
@@ -193,7 +136,7 @@ export default class Groups extends Component<Props, State> {
     for (const [, v] of this.state.activeFilters.entries()) {
       vals.push(v);
     }
-    this.postFilter(email, vals);
+    setFilters(email, vals);
   };
 
   override render() {

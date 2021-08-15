@@ -1,8 +1,7 @@
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { config } from "Constants";
+import { getActive, setActive } from "common/api";
 
 function getLinkElems(
   renderBool: boolean[],
@@ -86,38 +85,14 @@ const NavBar = ({
 
   const links = getLinkElems(renderBool, linkList, linkNameList);
 
+  async function setup() {
+    const { fullname } = await getActive();
+    setFullName(fullname);
+  }
+
   useEffect(() => {
-    getActive();
+    setup();
   }, []);
-
-  const getActive = async () => {
-    await axios
-      .get(`${config.API_URL}/active/one`)
-      .then((res) => {
-        const user = res.data;
-        setFullName(user.fullname);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const clearActive = async () => {
-    var result = {};
-    await axios
-      .post(`${config.API_URL}/active/email/update`, {
-        email: "",
-        fullname: "",
-      })
-      .then((res) => {
-        const group = res.data;
-        result = group;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result;
-  };
 
   return (
     <Navbar className="navBar" expand="lg" fixed="top">
@@ -193,14 +168,12 @@ const NavBar = ({
               </LinkContainer>
               <NavDropdown.Divider />
               <LinkContainer to="/" activeClassName="">
-                <NavDropdown.Item onClick={() => clearActive()}>
+                <NavDropdown.Item onClick={() => setActive("", "")}>
                   Sign Out
                 </NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
-          ) : (
-            null
-          )}
+          ) : null}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

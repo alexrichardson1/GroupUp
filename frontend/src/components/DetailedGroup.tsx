@@ -4,11 +4,8 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, ListGroup, Table, Modal } from "react-bootstrap";
 import NavBar from "components/NavBar";
-import axios from "axios";
-import { config } from "Constants";
 import { UserContext } from "components/auth/UserContext";
-import { ProjectT } from "types/types";
-import { dummyProject } from "common/api";
+import { dummyProject, getGroup, getProject, joinGroup } from "common/api";
 
 const DetailedGroup = () => {
   const { id, projectId } = useParams<{ id: string; projectId: string }>();
@@ -31,69 +28,24 @@ const DetailedGroup = () => {
   console.log(maxMembers, teammates.length);
   const leaderFirstName = leader.split(" ")[0];
 
-  const joinGroup = async () => {
-    var result = {};
-    await axios
-      .post(`${config.API_URL}/group/join`, {
-        groupid: groupId,
-        name: user,
-      })
-      .then((res) => {
-        const group = res.data;
-        result = group;
-        alert("Successfully joined group!");
-        setTeammates([...teammates, user]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result;
-  };
-
   //@ts-ignore
   useEffect(async () => {
-    const getGroup = async () => {
-      await axios
-        .post(`${config.API_URL}/group/one`, {
-          groupid: groupId,
-        })
-        .then((res) => {
-          const group = res.data;
-          console.log(group);
-          setLeader(group.leader);
-          setMaxMembers(group.maxmembers);
-          setTeammates(group.teammates);
-          setRequirements(group.requirements);
-          setAdRequirements(group.adrequirements);
-          setEmail(group.leaderemail);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
-    const getProject = async () => {
-      var result: ProjectT = dummyProject;
-      await axios
-        .get(`${config.API_URL}/project`)
-        .then((res) => {
-          const projects: ProjectT[] = res.data;
-          const filteredProjects = projects.filter(
-            (proj) => proj.id === parseInt(projectId)
-          );
-          if (filteredProjects[0]) {
-            result = filteredProjects[0];
-          }
-          setProject(result);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-
+    const {
+      leader,
+      maxmembers,
+      teammates,
+      requirements,
+      adrequirements,
+      leaderemail,
+    } = await getGroup(groupId);
+    setLeader(leader);
     document.title = `${leader}'s Group`;
-    await getGroup();
-    await getProject();
+    setMaxMembers(maxmembers);
+    setTeammates(teammates);
+    setRequirements(requirements);
+    setAdRequirements(adrequirements);
+    setEmail(leaderemail);
+    setProject(await getProject(parseInt(projectId)));
   }, []);
 
   const isJoined = () => {
@@ -173,7 +125,7 @@ const DetailedGroup = () => {
       <Button onClick={handleShow}>Contact Leader</Button>
       <Button
         onClick={() => {
-          if (user) joinGroup();
+          joinGroup(groupId, user);
         }}
         disabled={isJoined()}
       >

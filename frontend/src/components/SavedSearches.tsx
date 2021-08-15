@@ -1,9 +1,8 @@
 import NavBar from "components/NavBar";
-import axios from "axios";
-import { config } from "Constants";
 import { Component } from "react";
 import Group from "components/Group";
 import { GroupT, ProjectT, UserT } from "types/types";
+import { getGroups, getProjects, getUsers } from "common/api";
 
 interface Props {}
 
@@ -23,54 +22,10 @@ export default class SavedSearches extends Component<Props, State> {
     };
   }
 
-  async getGroups(): Promise<GroupT[]> {
-    var result: GroupT[] = [];
-    await axios
-      .get(`${config.API_URL}/group/`)
-      .then((res) => {
-        const group = res.data;
-        result = group;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    return result;
-  }
-
-  async getAllUsers(): Promise<UserT[]> {
-    var result: UserT[] = [];
-    await axios
-      .get(`${config.API_URL}/user/`)
-      .then((res) => {
-        const projects = res.data;
-        result = projects;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    return result;
-  }
-
-  async getProjects(): Promise<ProjectT[]> {
-    var result: ProjectT[] = [];
-    await axios
-      .get(`${config.API_URL}/project`)
-      .then((res) => {
-        const projects = res.data;
-        result = projects;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return result;
-  }
-
   override async componentDidMount() {
-    // this.setState({ groups: await this.getGroups() });
-    this.setState({ filteredGroups: await this.getGroups() });
-    this.setState({ users: await this.getAllUsers() });
-    this.setState({ projects: await this.getProjects() });
+    this.setState({ filteredGroups: await getGroups() });
+    this.setState({ users: await getUsers() });
+    this.setState({ projects: await getProjects() });
   }
 
   getPersonalisedGroups = (email: string) => {

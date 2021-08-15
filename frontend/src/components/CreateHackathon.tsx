@@ -1,28 +1,12 @@
 import { Component } from "react";
-import axios from "axios";
 import "components/styles.css";
-import { config } from "Constants";
 import { Form, Button, Container, Col, Alert, Spinner } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import NavBar from "components/NavBar";
 import { Redirect } from "react-router";
-import { GroupT, ProjectT } from "types/types";
-import { dummyGroup } from "common/api";
+import { ProjectT } from "types/types";
+import { addProject } from "common/api";
 import { allFieldsNotFilledIn } from "common/render";
-
-async function addProject(data: ProjectT): Promise<GroupT> {
-  var result: GroupT = dummyGroup;
-  await axios
-    .post(`${config.API_URL}/project/add`, data)
-    .then((res) => {
-      const group = res.data;
-      result = group;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return result;
-}
 
 interface Props {
   id: number;

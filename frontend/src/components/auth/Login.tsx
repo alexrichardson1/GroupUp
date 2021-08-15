@@ -3,11 +3,14 @@ import { Alert, Form, Button } from "react-bootstrap";
 import NavBar from "components/NavBar";
 import { UserContext } from "components/auth/UserContext";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { config } from "Constants";
 import { LinkContainer } from "react-router-bootstrap";
 import { UserT } from "types/types";
-import { dummyUser } from "common/api";
+import {
+  dummyUser,
+  getUsers,
+  setActive,
+  updateUserLastLogin,
+} from "common/api";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState<string>("");
@@ -17,61 +20,24 @@ const Login = () => {
   const history = useHistory();
   const date = new Date().toISOString();
 
-  const updateLogin = async () => {
-    await axios
-      .post(`${config.API_URL}/user/login/update`, {
-        email: userEmail,
-        time: date,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const updateActive = async () => {
-    var userFullName = dummyUser.fullname;
-    if (userEmail !== "") {
-      const filteredUsers = users.filter((u) => u.email === userEmail);
-      if (filteredUsers[0]) {
-        userFullName = filteredUsers[0].fullname;
-      }
+  function getFullName() {
+    if (userEmail === "") {
+      return dummyUser.fullname;
     }
-    var result: UserT = dummyUser;
-    await axios
-      .post(`${config.API_URL}/active/email/update`, {
-        email: userEmail,
-        fullname: userFullName,
-      })
-      .then((res) => {
-        result = res.data;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    return result;
-  };
+    const filteredUsers = users.filter((u) => u.email === userEmail);
+    if (filteredUsers[0]) {
+      return filteredUsers[0].fullname;
+    }
+    return dummyUser.fullname;
+  }
+
+  async function setup() {
+    setUsers(await getUsers());
+  }
 
   useEffect(() => {
-    const getAllUsers = async () => {
-      var result: UserT[] = [];
-      await axios
-        .get(`${config.API_URL}/user/`)
-        .then((res) => {
-          const projects = res.data;
-          result = projects;
-          setUsers(result);
-          console.log(projects);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      return result;
-    };
     document.title = "Login";
-    getAllUsers();
+    setup();
   }, []);
 
   /* Functions to handle form submission */
@@ -88,8 +54,8 @@ const Login = () => {
       return;
     }
     setEmail(userEmail);
-    updateLogin();
-    updateActive();
+    updateUserLastLogin(userEmail, date);
+    setActive(userEmail, getFullName());
     console.log(users);
     var user = dummyUser;
     const filteredUsers = users.filter((u) => u.email === userEmail);
