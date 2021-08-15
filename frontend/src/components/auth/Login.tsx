@@ -12,7 +12,7 @@ import { dummyUser } from "api";
 const Login = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [users, setUsers] = useState<UserT[]>([]);
-  const [invalid, setInvalid] = useState(false);
+  const [invalidLogin, setInvalidLogin] = useState(false);
   const { setUser, setEmail } = useContext(UserContext);
   const history = useHistory();
   const date = new Date().toISOString();
@@ -84,7 +84,7 @@ const Login = () => {
   const handleSubmit = () => {
     const emails = users.map((user) => user.email);
     if (!emails.includes(userEmail)) {
-      setInvalid(true);
+      setInvalidLogin(true);
       return;
     }
     setEmail(userEmail);
@@ -102,7 +102,7 @@ const Login = () => {
   };
 
   function wrongLogin() : JSX.Element | null {
-    if (invalid) {
+    if (invalidLogin) {
       return <Alert variant="danger">User with email not found.</Alert>
     }
     return null
