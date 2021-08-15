@@ -188,13 +188,27 @@ class CreateGroup extends Component<Props, State> {
     );
   };
 
-  reqsToComponents = (names: string[]): JSX.Element[] => {
+  reqsToComponents = (names: string[]) => {
     const components: JSX.Element[] = [];
     names.forEach((req) => {
       components.push(this.uniqueComponent(req));
     });
     return components;
   };
+
+  allFieldsNotFilledIn() {
+    if (this.state.invalid) {
+      return <Alert variant="danger">Fill in all fields.</Alert>
+    }
+    return null;
+  }
+
+  groupAdvertised() {
+    if (this.state.invalid2) {
+      return <Alert variant="success">Group advertised!</Alert>
+    }
+    return null;
+  }
 
   override render() {
     return this.state.redirect ? (
@@ -207,17 +221,9 @@ class CreateGroup extends Component<Props, State> {
           id={this.props.id}
         />
         <h1>Advertise your group</h1>
-        {this.state.invalid === true ? (
-          <Alert variant="danger">Fill in all fields.</Alert>
-        ) : (
-          <h6></h6>
-        )}
-        {this.state.invalid2 === true ? (
-          <Alert variant="success">Group advertised!</Alert>
-        ) : (
-          <h6></h6>
-        )}
-        {this.state.invalid2 === false ? (
+        {this.allFieldsNotFilledIn()}
+        {this.groupAdvertised()}
+        {!this.state.invalid2 ? (
           <Form onSubmit={this.handleSubmit}>
             <Col>
               <Form.Group
