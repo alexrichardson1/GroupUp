@@ -2,43 +2,69 @@ import { ActiveT, GroupT, ProjectT, UserT } from "types/types";
 import axios from "axios";
 import { config } from "common/config";
 
+// group
+const DUMMY_ID = 0;
+const LEADER = "ALICE";
+const MAX_MEMBERS = 2;
+const TEAMMATES = ["BOB", "CAROL"];
+const GROUP_REQUIREMENTS = ["TYPESCRIPT", "REACT"];
+const ADDITIONAL_REQUIREMENTS = "FRONTEND DEVELOPER";
+const LEADER_EMAIL = "ALICE@EMAIL.COM";
+const TIME_POSTED = "20:00";
+
+// project
+const PROJECT_NAME = "IC HACK X";
+const PROJECT_REQUIREMENTS = ["DEVELOP A GAME", "HAVE FUN"];
+const DESCRIPTION = "WE'VE GOT PIZZA!";
+const HOURS = 12;
+const DATE = "20-4-22";
+const LOCATION = "LONDON";
+
+// user
+const FULL_NAME = "ALICE PLEASANCE HARGEAVES";
+const PASSWORD = "********";
+const LAST_LOGIN = "16-05-21";
+
+// active
+const FILTERS = ["FILTER #1"];
+
 const dummyGroup: GroupT = {
-  id: -1,
-  leader: "LEADER",
-  maxmembers: -1,
-  teammates: ["ALICE", "BOB"],
-  requirements: ["REQUIREMENT"],
-  adrequirements: "ADDITIONAL REQUIREMENTS",
-  projectid: -1,
-  leaderemail: "DUMMY@EMAIL.COM",
-  posted: "TIME",
+  id: DUMMY_ID,
+  leader: LEADER,
+  maxmembers: MAX_MEMBERS,
+  teammates: TEAMMATES,
+  requirements: GROUP_REQUIREMENTS,
+  adrequirements: ADDITIONAL_REQUIREMENTS,
+  projectid: DUMMY_ID,
+  leaderemail: LEADER_EMAIL,
+  posted: TIME_POSTED,
 };
 
 const dummyProject: ProjectT = {
-  id: -1,
-  name: "NAME",
-  requirements: ["REQUIREMENT"],
-  description: "DESCRIPTION",
-  hours: 0,
-  date: "DATE",
-  location: "LOCATION",
+  id: DUMMY_ID,
+  name: PROJECT_NAME,
+  requirements: PROJECT_REQUIREMENTS,
+  description: DESCRIPTION,
+  hours: HOURS,
+  date: DATE,
+  location: LOCATION,
 };
 
 const dummyUser: UserT = {
-  id: -1,
-  fullname: "FULL NAME",
-  email: "DUMMY@EMAIL.COM",
-  password: "PASSWORD",
-  activefilter: ["FILTER"],
-  lastlogin: "LAST LOGIN",
-  groupsid: -1,
+  id: DUMMY_ID,
+  fullname: FULL_NAME,
+  email: LEADER_EMAIL,
+  password: PASSWORD,
+  activefilter: FILTERS,
+  lastlogin: LAST_LOGIN,
+  groupsid: DUMMY_ID,
 };
 
 const dummyActive: ActiveT = {
-  id: -1,
-  fullname: "FULL NAME",
-  email: "DUMMY@EMAIL.COM",
-  filters: [],
+  id: DUMMY_ID,
+  fullname: FULL_NAME,
+  email: LEADER_EMAIL,
+  filters: FILTERS,
 };
 
 async function addGroup(data: GroupT) {
