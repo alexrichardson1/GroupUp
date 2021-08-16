@@ -5,7 +5,7 @@
   "main": "src/Server.js",
   "scripts": {
     "test": "react-scripts test",
-    "start": "node -r esm src/Server.js"
+    "start": "tsc --build && node -r esm build/backend/src/Server.js"
   },
   "author": "",
   "license": "ISC",
