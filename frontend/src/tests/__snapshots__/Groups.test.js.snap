@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <nav
+    className="navBar navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <span
+      className="navbar-brand"
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      <img
+        alt="group up logo"
+        className="logoImage"
+        href="/home"
+        onClick={[Function]}
+        src="https://i.imgur.com/w92t1xH.png"
+      />
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr=auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+           
+        </span>
+        <a
+          className="nav-link"
+          data-rb-event-key="/home"
+          href="/home"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Home
+          <img
+            alt="drop down arrow"
+            className="processImage"
+            src="/right-caret.svg"
+          />
+        </a>
+        <a
+          className="nav-link"
+          data-rb-event-key="/selection"
+          href="/selection"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Select Hackathon
+          <img
+            alt="drop down arrow"
+            className="processImage"
+            src="/right-caret.svg"
+          />
+        </a>
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Group Listings
+        </span>
+      </div>
+      <div
+        className="ms-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="ml-auto navHelp navbar-brand"
+          href="/help"
+          id="collasible-nav-dropdown"
+          onClick={[Function]}
+          title="Help"
+        >
+          <img
+            alt="help"
+            className="splitterImage"
+            src="/info-circle.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <h3>
+          0
+           Groups looking for members in: 
+          IC HACK X
+        </h3>
+      </div>
+      <div
+        className="advertCol align-items-center col"
+      >
+        <button
+          className="advertBtn btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Save this search
+        </button>
+        <a
+          className="advertBtn btn btn-primary"
+          href="/createGroup/undefined"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          Advertise my group
+        </a>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="filterCol col"
+      >
+        <h5>
+          Filters:
+        </h5>
+      </div>
+      <div
+        className="listingsCol col"
+      />
+    </div>
+  </div>
+</div>
+`;

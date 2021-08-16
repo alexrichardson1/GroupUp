@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container"
+>
+  <nav
+    className="navBar navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <span
+      className="navbar-brand"
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      <img
+        alt="group up logo"
+        className="logoImage"
+        href="/home"
+        onClick={[Function]}
+        src="https://i.imgur.com/w92t1xH.png"
+      />
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr=auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+           
+        </span>
+        <a
+          className="nav-link"
+          data-rb-event-key="/home"
+          href="/home"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Home
+          <img
+            alt="drop down arrow"
+            className="processImage"
+            src="/right-caret.svg"
+          />
+        </a>
+        <a
+          className="nav-link"
+          data-rb-event-key="/selection"
+          href="/selection"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Select Hackathon
+          <img
+            alt="drop down arrow"
+            className="processImage"
+            src="/right-caret.svg"
+          />
+        </a>
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Register a hackathon
+        </span>
+      </div>
+      <div
+        className="ms-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="ml-auto navHelp navbar-brand"
+          href="/help"
+          id="collasible-nav-dropdown"
+          onClick={[Function]}
+          title="Help"
+        >
+          <img
+            alt="help"
+            className="splitterImage"
+            src="/info-circle.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <h1>
+    Adding your Hackathon to our list
+  </h1>
+  <form
+    className=""
+    onSubmit={[Function]}
+  >
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Hackathon Name
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="hackathonName"
+        onChange={[Function]}
+        placeholder="e.g. University of Paris Hackathon 2021"
+        type="text"
+        value=""
+      />
+      <small
+        className="text-muted form-text"
+      >
+        
+      </small>
+    </div>
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Filter Requirements
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="requirements"
+        onChange={[Function]}
+        placeholder="e.g. Programming Language, Timezone [if remote], Version Control"
+        type="text"
+        value=""
+      />
+      <small
+        className="text-muted form-text"
+      >
+        These are the compulsory requirements that groups advertising for your hackathon must specify. For example, you might want groups to specify "Timezone" when advertising, if your Hackathon is remote.
+      </small>
+    </div>
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Description
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="description"
+        onChange={[Function]}
+        placeholder="e.g. The Annual Hackathon event for University of Paris, where you will be creating a web-based game!"
+        type="text"
+        value=""
+      />
+      <small
+        className="text-muted form-text"
+      >
+        Include a little bit about your hackathon, to make sure users are on the right page.
+      </small>
+    </div>
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Length of Hackathon (Hours)
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="hours"
+        onChange={[Function]}
+        placeholder="24"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Start Date
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="date"
+        onChange={[Function]}
+        placeholder="dfsd"
+        type="date"
+        value=""
+      />
+    </div>
+    <div
+      className="formBox form-group col"
+    >
+      <label
+        className="form-label"
+        htmlFor="formLeaderName"
+      >
+        Location
+      </label>
+      <input
+        className="form-control is-invalid"
+        id="formLeaderName"
+        name="location"
+        onChange={[Function]}
+        placeholder="e.g. Paris, France"
+        type="text"
+        value=""
+      />
+      <small
+        className="text-muted form-text"
+      >
+        
+      </small>
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

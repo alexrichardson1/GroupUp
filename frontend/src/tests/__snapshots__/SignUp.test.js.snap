@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <nav
+    className="navBar navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <span
+      className="navbar-brand"
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      <img
+        alt="group up logo"
+        className="logoImage"
+        href="/home"
+        onClick={[Function]}
+        src="https://i.imgur.com/w92t1xH.png"
+      />
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr=auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Sign Up
+        </span>
+      </div>
+      <div
+        className="ms-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="ml-auto navHelp navbar-brand"
+          href="/help"
+          id="collasible-nav-dropdown"
+          onClick={[Function]}
+          title="Help"
+        >
+          <img
+            alt="help"
+            className="splitterImage"
+            src="/info-circle.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <h2>
+    Create an Account!
+  </h2>
+  <form
+    className=""
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+      >
+        Name
+      </label>
+      <input
+        className="form-control"
+        placeholder="Enter name"
+        type="text"
+      />
+      <label
+        className="form-label"
+      >
+        Email address
+      </label>
+      <input
+        className="form-control"
+        placeholder="Enter email"
+        type="email"
+      />
+      <small
+        className="text-muted form-text"
+      >
+        We'll never share your email with anyone else.
+      </small>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <a
+      aria-disabled={true}
+      className="btn btn-primary disabled"
+      href="/home"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={-1}
+    >
+      Submit
+    </a>
+    <a
+      className="btn btn-primary"
+      href="/"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      style={Object {}}
+    >
+      Already Have an Account?
+    </a>
+  </form>
+</div>
+`;

@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <nav
+    className="navBar navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <span
+      className="navbar-brand"
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      <img
+        alt="group up logo"
+        className="logoImage"
+        href="/home"
+        onClick={[Function]}
+        src="https://i.imgur.com/w92t1xH.png"
+      />
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr=auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Login
+        </span>
+      </div>
+      <div
+        className="ms-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="ml-auto navHelp navbar-brand"
+          href="/help"
+          id="collasible-nav-dropdown"
+          onClick={[Function]}
+          title="Help"
+        >
+          <img
+            alt="help"
+            className="splitterImage"
+            src="/info-circle.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <h2>
+    Login
+  </h2>
+  <form
+    className=""
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+      >
+        Email
+      </label>
+      <input
+        className="form-control is-invalid"
+        name="userEmail"
+        onChange={[Function]}
+        placeholder="johnsmith@example.com"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Login
+    </button>
+    <a
+      className="btn btn-primary"
+      href="/signup"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      Haven't Got An Account
+    </a>
+    <a
+      className="btn btn-primary"
+      href="/forgotpassword"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      Forgotten Your Password
+    </a>
+  </form>
+</div>
+`;

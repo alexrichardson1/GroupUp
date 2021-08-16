@@ -1,0 +1,569 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <nav
+    className="navBar navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <span
+      className="navbar-brand"
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      <img
+        alt="group up logo"
+        className="logoImage"
+        href="/home"
+        onClick={[Function]}
+        src="https://i.imgur.com/w92t1xH.png"
+      />
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr=auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+           
+        </span>
+        <span
+          className="navbar-brand"
+          style={
+            Object {
+              "color": "rgb(238, 237, 237)",
+            }
+          }
+        >
+          Help
+        </span>
+      </div>
+      <div
+        className="ms-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="ml-auto navHelp navbar-brand"
+          href="/help"
+          id="collasible-nav-dropdown"
+          onClick={[Function]}
+          title="Help"
+        >
+          <img
+            alt="help"
+            className="splitterImage"
+            src="/info-circle.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="react-card-flip"
+    style={
+      Object {
+        "perspective": "1000px",
+        "zIndex": "auto",
+      }
+    }
+  >
+    <div
+      className="react-card-flipper"
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="react-card-front"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "relative",
+            "top": "0",
+            "transform": "rotateY(0deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+            "zIndex": "2",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              What Is A Hackathon?
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/hackathons.webp"
+            />
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="react-card-back"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "absolute",
+            "top": "0",
+            "transform": "rotateY(-180deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Information
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/hackathons.webp"
+            />
+            <p
+              className="card-text"
+            >
+              Hackathons are a time limited event where teams work together to build software for an array of reasons. They are a great way of sharpening your design technique, refining your programming ability and making friends. Use GroupUp to find your dream hackathon team! Use our filters to narrow down groups based on the programming language used, their time zone and more!
+            </p>
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="react-card-flip"
+    style={
+      Object {
+        "perspective": "1000px",
+        "zIndex": "auto",
+      }
+    }
+  >
+    <div
+      className="react-card-flipper"
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="react-card-front"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "relative",
+            "top": "0",
+            "transform": "rotateY(0deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+            "zIndex": "2",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              How To Join A Group
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/groups.webp"
+            />
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="react-card-back"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "absolute",
+            "top": "0",
+            "transform": "rotateY(-180deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Information
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/groups.webp"
+            />
+            <p
+              className="card-text"
+            >
+              Choose a Hackathon. Groups should be displayed for your chosen Hackathon. Make use of the filters if you have specific requirements. Click 'Find out more', then click 'Join Group'
+            </p>
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="react-card-flip"
+    style={
+      Object {
+        "perspective": "1000px",
+        "zIndex": "auto",
+      }
+    }
+  >
+    <div
+      className="react-card-flipper"
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="react-card-front"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "relative",
+            "top": "0",
+            "transform": "rotateY(0deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+            "zIndex": "2",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              How To Advertise Your Group
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/advertise.jpg"
+            />
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="react-card-back"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "absolute",
+            "top": "0",
+            "transform": "rotateY(-180deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Information
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/advertise.jpg"
+            />
+            <p
+              className="card-text"
+            >
+              Choose a Hackathon. Click 'Advertise my group!'. Fill out the required information. Click 'Submit'.
+            </p>
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="react-card-flip"
+    style={
+      Object {
+        "perspective": "1000px",
+        "zIndex": "auto",
+      }
+    }
+  >
+    <div
+      className="react-card-flipper"
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="react-card-front"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "relative",
+            "top": "0",
+            "transform": "rotateY(0deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+            "zIndex": "2",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              How do hackathons work?
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/hackathons2.jpg"
+            />
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="react-card-back"
+        style={
+          Object {
+            "WebkitBackfaceVisibility": "hidden",
+            "backfaceVisibility": "hidden",
+            "height": "100%",
+            "left": "0",
+            "position": "absolute",
+            "top": "0",
+            "transform": "rotateY(-180deg)",
+            "transformStyle": "preserve-3d",
+            "transition": "0.6s",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Information
+            </div>
+            <img
+              className="card-img-top cardPicture"
+              src="/hackathons2.jpg"
+            />
+            <p
+              className="card-text"
+            >
+              A theme is given to you and a time limit. Work together with your team to produce some software that is linked to the theme in that time limit and present it to try and win the best project award!
+            </p>
+          </div>
+          <div
+            className="card-footer"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Click to flip
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
