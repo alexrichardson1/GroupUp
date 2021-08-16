@@ -124,9 +124,11 @@ class CreateGroup extends Component<Props, State> {
         </InputGroup.Prepend>
         <FormControl
           name={name}
-          value={this.state.leader}
+          //@ts-ignore
+          value={this.state[name]}
           onChange={this.handleInputChange}
-          isInvalid={!(this.state.leader && this.state.leader.length !== 0)}
+          //@ts-ignore
+          isInvalid={!(this.state[name] && this.state[name].length !== 0)}
         ></FormControl>
       </InputGroup>
     );
