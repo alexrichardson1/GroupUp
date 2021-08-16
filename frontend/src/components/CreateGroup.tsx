@@ -88,7 +88,7 @@ class CreateGroup extends Component<Props, State> {
       }
     });
     e.preventDefault();
-    if (submit === true) {
+    if (submit) {
       const requirementValues: string[] = [];
       this.state.requirements.map((req) =>
         //@ts-ignore
@@ -125,9 +125,7 @@ class CreateGroup extends Component<Props, State> {
         <FormControl
           name={name}
           value={this.state.leader}
-          // value={this.state[name]}
           onChange={this.handleInputChange}
-          // isInvalid={!(this.state[name] && this.state[name].length !== 0)}
           isInvalid={!(this.state.leader && this.state.leader.length !== 0)}
         ></FormControl>
       </InputGroup>
