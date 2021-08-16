@@ -3,13 +3,15 @@ import { Button, Card } from "react-bootstrap";
 import ReactCardFlip from "react-card-flip";
 import Navbar from "components/NavBar";
 
+interface Props {}
+
 interface State {
   flipped: Set<number>;
 }
 
-export default class Help extends Component<{}, State> {
-  constructor() {
-    super({});
+export default class Help extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       flipped: new Set(),
     };
