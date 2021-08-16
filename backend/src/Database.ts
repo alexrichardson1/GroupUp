@@ -1,4 +1,10 @@
 import { groupSQL, projectSQL, userSQL, activeSQL } from "./Sql";
+import {
+  ActiveT,
+  GroupT,
+  ProjectT,
+  UserT,
+} from "../../frontend/src/types/types";
 
 const pgp = require("pg-promise")({});
 require("dotenv").config();
@@ -15,223 +21,184 @@ const dbInfo = {
 const db = pgp(dbInfo);
 
 class Database {
-  static async addGroup(attr) {
-    var result = {};
-
+  static async addGroup(attr: GroupT) {
+    //@ts-ignore
+    var result: GroupT = {};
     await db
       .one(groupSQL.addGroup, attr)
-      .then((data) => {
+      .then((data: GroupT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
 
     return result;
   }
 
-  static async joinGroup(attr) {
+  static async joinGroup(attr: { name: string; groupid: number }) {
     var result = {};
-
     await db
       .one(groupSQL.joinGroup, attr)
-      .then((data) => {
+      .then((data: GroupT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
   static async getAllGroups() {
-    var result = {};
-
+    var result: GroupT[] = [];
     await db
       .any(groupSQL.getAllGroups)
-      .then((data) => {
+      .then((data: GroupT[]) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
 
     return result;
   }
 
-  static async getHackathonGroups(attr) {
-    var result = {};
-
+  static async getHackathonGroups(attr: { hackathonid: number }) {
+    var result: GroupT[] = [];
     await db
       .any(groupSQL.getHackathonGroups, attr)
-      .then((data) => {
+      .then((data: GroupT[]) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
 
     return result;
   }
 
-  static async getGroup(attr) {
-    var result = {};
-
+  static async getGroup(attr: { groupid: string }) {
+    //@ts-ignore
+    var result: GroupT = {};
     await db
       .oneOrNone(groupSQL.getGroup, attr)
-      .then((data) => {
+      .then((data: GroupT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
 
     return result;
   }
 
-  static async getProject(attr) {
-    var result = {};
-
+  static async getProject(attr: { projectid: string }) {
+    //@ts-ignore
+    var result: ProjectT = {};
     await db
       .oneOrNone(projectSQL.getProject, attr)
-      .then((data) => {
+      .then((data: ProjectT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
-  static async addProject(attr) {
-    var result = {};
-
+  static async addProject(attr: ProjectT) {
+    //@ts-ignore
+    var result: ProjectT = {};
     await db
       .one(projectSQL.addProject, attr)
-      .then((data) => {
+      .then((data: ProjectT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
   static async getAllProjects() {
-    var result = {};
-
+    var result: ProjectT[] = [];
     await db
       .any(projectSQL.getAllProjects)
-      .then((data) => {
+      .then((data: ProjectT[]) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
   static async getAllUsers() {
-    var result = {};
-
+    var result: UserT[] = [];
     await db
       .any(userSQL.getAllUsers)
-      .then((data) => {
+      .then((data: UserT[]) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
-  static async updateUserLogin(attr) {
-    var result = {};
-
+  static async updateUserLogin(attr: { time: string; email: string }) {
+    //@ts-ignore
+    var result: UserT = {};
     await db
       .one(userSQL.updateUserLogin, attr)
-      .then((data) => {
+      .then((data: UserT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
 
     return result;
   }
 
-  static async updateActiveFilter(attr) {
-    var result = {};
+  static async updateActiveFilter(attr: { filters: string[]; email: string }) {
+    //@ts-ignore
+    var result: UserT = {};
     await db
       .one(userSQL.updateActiveFilter, attr)
-      .then((data) => {
+      .then((data: UserT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
     return result;
   }
 
-  static async updateActive(attr) {
-    var result = {};
+  static async updateActive(attr: { fullname: string; email: string }) {
+    //@ts-ignore
+    var result: ActiveT = {};
     await db
       .one(activeSQL.updateActive, attr)
-      .then((data) => {
+      .then((data: ActiveT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
+      .catch(console.error);
     return result;
   }
 
-  static async getUser(attr) {
-    var result = {};
-
+  static async getUser(attr: { email: string }) {
+    //@ts-ignore
+    var result: UserT = {};
     await db
       .oneOrNone(userSQL.getUser, attr)
-      .then((data) => {
+      .then((data: UserT) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 
-  static async getActive(attr) {
-    var result = {};
-
+  static async getActive() {
+    var result: ActiveT[] = [];
     await db
       .oneOrNone(activeSQL.getActive)
-      .then((data) => {
+      .then((data: ActiveT[]) => {
         console.log(data);
         result = data;
       })
-      .catch((error) => {
-        console.log("ERROR:", error); // print error;
-      });
-
+      .catch(console.error);
     return result;
   }
 }
