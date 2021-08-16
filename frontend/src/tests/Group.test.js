@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import Group from "components/Group";
 import { dummyGroup } from "common/api";
 
-test("renders correctly", () => {
+test("renders correctly", async () => {
   const tree = renderer
     .create(
       <BrowserRouter>
