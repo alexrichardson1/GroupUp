@@ -47,6 +47,7 @@ export default class SavedSearches extends Component<Props, State> {
         }
       }
       //@ts-ignore
+      // eslint-disable-next-line react/no-direct-mutation-state
       this.state.filteredGroups = newFilteredGroups;
       this.setState({ ...this.state });
     });
