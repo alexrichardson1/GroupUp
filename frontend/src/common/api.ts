@@ -73,9 +73,7 @@ async function addGroup(data: GroupT) {
     .then((res) => {
       console.log(`Group added: ${res.data}`);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 async function joinGroup(groupId: number, name: string) {
@@ -88,9 +86,7 @@ async function joinGroup(groupId: number, name: string) {
       console.log(`Group joined: ${res.data}`);
       alert("Successfully joined group!");
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 async function getGroup(groupId: number) {
@@ -103,9 +99,7 @@ async function getGroup(groupId: number) {
       const group = res.data;
       console.log(group);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return group;
 }
 
@@ -116,9 +110,7 @@ async function getGroups() {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -128,9 +120,7 @@ async function addProject(data: ProjectT) {
     .then((res) => {
       console.log(`Project added: ${res.data}`);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 async function getProject(id: number) {
@@ -142,9 +132,7 @@ async function getProject(id: number) {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -155,9 +143,7 @@ async function getProjects() {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -170,9 +156,7 @@ async function getUser(email: string) {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -183,9 +167,7 @@ async function getUsers() {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -198,9 +180,7 @@ async function updateUserLastLogin(userEmail: string, time: string) {
     .then((res) => {
       console.log(res.data);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 async function getActive() {
@@ -210,9 +190,7 @@ async function getActive() {
     .then((res) => {
       result = res.data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
   return result;
 }
 
@@ -225,9 +203,7 @@ async function setActive(email: string, fullName: string) {
     .then((res) => {
       console.log(`Updated active: ${res.data}`);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 async function setFilters(userEmail: string, filters: any[]) {
@@ -241,9 +217,7 @@ async function setFilters(userEmail: string, filters: any[]) {
       console.log(`Filters: ${filters}`);
       console.log(`Updated active: ${res.data}`);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(console.error)
 }
 
 export {
